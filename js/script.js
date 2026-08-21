@@ -12,47 +12,6 @@ function updateNavScroll() {
 updateNavScroll();
 window.addEventListener('scroll', updateNavScroll, { passive: true });
 
-/* ---------- portfolio drag-to-scroll carousel ---------- */
-const isRTL = getComputedStyle(document.documentElement).direction === 'rtl';
-
-document.querySelectorAll('.portfolio-cards').forEach(track => {
-  let isDown = false;
-  let startX = 0;
-  let startScroll = 0;
-  let moved = false;
-
-  const start = (x) => {
-    isDown = true;
-    moved = false;
-    startX = x;
-    startScroll = track.scrollLeft;
-    track.classList.add('dragging');
-  };
-  const move = (x) => {
-    if (!isDown) return;
-    const delta = x - startX;
-    if (Math.abs(delta) > 4) moved = true;
-    track.scrollLeft = isRTL ? startScroll + delta : startScroll - delta;
-  };
-  const end = () => {
-    isDown = false;
-    track.classList.remove('dragging');
-  };
-
-  track.addEventListener('mousedown', (e) => { start(e.pageX); e.preventDefault(); });
-  window.addEventListener('mousemove', (e) => move(e.pageX));
-  window.addEventListener('mouseup', end);
-
-  track.addEventListener('touchstart', (e) => start(e.touches[0].pageX), { passive: true });
-  track.addEventListener('touchmove', (e) => move(e.touches[0].pageX), { passive: true });
-  track.addEventListener('touchend', end);
-
-  // prevent link clicks from firing right after a drag
-  track.addEventListener('click', (e) => {
-    if (moved) { e.preventDefault(); e.stopPropagation(); }
-  }, true);
-});
-
 /* ---------- accessibility widget ---------- */
 (function a11yWidget() {
   const toggle = document.getElementById('a11yToggle');
