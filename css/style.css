@@ -250,24 +250,24 @@ img{ max-width:100%; display:block; }
 }
 .hero-laptop img{ width:100%; height:280px; object-fit:cover; object-position:top; display:block; }
 
-.hero-phone{
+.hero-tablet{
   position:absolute; z-index:3;
-  bottom:-6%; left:-4%;
-  width:128px;
-  border-radius:20px;
+  bottom:-6%; left:-6%;
+  width:190px;
+  border-radius:18px;
   overflow:hidden;
   background:#0E1A2E;
-  padding:8px 6px;
+  padding:10px 8px;
   box-shadow:0 30px 50px -18px rgba(15,25,45,.55);
   transform:rotate(4deg);
   animation:float 10s ease-in-out infinite;
   animation-delay:-5s;
 }
-.hero-phone-notch{
-  height:12px; display:flex; align-items:center; justify-content:center;
+.hero-tablet img{ width:100%; height:200px; object-fit:cover; object-position:top; border-radius:10px; display:block; }
+.hero-tablet-home{
+  height:14px; display:flex; align-items:center; justify-content:center;
 }
-.hero-phone-notch span{ width:34px; height:4px; border-radius:3px; background:#243449; }
-.hero-phone img{ width:100%; height:210px; object-fit:cover; object-position:top; border-radius:12px; display:block; }
+.hero-tablet-home span{ width:9px; height:9px; border-radius:50%; border:1.5px solid #364a63; }
 
 .hero-badge{
   position:absolute; z-index:4;
@@ -403,7 +403,7 @@ section{ padding:6rem 24px; max-width:1180px; margin:0 auto; position:relative; 
 
 /* ---------- process ---------- */
 .steps{
-  display:grid; grid-template-columns:repeat(5, 1fr); gap:1.6rem;
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:1.6rem;
   position:relative;
 }
 .steps::before{
@@ -550,36 +550,19 @@ section{ padding:6rem 24px; max-width:1180px; margin:0 auto; position:relative; 
 /* ---------- contact page ---------- */
 .contact-page{ padding-bottom:3rem; }
 .contact-inner{ max-width:640px; margin:0 auto; text-align:center; position:relative; z-index:2; }
-.contact-form{
-  margin-top:2.4rem;
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:2.2rem;
-  box-shadow:var(--shadow);
-  text-align:start;
-  display:flex; flex-direction:column; gap:1.2rem;
+.whatsapp-cta{
+  display:inline-flex; align-items:center; gap:.7rem;
+  margin-top:1rem;
+  padding:1.1em 2.2em;
+  border-radius:999px;
+  background:#25D366;
+  color:#fff;
+  font-weight:700; font-size:1.1rem;
+  box-shadow:0 20px 40px -16px rgba(37,211,102,.55);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
 }
-.field{ display:flex; flex-direction:column; gap:.4rem; }
-.field label{ font-size:.88rem; font-weight:600; color:var(--ink-soft); }
-.field input, .field select{
-  padding:.85em 1em;
-  border-radius:12px;
-  border:1.5px solid var(--border);
-  background:var(--bg);
-  font-family:inherit; font-size:1rem; color:var(--ink);
-  transition:border-color .25s, box-shadow .25s;
-}
-.field input:focus, .field select:focus{
-  outline:none; border-color:var(--lavender-deep);
-  box-shadow:0 0 0 4px rgba(47,111,204,.18);
-}
-.btn-submit{ width:100%; margin-top:.4rem; }
-.form-msg{
-  margin:0; font-size:.9rem; font-weight:600; min-height:1.2em;
-  color:var(--mint-deep);
-}
-.form-msg.error{ color:#E0687A; }
+.whatsapp-cta svg{ width:26px; height:26px; flex:0 0 auto; }
+.whatsapp-cta:hover{ transform:translateY(-3px); box-shadow:0 24px 46px -14px rgba(37,211,102,.65); }
 
 /* ---------- cta banner ---------- */
 .cta-banner{

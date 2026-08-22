@@ -169,37 +169,3 @@ document.querySelectorAll('.magnetic').forEach(btn => {
     btn.style.transform = 'translate(0,0)';
   });
 });
-
-/* ---------- contact form ---------- */
-const form = document.getElementById('contactForm');
-const formMsg = document.getElementById('formMsg');
-
-form?.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = form.name.value.trim();
-  const phone = form.phone.value.trim();
-  const type = form.type.value;
-
-  const phoneOk = /^0\d{1,2}[-\s]?\d{7}$/.test(phone.replace(/\s/g, ''));
-
-  if (!name || !phoneOk || !type) {
-    formMsg.textContent = 'נא למלא שם, טלפון תקין וסוג אתר.';
-    formMsg.classList.add('error');
-    return;
-  }
-
-  formMsg.classList.remove('error');
-  const submitBtn = form.querySelector('.btn-submit .btn-text');
-  submitBtn.textContent = 'שולח...';
-
-  const waText = encodeURIComponent(
-    `היי אריאל, אני ${name}.\nמעוניין/ת ב: ${type}.\nהטלפון שלי: ${phone}`
-  );
-
-  setTimeout(() => {
-    submitBtn.textContent = 'שליחת פרטים';
-    formMsg.textContent = `תודה ${name}! נפתח לך וואטסאפ להשלמת הפנייה 🎉`;
-    window.open(`https://wa.me/972556658131?text=${waText}`, '_blank', 'noopener');
-    form.reset();
-  }, 700);
-});

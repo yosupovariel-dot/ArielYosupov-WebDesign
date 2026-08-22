@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.arielyosupov-web.co.il/sitemap.xml
+Sitemap: https://arielyosupov-webdesign.com/sitemap.xml
