@@ -205,6 +205,8 @@ img{ max-width:100%; display:block; }
   display:flex;
   align-items:center;
   width:100%;
+  max-width:none;
+  margin:0;
   padding:7rem 24px 4rem;
   overflow:hidden;
   background:linear-gradient(120deg, var(--sky) 0%, var(--lavender) 50%, var(--sky) 100%);
