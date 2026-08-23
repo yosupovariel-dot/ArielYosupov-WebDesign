@@ -254,7 +254,7 @@ img{ max-width:100%; display:block; }
   height:14px; border-radius:7px; background:#dde5ee;
   max-width:140px;
 }
-.hero-laptop img{ width:100%; aspect-ratio:16/10; height:auto; object-fit:cover; object-position:top; display:block; }
+.hero-laptop img{ width:100%; aspect-ratio:16/10; height:auto; object-fit:contain; object-position:top center; background:#fff; display:block; }
 
 .hero-tablet{
   position:absolute; z-index:3;
@@ -269,7 +269,7 @@ img{ max-width:100%; display:block; }
   animation:float 10s ease-in-out infinite;
   animation-delay:-5s;
 }
-.hero-tablet img{ width:100%; aspect-ratio:16/10; height:auto; object-fit:cover; object-position:top; border-radius:9px; display:block; }
+.hero-tablet img{ width:100%; aspect-ratio:16/10; height:auto; object-fit:contain; object-position:top center; background:#0E1A2E; border-radius:9px; display:block; }
 .hero-tablet-home{
   height:14px; display:flex; align-items:center; justify-content:center;
 }
