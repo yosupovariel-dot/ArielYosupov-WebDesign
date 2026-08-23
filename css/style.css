@@ -87,21 +87,25 @@ img{ max-width:100%; display:block; }
 .nav{
   position:sticky; top:0; z-index:500;
   padding:0 16px;
-  transition:padding .45s var(--ease);
+  background:rgba(246,248,251,.85);
+  backdrop-filter:blur(18px) saturate(1.5);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);
+  border-bottom:1px solid rgba(219,226,233,.6);
+  transition:padding .45s var(--ease), background .45s var(--ease), border-color .45s var(--ease);
 }
-.nav.scrolled{ padding:14px 16px 0; }
+.nav.scrolled{
+  padding:14px 16px 0;
+  background:transparent;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border-bottom-color:transparent;
+}
 
 .nav-inner{
   max-width:1180px; margin:0 auto;
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 24px;
-  background:rgba(246,248,251,.55);
-  backdrop-filter:blur(18px) saturate(1.5);
-  -webkit-backdrop-filter:blur(18px) saturate(1.5);
-  border:1px solid rgba(219,226,233,.6);
-  border-top:none; border-inline:none;
   border-radius:0;
-  box-shadow:0 8px 24px -20px rgba(30,50,80,.3);
   transition:max-width .45s var(--ease), padding .45s var(--ease), border-radius .45s var(--ease),
              background .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
 }
@@ -109,7 +113,7 @@ img{ max-width:100%; display:block; }
   max-width:960px;
   padding:9px 20px;
   border-radius:999px;
-  border-color:var(--border);
+  border:1px solid var(--border);
   background:rgba(246,248,251,.5);
   backdrop-filter:blur(26px) saturate(1.7);
   -webkit-backdrop-filter:blur(26px) saturate(1.7);
