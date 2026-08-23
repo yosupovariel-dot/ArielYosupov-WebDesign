@@ -632,6 +632,29 @@ section{ padding:6rem 24px; max-width:1180px; margin:0 auto; position:relative; 
 .legal-body a{ color:var(--lavender-deep); }
 .legal-body a:hover{ text-decoration:underline; }
 .article-page{ max-width:760px; margin:0 auto; }
+.article-back{ margin:0 0 1.5rem; }
+.article-back a{
+  font-size:.9rem; font-weight:700; color:var(--lavender-deep);
+  display:inline-flex; align-items:center; gap:.3rem;
+  transition:transform .25s var(--ease);
+}
+.article-back a:hover{ transform:translateX(-4px); }
+[dir="ltr"] .article-back a:hover{ transform:translateX(4px); }
+.article-byline{
+  font-size:.88rem; color:var(--ink-soft); margin-top:.6rem !important;
+}
+.article-page .legal-body{ font-size:1.05rem; }
+.article-page .legal-body h3{
+  font-size:1.3rem; font-weight:800; margin:2.6rem 0 .9rem;
+  padding-inline-start:.9rem;
+  border-inline-start:4px solid var(--lavender-deep);
+}
+.article-page .legal-body h3:first-child{ margin-top:0; }
+.article-page .legal-body p{ font-size:1.03rem; line-height:1.75; }
+.article-page .legal-body strong{ color:var(--lavender-deep); }
+
+.article-related{ max-width:1180px; margin:5rem auto 0; padding:0 24px; }
+.article-related .section-head{ margin-bottom:2.5rem; }
 
 /* ---------- blog ---------- */
 .blog-grid{
