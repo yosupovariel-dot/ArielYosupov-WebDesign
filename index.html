@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=5">
+<link rel="stylesheet" href="/css/style.css?v=6">
 </head>
 <body>
 <div class="topbar">
@@ -89,7 +89,7 @@
 </script>
 
 <section class="hero" id="home">
-  <canvas class="dust" aria-hidden="true"></canvas>
+  <div class="shapes" aria-hidden="true"><i class="sh sh1"></i><i class="sh sh2"></i><i class="sh sh3"></i><i class="sh sh4"></i><i class="sh sh5"></i></div>
   <div class="container hero-row">
     <div class="hero-text">
       <p class="kicker">סטודיו לבניית אתרים לעסקים</p>
@@ -105,22 +105,27 @@
         <a href="#work" class="btn btn-outline-light btn-lg">לתיק העבודות</a>
       </div>
     </div>
-    <div class="hero-mock" id="heroDevice" aria-hidden="true">
-      <div class="device">
-        <div class="laptop">
-          <div class="laptop-screen">
-            <img src="/assets/portfolio/levmeirisrael.jpg" alt="" class="is-on">
-            <img src="/assets/portfolio/eduardyonim.jpg" alt="">
-            <img src="/assets/portfolio/keterjudah.jpg" alt="">
-            <img src="/assets/portfolio/techno-tech.jpg" alt="">
-            <img src="/assets/portfolio/cyberlabsdpo.jpg" alt="">
-            <span class="glare"></span>
-          </div>
-          <div class="laptop-base"></div>
+    <div class="showcase" id="showcase">
+      <div class="sc-window">
+        <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl" dir="ltr">levmeirisrael.com</span></div>
+        <div class="sc-slides">
+          <a class="sc-slide is-on" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer" data-url="eduardyonim.com" data-name="אדוארד הרחקת יונים"><img src="/assets/portfolio/eduardyonim.jpg" alt="אדוארד הרחקת יונים: eduardyonim.com"></a>
+          <a class="sc-slide" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer" data-url="levmeirisrael.com" data-name="הרב מאיר אליהו שליט״א"><img src="/assets/portfolio/levmeirisrael.jpg" alt="הרב מאיר אליהו שליט״א: levmeirisrael.com"></a>
+          <a class="sc-slide" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer" data-url="keterjudah.com" data-name="תשמישי קדושה"><img src="/assets/portfolio/keterjudah.jpg" alt="תשמישי קדושה: keterjudah.com"></a>
+          <a class="sc-slide" href="https://cyberlabsdpo.com" target="_blank" rel="noopener noreferrer" data-url="cyberlabsdpo.com" data-name="סייברלאבס"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="סייברלאבס: cyberlabsdpo.com"></a>
+          <a class="sc-slide" href="https://techno-tech.co.il" target="_blank" rel="noopener noreferrer" data-url="techno-tech.co.il" data-name="טכנו תשתיות גז"><img src="/assets/portfolio/techno-tech.jpg" alt="טכנו תשתיות גז: techno-tech.co.il"></a>
         </div>
-        <div class="mobile"><img src="/assets/portfolio/keterjudah-2.jpg" alt=""><span class="glare"></span></div>
       </div>
-      <p class="device-caption"><span class="live-dot"></span><span id="deviceName">levmeirisrael.com</span></p>
+      <div class="sc-foot">
+        <p class="sc-name" id="scName">הרב מאיר אליהו שליט״א</p>
+        <div class="sc-dots" id="scDots">
+          <button type="button" class="sc-dot is-on" aria-label="אדוארד הרחקת יונים"></button>
+          <button type="button" class="sc-dot" aria-label="הרב מאיר אליהו שליט״א"></button>
+          <button type="button" class="sc-dot" aria-label="תשמישי קדושה"></button>
+          <button type="button" class="sc-dot" aria-label="סייברלאבס"></button>
+          <button type="button" class="sc-dot" aria-label="טכנו תשתיות גז"></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -136,10 +141,10 @@
 
 <div class="lookbook" aria-label="גלריית עבודות">
   <div class="lb-row lb-a">
-    <div class="lb-track"><img src="/assets/portfolio/levmeirisrael.jpg" alt="" loading="lazy"><img src="/assets/portfolio/eduardyonim.jpg" alt="" loading="lazy"><img src="/assets/portfolio/keterjudah.jpg" alt="" loading="lazy"><img src="/assets/portfolio/techno-tech.jpg" alt="" loading="lazy"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="" loading="lazy"><img src="/assets/portfolio/levmeirisrael.jpg" alt="" loading="lazy"><img src="/assets/portfolio/eduardyonim.jpg" alt="" loading="lazy"><img src="/assets/portfolio/keterjudah.jpg" alt="" loading="lazy"><img src="/assets/portfolio/techno-tech.jpg" alt="" loading="lazy"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="" loading="lazy"></div>
+    <div class="lb-track"><img src="/assets/portfolio/levmeirisrael.jpg" alt=""><img src="/assets/portfolio/eduardyonim.jpg" alt=""><img src="/assets/portfolio/keterjudah.jpg" alt=""><img src="/assets/portfolio/techno-tech.jpg" alt=""><img src="/assets/portfolio/cyberlabsdpo.jpg" alt=""><img src="/assets/portfolio/levmeirisrael.jpg" alt=""><img src="/assets/portfolio/eduardyonim.jpg" alt=""><img src="/assets/portfolio/keterjudah.jpg" alt=""><img src="/assets/portfolio/techno-tech.jpg" alt=""><img src="/assets/portfolio/cyberlabsdpo.jpg" alt=""></div>
   </div>
   <div class="lb-row lb-b">
-    <div class="lb-track"><img src="/assets/portfolio/keterjudah-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/levmeirisrael-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/techno-tech-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/eduardyonim-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="" loading="lazy"><img src="/assets/portfolio/keterjudah-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/levmeirisrael-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/techno-tech-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/eduardyonim-2.jpg" alt="" loading="lazy"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="" loading="lazy"></div>
+    <div class="lb-track"><img src="/assets/portfolio/keterjudah-2.jpg" alt=""><img src="/assets/portfolio/levmeirisrael-2.jpg" alt=""><img src="/assets/portfolio/techno-tech-2.jpg" alt=""><img src="/assets/portfolio/eduardyonim-2.jpg" alt=""><img src="/assets/portfolio/cyberlabsdpo.jpg" alt=""><img src="/assets/portfolio/keterjudah-2.jpg" alt=""><img src="/assets/portfolio/levmeirisrael-2.jpg" alt=""><img src="/assets/portfolio/techno-tech-2.jpg" alt=""><img src="/assets/portfolio/eduardyonim-2.jpg" alt=""><img src="/assets/portfolio/cyberlabsdpo.jpg" alt=""></div>
   </div>
 </div>
 
@@ -151,7 +156,7 @@
     </div>
     <div class="row-3">
       <article class="service">
-        <div class="s-img"><img src="/assets/visuals/svc-landing.jpg" alt="דף נחיתה בטלפון עם כפתור השארת פרטים" loading="lazy"></div>
+        <div class="s-img"><img src="/assets/visuals/svc-landing.jpg" alt="דף נחיתה בטלפון עם כפתור השארת פרטים"></div>
         <div class="s-body">
           <span class="s-time">מוכן תוך יומיים</span>
           <h3>דפי נחיתה</h3>
@@ -160,7 +165,7 @@
         </div>
       </article>
       <article class="service">
-        <div class="s-img"><img src="/assets/visuals/svc-site.jpg" alt="אתר תדמית על מסך מחשב" loading="lazy"></div>
+        <div class="s-img"><img src="/assets/visuals/svc-site.jpg" alt="אתר תדמית על מסך מחשב"></div>
         <div class="s-body">
           <span class="s-time">מוכן תוך שבוע</span>
           <h3>אתרי תדמית</h3>
@@ -169,7 +174,7 @@
         </div>
       </article>
       <article class="service">
-        <div class="s-img"><img src="/assets/visuals/svc-shop.jpg" alt="חנות אונליין במחשב ובטלפון" loading="lazy"></div>
+        <div class="s-img"><img src="/assets/visuals/svc-shop.jpg" alt="חנות אונליין במחשב ובטלפון"></div>
         <div class="s-body">
           <span class="s-time">מוכנה תוך שבועיים</span>
           <h3>חנויות אונליין</h3>
@@ -213,35 +218,35 @@
     </div>
     <div class="cards portfolio-cards">
       <a class="p-card" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer">
-        <div class="p-thumb"><img src="/assets/portfolio/eduardyonim.jpg" alt="תצוגה מקדימה של eduardyonim.com" loading="lazy"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-thumb"><img src="/assets/portfolio/eduardyonim.jpg" alt="תצוגה מקדימה של eduardyonim.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
         <div class="p-info">
           <h3>אדוארד הרחקת יונים</h3>
           <p>אתר שירותים לעסק להרחקת יונים</p>
         </div>
       </a>
       <a class="p-card" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer">
-        <div class="p-thumb"><img src="/assets/portfolio/levmeirisrael.jpg" alt="תצוגה מקדימה של levmeirisrael.com" loading="lazy"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-thumb"><img src="/assets/portfolio/levmeirisrael.jpg" alt="תצוגה מקדימה של levmeirisrael.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
         <div class="p-info">
           <h3>הרב מאיר אליהו שליט״א</h3>
           <p>אתר תדמית לדמות ציבורית ותורנית</p>
         </div>
       </a>
       <a class="p-card" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer">
-        <div class="p-thumb"><img src="/assets/portfolio/keterjudah.jpg" alt="תצוגה מקדימה של keterjudah.com" loading="lazy"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-thumb"><img src="/assets/portfolio/keterjudah.jpg" alt="תצוגה מקדימה של keterjudah.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
         <div class="p-info">
           <h3>תשמישי קדושה</h3>
           <p>חנות אונליין עם קופה ומשלוחים</p>
         </div>
       </a>
       <a class="p-card" href="https://cyberlabsdpo.com" target="_blank" rel="noopener noreferrer">
-        <div class="p-thumb"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="תצוגה מקדימה של cyberlabsdpo.com" loading="lazy"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-thumb"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="תצוגה מקדימה של cyberlabsdpo.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
         <div class="p-info">
           <h3>סייברלאבס</h3>
           <p>אתר תדמית לחברת סייבר והגנת מידע</p>
         </div>
       </a>
       <a class="p-card" href="https://techno-tech.co.il" target="_blank" rel="noopener noreferrer">
-        <div class="p-thumb"><img src="/assets/portfolio/techno-tech.jpg" alt="תצוגה מקדימה של techno-tech.co.il" loading="lazy"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-thumb"><img src="/assets/portfolio/techno-tech.jpg" alt="תצוגה מקדימה של techno-tech.co.il"><span class="p-overlay"><span>צפייה באתר</span></span></div>
         <div class="p-info">
           <h3>טכנו תשתיות גז</h3>
           <p>אתר תדמית לחברת תשתיות והנדסה</p>
@@ -456,9 +461,9 @@
 
 <script src="/js/script.js"></script>
 <script src="/js/howto.js"></script>
-<script src="/js/device.js"></script>
 <script src="/js/assistant.js"></script>
-<script src="/js/dust.js"></script>
+<script src="/js/showcase.js"></script>
+<script src="/js/fx.js"></script>
 <script src="/js/lead.js"></script>
 </body>
 </html>
