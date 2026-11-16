@@ -103,12 +103,22 @@
         <a href="#work" class="btn btn-outline-light btn-lg">לתיק העבודות</a>
       </div>
     </div>
-    <div class="hero-mock" aria-hidden="true">
-      <div class="laptop">
-        <div class="laptop-screen"><img src="/assets/portfolio/levmeirisrael.jpg" alt=""></div>
-        <div class="laptop-base"></div>
+    <div class="hero-mock" id="heroDevice" aria-hidden="true">
+      <div class="device">
+        <div class="laptop">
+          <div class="laptop-screen">
+            <img src="/assets/portfolio/levmeirisrael.jpg" alt="" class="is-on">
+            <img src="/assets/portfolio/eduardyonim.jpg" alt="">
+            <img src="/assets/portfolio/keterjudah.jpg" alt="">
+            <img src="/assets/portfolio/techno-tech.jpg" alt="">
+            <img src="/assets/portfolio/cyberlabsdpo.jpg" alt="">
+            <span class="glare"></span>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+        <div class="mobile"><img src="/assets/portfolio/keterjudah-2.jpg" alt=""><span class="glare"></span></div>
       </div>
-      <div class="mobile"><img src="/assets/portfolio/keterjudah.jpg" alt=""></div>
+      <p class="device-caption"><span class="live-dot"></span><span id="deviceName">levmeirisrael.com</span></p>
     </div>
   </div>
 </section>
@@ -146,6 +156,30 @@
         <p>ניהול מוצרים, עגלת קניות ותשלום מאובטח, בעיצוב שמוביל את הקונה עד לסיום ההזמנה.</p>
         <a href="/services.html" class="more">קרא עוד »</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="block block-dark" id="assistant">
+  <div class="container assistant-row">
+    <div class="assistant-copy">
+      <span class="tag-new">חדש</span>
+      <h2>לא בטוחים מה מתאים לעסק שלכם?</h2>
+      <p>העוזר הדיגיטלי שלנו ישאל אתכם שלוש שאלות קצרות וימליץ על סוג האתר שמתאים לכם, עם זמן ביצוע משוער. בסוף אפשר להעביר את ההמלצה אלינו בלחיצה אחת.</p>
+      <ul class="hero-checks">
+        <li>פחות מדקה</li>
+        <li>בלי להשאיר פרטים</li>
+        <li>המלצה מותאמת לעסק</li>
+      </ul>
+    </div>
+    <div class="chat" id="chat">
+      <div class="chat-top">
+        <img src="/assets/logo.svg" alt="">
+        <div><b>העוזר של DA Web Design</b><small><span class="live-dot"></span>מקוון</small></div>
+        <button type="button" class="chat-reset" id="chatReset" aria-label="להתחיל מחדש">↻</button>
+      </div>
+      <div class="chat-log" id="chatLog" aria-live="polite"></div>
+      <div class="chat-options" id="chatOptions"></div>
     </div>
   </div>
 </section>
@@ -401,6 +435,8 @@
 
 <script src="/js/script.js"></script>
 <script src="/js/howto.js"></script>
+<script src="/js/device.js"></script>
+<script src="/js/assistant.js"></script>
 <script src="/js/lead.js"></script>
 </body>
 </html>
