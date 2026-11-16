@@ -224,38 +224,77 @@ section{ padding:6rem 24px; max-width:var(--wrap); margin:0 auto; position:relat
 }
 .facts span{ font-size:.9rem; color:var(--night-ink-2); }
 
-.hero-visual{
-  position:relative; min-width:0;
-  height:min(560px, 62vw);
+.hero-visual{ position:relative; min-width:0; display:flex; flex-direction:column; gap:.6rem; }
+
+/* 3D gallery of real sites: each screen is a link */
+.ring-stage{
+  position:relative;
+  height:clamp(300px, 34vw, 440px);
+  perspective:1500px;
+  perspective-origin:50% 25%;
+  touch-action:pan-y;
+  cursor:grab;
+  user-select:none; -webkit-user-select:none;
 }
-.hero-canvas{
-  position:absolute; inset:-6% -14% -6% -6%;
-  width:auto; height:auto;
+.ring-stage.dragging{ cursor:grabbing; }
+.ring-stage::after{
+  /* floor glow under the ring */
+  content:''; position:absolute; left:8%; right:8%; bottom:4%; height:22%;
+  background:radial-gradient(closest-side, rgba(47,111,204,.35), transparent);
+  filter:blur(10px); pointer-events:none;
 }
-.hero-canvas canvas{ display:block; width:100% !important; height:100% !important; cursor:grab; }
-.hero-canvas canvas:active{ cursor:grabbing; }
-.hero-caption{
-  position:absolute; bottom:0; inset-inline-end:0;
-  font-family:var(--f-mono); font-size:.75rem; color:var(--night-ink-2);
-  display:flex; align-items:center; gap:.5rem;
+.ring{ position:absolute; left:50%; top:46%; width:0; height:0; transform-style:preserve-3d; }
+.ring-item{
+  --w:300px;
+  position:absolute; left:0; top:0;
+  width:var(--w); aspect-ratio:16/11;
+  display:flex; flex-direction:column;
+  padding:0 6px 6px;
+  border-radius:10px;
+  background:#141D2C;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 30px 50px -24px rgba(0,0,0,.8);
+  -webkit-user-drag:none;
+  will-change:transform, opacity;
+}
+.ring-bar{
+  height:24px; flex:0 0 auto;
+  display:flex; align-items:center; gap:5px;
   direction:ltr;
 }
-.hero-caption::before{ content:''; width:7px; height:7px; border-radius:50%; background:#4FBF8F; box-shadow:0 0 0 3px rgba(79,191,143,.2); }
+.ring-bar i{ width:7px; height:7px; border-radius:50%; background:#3A4558; }
+.ring-bar span{
+  margin-inline-start:6px; flex:1; min-width:0;
+  font-family:var(--f-mono); font-size:.66rem; color:#8D9AAD;
+  background:#0C1320; border-radius:5px; padding:1px 8px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ring-media{ position:relative; flex:1; min-height:0; overflow:hidden; border-radius:4px; background:#fff; }
+.ring-media img{ width:100%; height:100%; object-fit:cover; object-position:top center; pointer-events:none; }
+.ring-type{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--f-display); font-weight:700; font-size:1.5rem; color:#fff;
+  background:linear-gradient(135deg, #1B3B6E, #0E1A2E); direction:ltr;
+}
+.ring-item.is-front{ border-color:rgba(127,169,234,.55); box-shadow:0 0 0 1px rgba(127,169,234,.25), 0 40px 60px -26px rgba(0,0,0,.85); }
+.ring-item:focus-visible{ outline:2px solid #7FA9EA; outline-offset:4px; }
 
-/* static fallback while WebGL loads / when unavailable */
-.hero-fallback{
-  position:absolute; inset:8% 4% 10% 4%;
-  display:flex; align-items:center; justify-content:center;
-  transition:opacity .6s var(--ease);
+.ring-controls{ display:flex; align-items:center; justify-content:center; gap:1rem; }
+.ring-btn{
+  width:42px; height:42px; flex:0 0 auto;
+  border-radius:50%; border:1px solid var(--night-line); background:transparent;
+  color:var(--night-ink); font-size:1.1rem; cursor:pointer;
+  transition:background .2s, border-color .2s;
 }
-.hero-fallback img{
-  width:100%; max-width:520px; aspect-ratio:16/10; object-fit:cover; object-position:top;
-  border-radius:10px;
-  border:10px solid #1A2232;
-  box-shadow:0 40px 80px -30px rgba(0,0,0,.7);
-  transform:perspective(1200px) rotateY(14deg) rotateX(6deg);
+.ring-btn:hover{ background:var(--night-2); border-color:var(--night-ink-2); }
+.ring-caption{
+  margin:0; min-width:0; text-align:center;
+  display:grid; grid-template-columns:auto auto; justify-content:center; align-items:center; gap:0 .5rem;
+  font-family:var(--f-mono); font-size:.85rem; color:var(--night-ink);
 }
-.hero-visual.is-3d .hero-fallback{ opacity:0; pointer-events:none; }
+.ring-caption #ringName{ direction:ltr; }
+.ring-caption small{ grid-column:1 / -1; font-family:var(--f-body); font-size:.82rem; color:var(--night-ink-2); }
+.ring-dot{ width:7px; height:7px; border-radius:50%; background:#4FBF8F; box-shadow:0 0 0 3px rgba(79,191,143,.2); }
 
 /* ---------- services (rows) ---------- */
 .svc-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
@@ -587,8 +626,8 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{
   .lang-switch{ margin-inline-start:auto; }
   .burger{ display:flex; }
   .hero-container{ grid-template-columns:1fr; padding:3.5rem 0 2.5rem; }
-  .hero-visual{ height:min(440px, 80vw); order:2; }
-  .hero-canvas{ inset:-4% -6%; }
+  .hero-visual{ order:2; }
+  .ring-stage{ height:clamp(240px, 62vw, 400px); }
   .approach{ grid-template-columns:1fr; gap:2rem; }
   .approach .section-head{ position:static; }
   .steps{ grid-template-columns:repeat(2, minmax(0,1fr)); }

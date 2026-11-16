@@ -101,11 +101,39 @@
     </div>
 
     <div class="hero-visual">
-      <div class="hero-fallback">
-        <img src="/assets/portfolio/levmeirisrael.jpg" alt="">
+      <div class="ring-stage" id="ringStage">
+        <div class="ring" id="ring">
+          <a class="ring-item" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer" data-name="eduardyonim.com" aria-label="אדוארד הרחקת יונים: eduardyonim.com (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>eduardyonim.com</span></span>
+            <span class="ring-media"><img src="/assets/portfolio/eduardyonim.jpg" alt="" draggable="false"></span>
+          </a>
+          <a class="ring-item" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer" data-name="levmeirisrael.com" aria-label="הרב מאיר אליהו שליט״א: levmeirisrael.com (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>levmeirisrael.com</span></span>
+            <span class="ring-media"><img src="/assets/portfolio/levmeirisrael.jpg" alt="" draggable="false"></span>
+          </a>
+          <a class="ring-item" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer" data-name="keterjudah.com" aria-label="תשמישי קדושה: keterjudah.com (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>keterjudah.com</span></span>
+            <span class="ring-media"><img src="/assets/portfolio/keterjudah.jpg" alt="" draggable="false"></span>
+          </a>
+          <a class="ring-item" href="https://cyberlabsdpo.com" target="_blank" rel="noopener noreferrer" data-name="cyberlabsdpo.com" aria-label="סייברלאבס: cyberlabsdpo.com (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>cyberlabsdpo.com</span></span>
+            <span class="ring-media"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="" draggable="false"></span>
+          </a>
+          <a class="ring-item" href="https://techno-tech.co.il" target="_blank" rel="noopener noreferrer" data-name="techno-tech.co.il" aria-label="טכנו תשתיות גז: techno-tech.co.il (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>techno-tech.co.il</span></span>
+            <span class="ring-media"><img src="/assets/portfolio/techno-tech.jpg" alt="" draggable="false"></span>
+          </a>
+          <a class="ring-item" href="https://yourstart.co.il" target="_blank" rel="noopener noreferrer" data-name="yourstart.co.il" aria-label="YourStart: yourstart.co.il (נפתח בלשונית חדשה)">
+            <span class="ring-bar"><i></i><i></i><i></i><span>yourstart.co.il</span></span>
+            <span class="ring-media"><span class="ring-type">YourStart</span></span>
+          </a>
+        </div>
       </div>
-      <div class="hero-canvas" data-base="/assets/portfolio/"></div>
-      <p class="hero-caption"><span class="hero-caption-text">levmeirisrael.com</span></p>
+      <div class="ring-controls">
+        <button class="ring-btn" id="ringPrev" aria-label="האתר הקודם">→</button>
+        <p class="ring-caption" aria-live="polite"><span class="ring-dot"></span><span id="ringName">eduardyonim.com</span><small>לחצו על המסך כדי להיכנס לאתר</small></p>
+        <button class="ring-btn" id="ringNext" aria-label="האתר הבא">←</button>
+      </div>
     </div>
   </div>
 </section>
@@ -269,7 +297,6 @@
 </a>
 
 <script src="/js/script.js"></script>
-<script src="/js/vendor/three.min.js" defer></script>
-<script src="/js/hero3d.js" defer></script>
+<script src="/js/carousel.js"></script>
 </body>
 </html>
