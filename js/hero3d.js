@@ -116,16 +116,38 @@
   const pad = new THREE.MeshStandardMaterial({ color: 0xa3adbb, metalness: 0.3, roughness: 0.5 });
   const bezel = new THREE.MeshBasicMaterial({ color: 0x0b0f16 });
 
-  const loader = new THREE.TextureLoader();
+  // Load each screenshot as a blob first: a blob: URL is same-origin, so the image stays
+  // usable by WebGL even when the page runs in a sandboxed frame with an opaque origin.
   const maxAniso = renderer.capabilities.getMaxAnisotropy();
-  function loadTex(file) {
-    return new Promise((resolve) => {
-      loader.load(base + file, (t) => {
-        t.colorSpace = THREE.SRGBColorSpace;
-        t.anisotropy = maxAniso;
-        resolve(t);
-      }, undefined, () => resolve(null));
+  function toTexture(img) {
+    const t = new THREE.Texture(img);
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = maxAniso;
+    t.needsUpdate = true;
+    return t;
+  }
+  function imgFrom(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
     });
+  }
+  async function loadTex(file) {
+    // optional inline copies (used by previews that run in a sandboxed frame)
+    const inline = window.HERO_TEXTURES && window.HERO_TEXTURES[file];
+    if (inline) { try { return toTexture(await imgFrom(inline)); } catch { /* fall through */ } }
+    const url = base + file;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(res.status);
+      const blobUrl = URL.createObjectURL(await res.blob());
+      return toTexture(await imgFrom(blobUrl));
+    } catch {
+      try { return toTexture(await imgFrom(url)); } catch { return null; }
+    }
   }
 
   /* ---------- laptop ---------- */
@@ -312,8 +334,9 @@
     // screen crossfade
     if (!still && textures.length > 1) {
       if (!fade && now - lastSwap > CYCLE_MS && open >= 1) {
-        const next = (current + 1) % textures.length;
-        if (textures[next]) {
+        let next = (current + 1) % textures.length;
+        while (!textures[next] && next !== current) next = (next + 1) % textures.length;
+        if (next !== current && textures[next]) {
           screenB.material.map = textures[next];
           screenB.material.needsUpdate = true;
           fade = { to: next, start: now };
@@ -366,7 +389,9 @@
   Promise.all([...SITES.map(s => loadTex(s.img)), loadTex(PHONE_SITE)]).then((all) => {
     const phoneTex = all.pop();
     textures = all;
-    showScreen(0);
+    if (!textures.some(Boolean)) return; // keep the static fallback image
+    current = Math.max(textures.findIndex(Boolean), 0);
+    showScreen(current);
 
     if (phoneTex) {
       // crop the desktop screenshot to a tall phone slice (right side, where Hebrew sites start)
