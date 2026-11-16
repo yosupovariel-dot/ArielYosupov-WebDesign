@@ -539,3 +539,46 @@ html.a11y-motion .lb-track, html.a11y-motion .hero h1{ animation:none; }
 html.a11y-motion .rv-wait{ opacity:1; transform:none; }
 .features-bar{ background:linear-gradient(to bottom, transparent 60px, var(--dark) 60px); }
 .features-bar + .lookbook{ padding-top:40px; }
+
+/* =========================================================
+   Old-school pass: flat solid colours, square corners, sans headlines
+   (keeps the navy + gold palette, images and live elements)
+   ========================================================= */
+h1, h2, .title h2, .section-head h2, .assistant-copy h2, .service h3, .p-info h3, .pb-head h3, .fcol h4, .cta-stripe b{ font-family:var(--font); font-weight:800; letter-spacing:0; }
+.hero h1{ background:none; color:#fff; -webkit-background-clip:border-box; background-clip:border-box; animation:none; text-shadow:0 2px 4px rgba(0,0,0,.35); }
+.kicker{ border:none; border-radius:0; padding:0; letter-spacing:0; color:var(--orange); font-weight:700; text-transform:none; }
+
+/* flat buttons */
+.btn{ border-radius:3px; }
+.btn-orange, .btn-primary, .chat-options .opt-main, .to-top{ background:var(--orange); background-size:auto; color:var(--dark); box-shadow:0 3px 0 var(--orange-2); transform:none; }
+.btn-orange:hover, .btn-primary:hover{ background:var(--orange-2); color:#fff; box-shadow:0 3px 0 #8E6F27; transform:none; }
+.btn-orange:active, .btn-primary:active{ box-shadow:none; transform:translateY(3px); }
+.btn-outline-light{ border-color:#fff; color:#fff; }
+.btn-outline-light:hover{ background:#fff; color:var(--dark); }
+
+/* square, bordered boxes */
+.service, .p-card, .price-box, .lead-form, .contact-info, .howto-panel, .chat, .faq-item, .feature{ border-radius:3px; }
+.service{ box-shadow:0 1px 3px rgba(0,0,0,.12); }
+.service:hover{ transform:none; box-shadow:0 4px 12px rgba(0,0,0,.18); }
+.s-time{ border-radius:3px; background:var(--orange); color:var(--dark); border:none; padding:2px 10px; font-weight:700; }
+.service .more{ border-bottom:none; color:var(--blue); }
+.service .more:hover{ color:var(--orange-2); }
+.f-icon, .tag-new, .ribbon, .to-top{ background:var(--orange); }
+.cta-stripe{ background:var(--orange); }
+.contact-info, .block-dark{ background:var(--dark); }
+.hero{ background:
+    linear-gradient(rgba(14,30,56,.9), rgba(8,20,42,.92)),
+    url("../assets/portfolio/techno-tech.jpg") center / cover no-repeat; }
+.price-box.featured .pb-head{ background:var(--orange); border-bottom:none; }
+.price-box.featured .pb-head h3, .price-box.featured .pb-head p, .price-box.featured .pb-head b{ color:var(--dark); }
+.ribbon{ background:var(--dark); color:#fff; }
+.howto li.is-current .h-num{ background:var(--orange); }
+.hp-bar i{ background:var(--orange); }
+
+/* classic title: solid short bar, no ornament */
+.title h2::before{ content:none; }
+.title h2::after, .section-head h2::after{ width:60px; margin-left:-30px; height:3px; background:var(--orange); }
+
+/* gallery frames like an old carousel */
+.lb-track img{ border-radius:0; border:4px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.4); }
+.lookbook{ background:var(--dark-2); }
