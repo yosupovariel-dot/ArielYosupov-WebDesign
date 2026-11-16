@@ -595,3 +595,98 @@ a:hover{ color:var(--pink); }
 @media (prefers-reduced-motion: reduce){ .hero, .sh, .lb-track, .sc-slide.is-on img{ animation:none; } .rv-wait{ opacity:1; transform:none; } }
 html.a11y-motion .hero, html.a11y-motion .sh, html.a11y-motion .lb-track, html.a11y-motion .sc-slide.is-on img{ animation:none; }
 html.a11y-motion .rv-wait{ opacity:1; transform:none; }
+
+/* =========================================================
+   Classic pass: two colours (blue + orange) on white, flat, square
+   ========================================================= */
+:root{
+  --dark:#2C3E50; --dark-2:#22313F; --head:#2C3E50;
+  --blue:#2A7AC0; --blue-2:#1F639E;
+  --orange:#F39C12; --orange-2:#D68910;
+  --text:#555; --muted:#888; --gray:#F4F4F4; --line:#E3E3E3;
+  --grad-action:none; --grad-cool:none; --grad-rainbow:none;
+}
+a{ color:var(--blue); } a:hover{ color:var(--orange-2); }
+
+/* flat square buttons */
+.btn{ border-radius:4px; box-shadow:none; }
+.btn-orange, .btn-primary, .chat-options .opt-main{ background:var(--orange); color:#fff; border:2px solid var(--orange); box-shadow:none; }
+.btn-orange:hover, .btn-primary:hover, .chat-options .opt-main:hover{ background:var(--orange-2); border-color:var(--orange-2); color:#fff; transform:none; box-shadow:none; }
+.btn-default{ border-color:var(--blue); color:var(--blue); }
+.btn-default:hover{ background:var(--blue); color:#fff; }
+.btn-outline-light:hover{ color:var(--blue); }
+.btn-white{ color:var(--orange-2); }
+
+/* nav + top bar */
+.topbar{ background:var(--dark-2); }
+.topbar a:hover{ color:var(--orange); }
+.logo-text b{ background:none; color:var(--blue); -webkit-background-clip:border-box; background-clip:border-box; }
+.nav-links a.active, .nav-links a:hover{ color:var(--blue); border-bottom-color:var(--blue); }
+
+/* hero: solid blue band, no moving colours or floating shapes */
+.hero{ background:linear-gradient(180deg, #2A7AC0, #1F639E); animation:none; }
+.shapes{ display:none; }
+.kicker{ background:none; padding:0; border-radius:0; color:#D6E9F8; }
+.hero-checks li::before{ color:var(--orange); }
+.sc-window{ border-radius:6px; box-shadow:0 10px 25px rgba(0,0,0,.35); }
+.sc-name::before{ color:var(--orange); }
+
+/* boxes: white, 1px border, light shadow, small radius */
+.feature, .service, .p-card, .price-box, .lead-form, .contact-info, .howto-panel, .chat, .faq-item{ border-radius:4px; }
+.feature{ border:1px solid var(--line); border-top:3px solid var(--blue); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+.feature .f-icon, .feature:nth-child(n) .f-icon{ background:var(--blue); }
+.service{ border:1px solid var(--line); box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.service:hover{ transform:none; box-shadow:0 4px 10px rgba(0,0,0,.12); }
+.row-3 .service:nth-child(n) .s-time{ background:var(--blue); border-radius:3px; }
+.service .more{ color:var(--blue); }
+
+/* section titles: short solid bar */
+.title h2::after, .section-head h2::after{ width:60px; margin-left:-30px; height:3px; border-radius:0; background:var(--orange); }
+.block-gray, .lookbook{ background:var(--gray); }
+.lb-track img{ border-radius:0; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+
+/* assistant: dark band instead of colour gradient */
+.block-dark{ background:var(--dark); }
+.tag-new{ background:var(--orange); color:#fff; border-radius:3px; }
+.msg.user{ background:var(--blue); }
+.msg b{ color:var(--blue); }
+.chat-options button, .chat-options a{ border-color:var(--blue); color:var(--blue); border-radius:4px; }
+.chat-options button:hover{ background:var(--blue); color:#fff; }
+
+/* portfolio */
+.p-card{ border:1px solid var(--line); box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.p-info, .portfolio-cards .p-card:nth-child(n) .p-info{ border-top:3px solid var(--blue); }
+.p-overlay{ background:rgba(42,122,192,.88); }
+.p-overlay span{ border-radius:4px; }
+.p-type{ background:var(--dark); }
+
+/* steps */
+.howto li.is-done .h-num{ background:var(--blue); border-color:var(--blue); }
+.howto li.is-current .h-num{ background:var(--orange); border-color:var(--orange); box-shadow:0 0 0 5px rgba(243,156,18,.2); }
+.howto li.is-current b{ color:var(--orange-2); }
+.howto-panel{ border:1px solid var(--line); box-shadow:none; background:#fff; }
+.hp h3 small{ background:var(--blue); border-radius:3px; }
+.hp-bar i{ background:var(--orange); }
+
+/* pricing */
+.price-box{ border:1px solid var(--line); box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.pb-head, .price-box:nth-child(n) .pb-head{ background:var(--dark); }
+.price-box.featured{ border:2px solid var(--orange); }
+.price-box.featured .pb-head{ background:var(--orange); }
+.ribbon{ background:var(--dark); color:#fff; }
+.price-box li::before{ color:var(--blue); }
+
+/* stripe, contact, footer */
+.cta-stripe{ background:var(--blue); }
+.btn-white{ color:var(--blue); }
+.contact-info{ background:var(--dark); border-top:3px solid var(--orange); }
+.contact-info a:hover{ color:var(--orange); }
+.lf-field input:focus, .lf-field select:focus, .lf-field textarea:focus{ border-color:#66AFE9; box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6); }
+.site-footer{ border-top:none; border-image:none; }
+.fcol h4{ border-bottom-color:var(--orange); }
+.fcol a:hover, .copyright a:hover{ color:var(--orange); }
+.to-top{ background:var(--orange); border-radius:4px; }
+.a11y-toggle{ background:var(--blue); }
+.mc-call{ background:var(--blue) !important; }
+.mc-wa{ background:#25D366; }
+.faq-item summary::after{ color:var(--orange); }
