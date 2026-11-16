@@ -708,3 +708,74 @@ a{ color:var(--blue); } a:hover{ color:var(--orange-2); }
 .legal-body h3{ font-size:22px; margin-top:34px; padding-inline-start:12px; border-inline-start:4px solid var(--orange); }
 .legal-body a{ color:var(--blue); text-decoration:underline; }
 .article-related{ max-width:1140px; margin:0 auto; padding:20px 15px 70px; }
+
+/* =========================================================
+   Dani: the alien in the flying saucer + Q&A chat
+   ========================================================= */
+.dani{
+  --x:16px; --y:55vh;
+  position:fixed; z-index:640; left:var(--x); top:var(--y);
+  width:84px; height:70px; padding:0; border:none; background:none; cursor:pointer;
+  transition:top 3.5s cubic-bezier(.45,0,.25,1), left 3.5s cubic-bezier(.45,0,.25,1), transform .2s;
+  filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));
+}
+.dani:hover{ transform:scale(1.08); }
+.dani:focus-visible{ outline:3px solid var(--orange); outline-offset:4px; border-radius:12px; }
+.dani-bob{ display:block; width:100%; height:100%; animation:daniBob 3.2s ease-in-out infinite; }
+.dani svg{ width:100%; height:100%; overflow:visible; }
+@keyframes daniBob{ 0%,100%{ transform:translateY(0) rotate(-3deg); } 50%{ transform:translateY(-8px) rotate(3deg); } }
+.d-arm{ transform-origin:80px 56px; animation:daniWave 2.4s ease-in-out infinite; }
+@keyframes daniWave{ 0%,60%,100%{ transform:rotate(0); } 70%{ transform:rotate(-18deg); } 80%{ transform:rotate(10deg); } 90%{ transform:rotate(-12deg); } }
+.d-lights circle{ animation:daniBlink 1.2s infinite; }
+.d-lights circle:nth-child(even){ animation-delay:.6s; }
+@keyframes daniBlink{ 50%{ opacity:.35; } }
+.d-beam{ opacity:0; transition:opacity .3s; }
+.dani:hover .d-beam, .dani.is-open .d-beam{ opacity:1; }
+.dani-bubble{
+  position:absolute; bottom:72px; left:6px; white-space:nowrap;
+  background:#fff; color:var(--dark); font:500 14px/1.3 var(--font);
+  padding:8px 12px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,.18);
+  animation:fadeUp .35s ease both;
+}
+.dani-bubble::after{ content:''; position:absolute; bottom:-6px; left:22px; border:6px solid transparent; border-top-color:#fff; border-bottom:0; }
+
+.dani-panel{
+  position:fixed; z-index:660; left:16px; bottom:16px;
+  width:min(360px, calc(100vw - 32px)); height:min(520px, calc(100vh - 120px));
+  display:flex; flex-direction:column; background:#fff; border-radius:12px; overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.3); animation:fadeUp .3s ease both;
+}
+.dani-panel[hidden]{ display:none; }
+.dp-head{ display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--dark); color:#fff; }
+.dp-avatar{ width:52px; height:44px; flex:0 0 auto; }
+.dp-avatar svg{ width:100%; height:100%; }
+.dp-avatar .d-beam{ display:none; }
+.dp-head b{ display:block; font-size:16px; }
+.dp-head small{ color:#BDC3C7; font-size:12px; }
+.dp-close{ margin-inline-start:auto; background:none; border:1px solid rgba(255,255,255,.3); color:#fff; width:32px; height:32px; border-radius:4px; cursor:pointer; }
+.dp-log{ flex:1; overflow-y:auto; padding:14px; background:#F4F6F9; display:flex; flex-direction:column; gap:8px; }
+.dp-msg{ max-width:85%; padding:9px 12px; border-radius:12px; font-size:15px; line-height:1.55; white-space:pre-wrap; animation:fadeUp .25s ease both; }
+.dp-msg.bot{ align-self:flex-start; background:#fff; border:1px solid #E3E7EC; border-start-start-radius:3px; color:#333; }
+.dp-msg.me{ align-self:flex-end; background:var(--blue); color:#fff; border-start-end-radius:3px; }
+.dp-msg.typing{ display:flex; gap:5px; padding:12px; }
+.dp-msg.typing i{ width:7px; height:7px; border-radius:50%; background:#A0A8B3; animation:blink 1s infinite; }
+.dp-msg.typing i:nth-child(2){ animation-delay:.15s; } .dp-msg.typing i:nth-child(3){ animation-delay:.3s; }
+.dp-chips{ display:flex; flex-wrap:wrap; gap:6px; padding:8px 12px 0; background:#F4F6F9; }
+.dp-chips[hidden]{ display:none; }
+.dp-chips button{ font:inherit; font-size:13px; padding:5px 12px; border-radius:16px; border:1px solid var(--blue); background:#fff; color:var(--blue); cursor:pointer; }
+.dp-chips button:hover{ background:var(--blue); color:#fff; }
+.dp-form{ display:flex; gap:8px; padding:10px 12px; border-top:1px solid #E5E5E5; background:#fff; }
+.dp-form input{ flex:1; min-width:0; font:inherit; font-size:15px; padding:9px 12px; border:1px solid #CCC; border-radius:20px; }
+.dp-form input:focus{ outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(42,122,192,.2); }
+.dp-form button{ width:40px; height:40px; flex:0 0 auto; border:none; border-radius:50%; background:var(--orange); color:#fff; font-size:16px; cursor:pointer; transform:scaleX(-1); }
+.dp-note{ margin:0; padding:6px 12px 10px; font-size:12px; color:#888; background:#fff; }
+
+@media (max-width:767px){
+  .dani{ width:62px; height:52px; }
+  .dani-bubble{ bottom:54px; font-size:13px; }
+  .dani-panel{ left:8px; right:8px; width:auto; bottom:60px; height:min(480px, calc(100vh - 140px)); }
+}
+@media (prefers-reduced-motion: reduce){ .dani, .dani-bob, .d-arm, .d-lights circle{ animation:none; transition:none; } }
+html.a11y-motion .dani-bob, html.a11y-motion .d-arm, html.a11y-motion .d-lights circle{ animation:none; }
+html.a11y-motion .dani{ transition:none; }
+.sr-only{ position:absolute !important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }

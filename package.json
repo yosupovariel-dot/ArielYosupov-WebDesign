@@ -1,0 +1,9 @@
+{
+  "name": "da-web-design",
+  "private": true,
+  "type": "module",
+  "description": "DA Web Design site. Static pages plus one serverless function (netlify/functions/ask.mjs) for the site assistant.",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0"
+  }
+}
