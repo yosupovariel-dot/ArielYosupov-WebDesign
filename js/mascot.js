@@ -57,7 +57,7 @@
   ship.className = 'dani';
   ship.setAttribute('aria-label', 'דאני, העוזר של האתר: פתיחת צ\'אט שאלות ותשובות');
   ship.setAttribute('aria-expanded', 'false');
-  ship.innerHTML = `<span class="dani-bob">${SVG}</span><span class="dani-bubble" hidden>היי! יש לכם שאלה? 👋</span>`;
+  ship.innerHTML = `<span class="dani-tilt"><span class="dani-bob">${SVG}</span></span><span class="dani-bubble" hidden>היי! יש לכם שאלה? 👋</span>`;
 
   const panel = document.createElement('div');
   panel.className = 'dani-panel';
@@ -162,17 +162,63 @@
   form.addEventListener('submit', (e) => { e.preventDefault(); const q = input.value; input.value = ''; ask(q); });
   chips.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) ask(b.textContent); });
 
-  /* ---------- gentle flight along the side of the screen ---------- */
-  function fly() {
-    if (motionOff() || !panel.hidden) return;
-    const small = window.innerWidth < 768;
-    const top = small ? 0.45 + Math.random() * 0.2 : 0.3 + Math.random() * 0.4; // stay in the side band
-    const side = 12 + Math.random() * (small ? 8 : 40);
-    ship.style.setProperty('--y', `${Math.round(top * 100)}vh`);
-    ship.style.setProperty('--x', `${Math.round(side)}px`);
+  /* ---------- free flight around the page ----------
+     Picks a new spot every few seconds, mostly near the edges so it rarely
+     covers text, glides there smoothly and tilts in the direction it flies.
+     It slows to a stop when the pointer comes close, so it is easy to click. */
+  const tilt = ship.querySelector('.dani-tilt');
+  let pos = { x: 24, y: window.innerHeight * 0.55 }, target = { ...pos }, vx = 0;
+  let pointer = { x: -999, y: -999 }, restUntil = 0, lastT = 0;
+  function size() { const r = ship.getBoundingClientRect(); return { w: r.width || 120, h: r.height || 100 }; }
+  function pickTarget() {
+    const { w, h } = size();
+    const W = window.innerWidth, H = window.innerHeight;
+    const minY = 90, maxY = H - h - (W < 768 ? 80 : 30), maxX = W - w - 10;
+    if (Math.random() < 0.7) {           // along an edge
+      const edge = Math.floor(Math.random() * 3);
+      if (edge === 0) target = { x: 10 + Math.random() * 40, y: minY + Math.random() * (maxY - minY) };          // left
+      else if (edge === 1) target = { x: maxX - Math.random() * 40, y: minY + Math.random() * (maxY - minY) };   // right
+      else target = { x: 10 + Math.random() * (maxX - 10), y: maxY - Math.random() * 40 };                      // bottom
+    } else {                             // a short trip across the page
+      target = { x: 10 + Math.random() * (maxX - 10), y: minY + Math.random() * (maxY - minY) };
+    }
+    restUntil = performance.now() + 2500 + Math.random() * 3500;
   }
-  fly();
-  setInterval(fly, 9000);
+  function place() {
+    ship.style.transform = `translate3d(${pos.x.toFixed(1)}px, ${pos.y.toFixed(1)}px, 0)`;
+  }
+  function step(t) {
+    const dt = lastT ? Math.min((t - lastT) / 16.7, 3) : 1;
+    lastT = t;
+    if (!motionOff() && panel.hidden && !document.hidden) {
+      const { w, h } = size();
+      const near = Math.hypot(pointer.x - (pos.x + w / 2), pointer.y - (pos.y + h / 2)) < 140;
+      const dx = target.x - pos.x, dy = target.y - pos.y;
+      const dist = Math.hypot(dx, dy);
+      if (!near && dist > 2) {
+        const speed = Math.min(2.2, 0.6 + dist / 160) * dt;   // px per frame
+        pos.x += (dx / dist) * Math.min(speed, dist);
+        pos.y += (dy / dist) * Math.min(speed, dist);
+        vx += ((dx / dist) * speed - vx) * 0.1;
+      } else {
+        vx *= 0.9;
+        if (!near && t > restUntil) pickTarget();
+      }
+      tilt.style.transform = `rotate(${Math.max(-14, Math.min(14, vx * 7)).toFixed(1)}deg)`;
+      place();
+    }
+    requestAnimationFrame(step);
+  }
+  window.addEventListener('pointermove', (e) => { pointer = { x: e.clientX, y: e.clientY }; }, { passive: true });
+  window.addEventListener('resize', () => {
+    const { w, h } = size();
+    pos.x = Math.min(pos.x, window.innerWidth - w - 10);
+    pos.y = Math.min(pos.y, window.innerHeight - h - 30);
+    pickTarget(); place();
+  });
+  place();
+  restUntil = performance.now() + 1500;
+  requestAnimationFrame(step);
 
   // eyes follow the pointer a little
   const pupils = ship.querySelector('.d-pupils');
