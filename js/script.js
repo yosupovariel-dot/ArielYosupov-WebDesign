@@ -105,3 +105,12 @@ navLinks?.querySelectorAll('a').forEach(a => {
     });
   });
 })();
+
+/* ---------- back to top ---------- */
+(function toTop() {
+  const btn = document.getElementById('toTop');
+  if (!btn) return;
+  const update = () => btn.classList.toggle('show', window.scrollY > 600);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();

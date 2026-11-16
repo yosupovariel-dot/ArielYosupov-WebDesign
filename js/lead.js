@@ -12,7 +12,9 @@
   const phone = document.getElementById('lf-phone');
   const note = document.getElementById('lf-note');
 
+  const select = document.getElementById('lf-type');
   function choose(type) {
+    if (select) { select.value = type; return; }
     const input = Array.from(form.querySelectorAll('input[name="type"]')).find(i => i.value === type);
     if (input) input.checked = true;
   }
@@ -29,7 +31,7 @@
       .filter(Boolean);
     if (answers.length && !note.value) note.value = answers.join(' · ');
   });
-  document.querySelectorAll('a[href="#lead"]').forEach(a => {
+  document.querySelectorAll('a[href="#lead"], a[href="#contact"]').forEach(a => {
     a.addEventListener('click', () => setTimeout(() => name.focus({ preventScroll: true }), 700));
   });
 
@@ -51,7 +53,7 @@
     const digits = phone.value.replace(/\D/g, '');
     if (n.length < 2) return fail(name, 'כתבו את השם שלכם כדי שנדע איך לפנות אליכם.');
     if (digits.length < 9 || digits.length > 12) return fail(phone, 'בדקו את מספר הטלפון. הוא צריך להכיל 9–10 ספרות.');
-    const type = form.querySelector('input[name="type"]:checked')?.value || '';
+    const type = select ? select.value : (form.querySelector('input[name="type"]:checked')?.value || '');
     const lines = ['היי, השארתי פרטים באתר:', `שם: ${n}`, `טלפון: ${phone.value.trim()}`, `מה צריך: ${type}`];
     if (note.value.trim()) lines.push(`על העסק: ${note.value.trim()}`);
     const url = `${WA}?text=${encodeURIComponent(lines.join('\n'))}`;
