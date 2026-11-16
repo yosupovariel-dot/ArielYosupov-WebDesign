@@ -779,6 +779,116 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{
   .svc-featured{ margin-inline:-.6rem; padding-inline:.6rem; }
 }
 
+.sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* ---------- capability marquee ---------- */
+.marquee{ overflow:hidden; background:var(--ink); color:var(--night-ink); padding:.9rem 0; }
+.marquee-track{ display:flex; width:max-content; animation:marquee 38s linear infinite; }
+.marquee-track span{
+  font-family:var(--f-display); font-weight:600; font-size:1.05rem; white-space:nowrap;
+  padding-inline:1.4rem; display:flex; align-items:center; gap:2.8rem;
+}
+.marquee-track span::after{ content:''; width:6px; height:6px; border-radius:50%; background:var(--brass); margin-inline-start:1.4rem; }
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(50%); } }
+
+/* ---------- plans ---------- */
+.plan-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.25rem; align-items:stretch; }
+.plan{
+  position:relative; display:flex; flex-direction:column;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:2rem 1.8rem;
+}
+.plan-featured{
+  background:var(--night); color:var(--night-ink); border-color:var(--night);
+  transform:translateY(-12px);
+  box-shadow:0 30px 60px -30px rgba(10,19,34,.6);
+}
+.plan-badge{
+  position:absolute; top:-13px; inset-inline-start:1.8rem;
+  font-family:var(--f-mono); font-size:.72rem; color:var(--night);
+  background:var(--brass); padding:.3em .8em; border-radius:4px;
+}
+.plan-icon{ color:var(--cobalt); margin-bottom:1rem; }
+.plan-featured .plan-icon{ color:#7FA9EA; }
+.plan-icon svg{ width:30px; height:30px; display:block; }
+.plan h3{ font-size:1.45rem; margin:0; }
+.plan-featured h3{ color:#fff; }
+.plan-for{ margin:.2rem 0 1rem; }
+.plan-featured .plan-for{ color:var(--night-ink-2); }
+.plan-time{
+  margin:0 0 1.2rem; padding-bottom:1.2rem; border-bottom:1px solid var(--line);
+  font-family:var(--f-mono); font-size:.9rem; color:var(--ink);
+}
+.plan-time b{ font-weight:500; color:var(--cobalt); font-size:1.15rem; }
+.plan-featured .plan-time{ color:var(--night-ink); border-color:var(--night-line); }
+.plan-featured .plan-time b{ color:#7FA9EA; }
+.plan-list{ list-style:none; margin:0 0 1.6rem; padding:0; display:grid; gap:.55rem; flex:1; }
+.plan-list li{ display:flex; gap:.6rem; align-items:baseline; color:var(--ink-2); }
+.plan-featured .plan-list li{ color:var(--night-ink); }
+.plan-list li::before{ content:'✓'; color:var(--cobalt); font-weight:700; flex:0 0 auto; }
+.plan-featured .plan-list li::before{ color:#7FA9EA; }
+.plan-cta{ width:100%; }
+.plan-featured .btn-primary{ box-shadow:0 14px 30px -12px rgba(47,111,204,.8); }
+.plan-note{ margin:2rem 0 0; font-size:1.05rem; color:var(--ink); }
+.plan-note a{ color:var(--cobalt); font-weight:700; border-bottom:2px solid currentColor; }
+
+/* ---------- 3-way comparison ---------- */
+.c3-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); }
+.c3{ width:100%; min-width:640px; border-collapse:collapse; }
+.c3 th, .c3 td{ padding:1rem 1.2rem; text-align:start; border-bottom:1px solid var(--line); vertical-align:top; }
+.c3 tbody tr:last-child th, .c3 tbody tr:last-child td{ border-bottom:none; }
+.c3 thead th{ font-family:var(--f-mono); font-weight:500; font-size:.8rem; color:var(--ink-3); background:#F6F8FB; }
+.c3 tbody th{ font-weight:600; color:var(--ink); width:24%; }
+.c3 td{ color:var(--ink-2); }
+.c3 .c3-us{ background:var(--cobalt-soft); color:var(--ink); font-weight:600; }
+.c3 thead .c3-us{ background:var(--cobalt); color:#fff; }
+
+/* ---------- quiz ---------- */
+.quiz-section{ max-width:none; background:var(--surface); border-block:1px solid var(--line); }
+.quiz-grid{ max-width:var(--wrap); margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:3rem; align-items:start; }
+.quiz{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:1.8rem; min-height:360px; display:flex; flex-direction:column;
+}
+.quiz-progress{ height:4px; background:var(--line); border-radius:2px; overflow:hidden; margin-bottom:1.6rem; }
+.quiz-progress span{ display:block; height:100%; width:33.3%; background:var(--cobalt); transition:width .4s var(--ease); }
+.quiz-step{ border:none; margin:0; padding:0; display:none; }
+.quiz-step.is-current{ display:block; }
+.quiz-step legend{ font-family:var(--f-display); font-weight:700; font-size:1.35rem; color:var(--ink); margin-bottom:1.2rem; padding:0; }
+.q-num{ display:block; font-family:var(--f-mono); font-size:.78rem; font-weight:500; color:var(--cobalt); margin-bottom:.4rem; }
+.q-options{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:.7rem; }
+.q-options label{ position:relative; cursor:pointer; }
+.q-options input{ position:absolute; opacity:0; inset:0; }
+.q-options span{
+  display:flex; align-items:center; min-height:56px;
+  padding:.8rem 1rem; border-radius:var(--r);
+  background:var(--surface); border:1.5px solid var(--line);
+  font-weight:600; color:var(--ink);
+  transition:border-color .2s, background .2s;
+}
+.q-options label:hover span{ border-color:var(--ink-3); }
+.q-options input:checked + span{ border-color:var(--cobalt); background:var(--cobalt-soft); }
+.q-options input:focus-visible + span{ outline:2px solid var(--cobalt); outline-offset:2px; }
+.quiz-result h3{ font-size:1.8rem; margin:.2rem 0 .5rem; }
+.quiz-result p{ max-width:46ch; }
+.quiz-nav{ margin-top:auto; padding-top:1.4rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.quiz-back{ background:none; border:none; cursor:pointer; font:inherit; font-weight:600; color:var(--ink-2); padding:.3rem 0; }
+.quiz-back:hover{ color:var(--ink); }
+.quiz-hint{ font-size:.9rem; color:var(--ink-3); margin-inline-start:auto; }
+
+@media (max-width:1060px){
+  .plan-grid{ grid-template-columns:1fr; max-width:560px; }
+  .plan-featured{ transform:none; order:-1; }
+  .quiz-grid{ grid-template-columns:1fr; gap:1.5rem; }
+}
+@media (max-width:560px){
+  .q-options{ grid-template-columns:1fr; }
+  .quiz{ padding:1.3rem; }
+}
+@media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+html.a11y-motion .marquee-track{ animation:none; }
+
 /* ---------- responsive ---------- */
 @media (max-width:1060px){
   .nav-links{
