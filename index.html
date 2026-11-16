@@ -83,15 +83,24 @@
 }
 </script>
 
-<section class="hero">
+<nav class="journey" id="journey" aria-label="השלבים בדף">
+  <ol>
+    <li><a href="#top" data-j="1"><b>1</b><span>מי אנחנו</span></a></li>
+    <li><a href="#work" data-j="2"><b>2</b><span>הוכחות</span></a></li>
+    <li><a href="#home-highlights" data-j="3"><b>3</b><span>בחירת אתר</span></a></li>
+    <li><a href="#lead" data-j="4"><b>4</b><span>השארת פרטים</span></a></li>
+  </ol>
+  <span class="journey-fill" id="journeyFill"></span>
+</nav>
+<section class="hero" data-journey="1">
   <div class="hero-container">
     <div class="hero-inner">
       <p class="eyebrow">סטודיו לבניית אתרים לעסקים</p>
-      <h1>אתרים שמייצרים <span class="accent">לקוחות.</span></h1>
+      <h1 class="h1-anim"><span class="w">אתרים</span> <span class="w">שמייצרים</span> <span class="w accent">לקוחות.</span></h1>
       <p class="hero-lead">רוב האתרים נראים טוב ולא מביאים כלום. אנחנו בונים אתרים שגורמים לגולשים להרים טלפון, להשאיר פרטים ולקנות, ומתכננים כל עמוד סביב הפעולה הזו.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/972556658131?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2Zm0 25.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.1 1.1 1.1-4-.3-.5C4.6 20 4 18 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.4-12 11.4Zm6.6-8.7c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.5-.3.4-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4Z"/></svg><span>קבלו הצעה לאתר שלכם</span></a>
-        <a href="/portfolio.html" class="btn btn-ghost">ראו אתרים שבנינו</a>
+        <a href="#lead" class="btn btn-primary btn-flare">קבלו הצעה לאתר שלכם</a>
+        <a href="#work" class="btn btn-ghost">ראו אתרים שבנינו</a>
       </div>
       <p class="hero-micro">שיחת היכרות קצרה · בלי התחייבות · תשובה תוך 24 שעות</p>
     </div>
@@ -155,24 +164,10 @@
   </div>
 </div>
 
-<section class="home-process">
-  <div class="section-head">
-    <p class="eyebrow">איך מתחילים</p>
-    <h2>מהודעה אחת לאתר באוויר</h2>
-    <p class="section-text">החלק שלכם קצר: שיחה אחת וחומרים על העסק. את כל השאר אנחנו עושים, ואתם מאשרים כל שלב לפני שממשיכים.</p>
-  </div>
-  <div class="steps">
-    <div class="step"><span class="step-num">שלב 01</span><h3>שיחת היכרות</h3><p>מבינים את העסק והמטרות. בסוף השיחה מקבלים הצעת מחיר ולוח זמנים.</p></div>
-    <div class="step"><span class="step-num">שלב 02</span><h3>איסוף חומרים</h3><p>תכנים, תמונות ולוגו. אם חסר משהו, אנחנו עוזרים לנסח ולבחור.</p></div>
-    <div class="step"><span class="step-num">שלב 03</span><h3>עיצוב ובנייה</h3><p>אתם רואים את האתר לאורך הדרך ומאשרים כל שלב.</p></div>
-    <div class="step"><span class="step-num">שלב 04</span><h3>השקה וליווי</h3><p>עולים לאוויר ונשארים זמינים לתיקונים ושאלות.</p></div>
-  </div>
-</section>
-
-<section class="anatomy" id="anatomy">
+<section class="anatomy" id="anatomy" data-journey="1">
   <div class="anatomy-grid">
     <div class="anatomy-copy">
-      <div class="section-head">
+      <div class="section-head rv">
         <p class="eyebrow">מבט מבפנים</p>
         <h2>ארבע שכבות שהופכות גולש ללקוח</h2>
         <p class="section-text">כל אתר שאנחנו בונים עובר את ארבע השכבות האלה. העבירו את העכבר על שכבה כדי לראות אותה במודל.</p>
@@ -211,63 +206,8 @@
   </div>
 </section>
 
-<section class="plans" id="home-highlights">
-  <div class="section-head">
-    <p class="eyebrow">חבילות</p>
-    <h2>בחרו את האתר שמתאים לשלב של העסק</h2>
-    <p class="section-text">כל חבילה נבנית מאפס בהתאמה לעסק שלכם. המחיר נקבע לפי ההיקף, ותקבלו הצעה מסודרת תוך 24 שעות.</p>
-  </div>
-  <div class="plan-grid">
-    <article class="plan">
-      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 8h7M8.5 11.5h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="8.5" y="15" width="7" height="2.6" rx="1.3" fill="currentColor"/></svg></span>
-      <h3>דף נחיתה</h3>
-      <p class="plan-for">לקמפיין ממומן או למוצר אחד</p>
-      <p class="plan-time">מוכן תוך <b>יומיים</b></p>
-      <ul class="plan-list">
-        <li>עמוד אחד שמוביל לפעולה אחת</li>
-        <li>כפתור וואטסאפ וטופס פנייה</li>
-        <li>התאמה מלאה לנייד</li>
-        <li>עיצוב מותאם למותג</li>
-        <li>בעלות מלאה על הקבצים</li>
-      </ul>
-      <a href="https://wa.me/972556658131?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%93%D7%A3%20%D7%A0%D7%97%D7%99%D7%AA%D7%94" target="_blank" rel="noopener noreferrer" class="btn btn-ghost plan-cta">קבלו הצעה לדף נחיתה</a>
-    </article>
-    <article class="plan plan-featured">
-      <span class="plan-badge">מתאים לרוב העסקים</span>
-      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 8h18M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-      <h3>אתר תדמית</h3>
-      <p class="plan-for">הבית הדיגיטלי של העסק</p>
-      <p class="plan-time">מוכן תוך <b>שבוע</b></p>
-      <ul class="plan-list">
-        <li>כל העמודים שהעסק צריך</li>
-        <li>דרך לפנות מכל עמוד</li>
-        <li>בסיס נכון לקידום בגוגל (SEO)</li>
-        <li>התאמה מלאה לנייד ומהירות טעינה</li>
-        <li>עיצוב מותאם למותג</li>
-        <li>ליווי ותמיכה אחרי ההשקה</li>
-      </ul>
-      <a href="https://wa.me/972556658131?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%90%D7%AA%D7%A8%20%D7%AA%D7%93%D7%9E%D7%99%D7%AA" target="_blank" rel="noopener noreferrer" class="btn btn-primary plan-cta">קבלו הצעה לאתר תדמית</a>
-    </article>
-    <article class="plan">
-      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1.4" fill="currentColor"/><circle cx="18" cy="21" r="1.4" fill="currentColor"/></svg></span>
-      <h3>חנות אונליין</h3>
-      <p class="plan-for">למכירה ישירה באתר</p>
-      <p class="plan-time">מוכנה תוך <b>שבועיים</b></p>
-      <ul class="plan-list">
-        <li>ניהול מוצרים ומלאי</li>
-        <li>עגלת קניות ותשלום מאובטח</li>
-        <li>הגדרת משלוחים</li>
-        <li>התאמה מלאה לנייד</li>
-        <li>בעלות מלאה על החנות</li>
-      </ul>
-      <a href="https://wa.me/972556658131?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%97%D7%A0%D7%95%D7%AA%20%D7%90%D7%95%D7%A0%D7%9C%D7%99%D7%99%D7%9F" target="_blank" rel="noopener noreferrer" class="btn btn-ghost plan-cta">קבלו הצעה לחנות</a>
-    </article>
-  </div>
-  <p class="plan-note">לא בטוחים מה מתאים לכם? <a href="#quiz">ענו על 3 שאלות קצרות ונמליץ ←</a></p>
-</section>
-
-<section class="portfolio">
-  <div class="section-head">
+<section class="portfolio" id="work" data-journey="2">
+  <div class="section-head rv">
     <p class="eyebrow">עבודות</p>
     <h2>קצת ממה שבנינו</h2>
     <p class="section-text">אתרים אמיתיים של עסקים אמיתיים, באוויר עכשיו. העבירו את העכבר על מסך כדי לראות עמוד נוסף.</p>
@@ -316,8 +256,131 @@
   <p class="section-more"><a href="/portfolio.html">לכל הפרויקטים ←</a></p>
 </section>
 
-<section class="compare3">
-  <div class="section-head">
+<section class="flow" id="flow" data-journey="2">
+  <div class="section-head rv">
+    <p class="eyebrow">מה קורה אחרי שפונים</p>
+    <h2>מהודעה אחת לאתר שמביא לקוחות</h2>
+    <p class="section-text">ככה זה נראה מהצד שלכם. החלק שלכם קצר, ואת כל השאר אנחנו עושים.</p>
+  </div>
+  <div class="flow-grid">
+    <ol class="flow-steps" id="flowSteps">
+      <li><button type="button" class="flow-step is-current" data-step="0"><span class="fs-num">01</span><span class="fs-body"><b>שולחים הודעה</b><span>מספרים בכמה מילים על העסק. אנחנו חוזרים תוך יום עסקים ומתאמים שיחה קצרה.</span></span><span class="fs-time">היום</span><span class="fs-bar"><i></i></span></button></li>
+      <li><button type="button" class="flow-step" data-step="1"><span class="fs-num">02</span><span class="fs-body"><b>מעבירים חומרים</b><span>לוגו, תמונות וטקסטים. אם חסר משהו, עוזרים לנסח ולבחור.</span></span><span class="fs-time">יום–יומיים</span><span class="fs-bar"><i></i></span></button></li>
+      <li><button type="button" class="flow-step" data-step="2"><span class="fs-num">03</span><span class="fs-body"><b>אנחנו בונים</b><span>עיצוב ובנייה מותאמים למותג. אתם רואים את האתר לאורך הדרך ומאשרים כל שלב.</span></span><span class="fs-time">יומיים עד שבועיים</span><span class="fs-bar"><i></i></span></button></li>
+      <li><button type="button" class="flow-step" data-step="3"><span class="fs-num">04</span><span class="fs-body"><b>עולים לאוויר</b><span>האתר באוויר ומתחילות להגיע פניות. אנחנו נשארים זמינים לכל שאלה.</span></span><span class="fs-time">יום ההשקה</span><span class="fs-bar"><i></i></span></button></li>
+    </ol>
+
+    <div class="flow-screen" id="flowScreen" aria-hidden="true">
+      <div class="scene scene-chat is-on" data-scene="0">
+        <div class="chat-phone">
+          <div class="chat-head"><img src="/assets/logo.svg" alt=""><span><b>DA Web Design</b><small>מחובר/ת</small></span></div>
+          <div class="chat-body">
+            <p class="bubble out a1">היי, יש לי עסק ואשמח לאתר שמביא לקוחות</p>
+            <p class="bubble in typing a2"><i></i><i></i><i></i></p>
+            <p class="bubble in a3">היי! נשמח לעזור. מתי נוח לדבר 15 דקות?</p>
+            <p class="bubble out a4">מחר ב-10:00 מעולה</p>
+            <p class="bubble in a5">קבענו ✓ נדבר מחר</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene scene-files" data-scene="1">
+        <div class="folder">
+          <svg viewBox="0 0 120 96" fill="none"><path d="M6 18a8 8 0 0 1 8-8h30l10 10h52a8 8 0 0 1 8 8v54a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8V18Z" fill="#2F6FCC"/><path d="M6 34h108v48a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8V34Z" fill="#4A86DB"/></svg>
+          <span class="folder-label">הפרויקט שלכם</span>
+        </div>
+        <span class="file f1">logo.svg</span>
+        <span class="file f2">תמונות · 12</span>
+        <span class="file f3">טקסטים</span>
+        <span class="file f4">מחירון</span>
+        <span class="files-done">✓ הכול אצלנו</span>
+      </div>
+
+      <div class="scene scene-build" data-scene="2">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>בבנייה…</span></div>
+          <div class="browser-body">
+            <div class="wf wf-nav"></div>
+            <div class="wf wf-hero"></div>
+            <div class="wf-row"><div class="wf wf-card"></div><div class="wf wf-card"></div><div class="wf wf-card"></div></div>
+            <img class="wf-shot" src="/assets/portfolio/eduardyonim.jpg" alt="">
+          </div>
+        </div>
+        <div class="build-meter"><span>התקדמות</span><b><i></i></b></div>
+        <span class="approve">✓ אישרתם את העיצוב</span>
+      </div>
+
+      <div class="scene scene-launch" data-scene="3">
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span>www.העסק-שלכם.co.il</span></div>
+          <div class="browser-body"><img src="/assets/portfolio/levmeirisrael.jpg" alt=""></div>
+        </div>
+        <span class="live-badge"><i></i>האתר באוויר</span>
+        <div class="toast t1"><b>פנייה חדשה מהאתר</b><span>"היי, אשמח לקבל הצעת מחיר"</span></div>
+        <div class="toast t2"><b>פנייה חדשה מהאתר</b><span>"אפשר לקבוע פגישה השבוע?"</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="flow-cta rv"><a href="#lead" class="btn btn-primary btn-flare">אני רוצה להתחיל את שלב 1</a></p>
+</section>
+
+<section class="plans" id="home-highlights" data-journey="3">
+  <div class="section-head rv">
+    <p class="eyebrow">חבילות</p>
+    <h2>בחרו את האתר שמתאים לשלב של העסק</h2>
+    <p class="section-text">כל חבילה נבנית מאפס בהתאמה לעסק שלכם. המחיר נקבע לפי ההיקף, ותקבלו הצעה מסודרת תוך 24 שעות.</p>
+  </div>
+  <div class="plan-grid">
+    <article class="plan rv">
+      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 8h7M8.5 11.5h4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="8.5" y="15" width="7" height="2.6" rx="1.3" fill="currentColor"/></svg></span>
+      <h3>דף נחיתה</h3>
+      <p class="plan-for">לקמפיין ממומן או למוצר אחד</p>
+      <p class="plan-time">מוכן תוך <b>יומיים</b></p>
+      <ul class="plan-list">
+        <li>עמוד אחד שמוביל לפעולה אחת</li>
+        <li>כפתור וואטסאפ וטופס פנייה</li>
+        <li>התאמה מלאה לנייד</li>
+        <li>עיצוב מותאם למותג</li>
+        <li>בעלות מלאה על הקבצים</li>
+      </ul>
+      <a href="#lead" data-plan="דף נחיתה" class="btn btn-ghost plan-cta">קבלו הצעה לדף נחיתה</a>
+    </article>
+    <article class="plan rv plan-featured">
+      <span class="plan-badge">מתאים לרוב העסקים</span>
+      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 8h18M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      <h3>אתר תדמית</h3>
+      <p class="plan-for">הבית הדיגיטלי של העסק</p>
+      <p class="plan-time">מוכן תוך <b>שבוע</b></p>
+      <ul class="plan-list">
+        <li>כל העמודים שהעסק צריך</li>
+        <li>דרך לפנות מכל עמוד</li>
+        <li>בסיס נכון לקידום בגוגל (SEO)</li>
+        <li>התאמה מלאה לנייד ומהירות טעינה</li>
+        <li>עיצוב מותאם למותג</li>
+        <li>ליווי ותמיכה אחרי ההשקה</li>
+      </ul>
+      <a href="#lead" data-plan="אתר תדמית" class="btn btn-primary btn-flare plan-cta">קבלו הצעה לאתר תדמית</a>
+    </article>
+    <article class="plan rv">
+      <span class="plan-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 8H7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="21" r="1.4" fill="currentColor"/><circle cx="18" cy="21" r="1.4" fill="currentColor"/></svg></span>
+      <h3>חנות אונליין</h3>
+      <p class="plan-for">למכירה ישירה באתר</p>
+      <p class="plan-time">מוכנה תוך <b>שבועיים</b></p>
+      <ul class="plan-list">
+        <li>ניהול מוצרים ומלאי</li>
+        <li>עגלת קניות ותשלום מאובטח</li>
+        <li>הגדרת משלוחים</li>
+        <li>התאמה מלאה לנייד</li>
+        <li>בעלות מלאה על החנות</li>
+      </ul>
+      <a href="#lead" data-plan="חנות אונליין" class="btn btn-ghost plan-cta">קבלו הצעה לחנות</a>
+    </article>
+  </div>
+  <p class="plan-note">לא בטוחים מה מתאים לכם? <a href="#quiz">ענו על 3 שאלות קצרות ונמליץ ←</a></p>
+</section>
+
+<section class="compare3" data-journey="3">
+  <div class="section-head rv">
     <p class="eyebrow">השוואה</p>
     <h2>שלוש דרכים לבנות אתר. רק באחת מדברים ישירות עם מי שבונה.</h2>
   </div>
@@ -338,9 +401,9 @@
   </div>
 </section>
 
-<section class="quiz-section" id="quiz">
+<section class="quiz-section" id="quiz" data-journey="3">
   <div class="quiz-grid">
-    <div class="section-head">
+    <div class="section-head rv">
       <p class="eyebrow">שאלון קצר</p>
       <h2>איזה אתר מתאים לעסק שלכם?</h2>
       <p class="section-text">שלוש שאלות, פחות מדקה. בסוף תקבלו המלצה, ותוכלו לשלוח לנו את הסיכום בוואטסאפ בלחיצה אחת.</p>
@@ -377,7 +440,7 @@
         <p class="q-num">ההמלצה שלנו</p>
         <h3 id="quizRec">אתר תדמית</h3>
         <p id="quizWhy"></p>
-        <a href="https://wa.me/972556658131" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-wa" id="quizSend"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2Zm0 25.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.1 1.1 1.1-4-.3-.5C4.6 20 4 18 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.4-12 11.4Zm6.6-8.7c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.5-.3.4-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4Z"/></svg><span>שלחו לנו את הסיכום</span></a>
+        <a href="#lead" class="btn btn-primary btn-flare" id="quizSend">המשיכו לשלב האחרון ←</a>
       </div>
       <div class="quiz-nav">
         <button type="button" class="quiz-back" id="quizBack" hidden>→ חזרה</button>
@@ -387,8 +450,8 @@
   </div>
 </section>
 
-<section class="faq home-faq">
-  <div class="section-head">
+<section class="faq home-faq" data-journey="3">
+  <div class="section-head rv">
     <p class="eyebrow">לפני שמחליטים</p>
     <h2>השאלות ששואלים אותנו הכי הרבה</h2>
   </div>
@@ -412,26 +475,51 @@
   </div>
   <p class="section-more"><a href="/contact.html#faq">לכל השאלות ←</a></p>
 </section>
-<section class="cta-banner">
-  <div class="cta-banner-inner">
-    <div>
-      <p class="eyebrow">הצעד הבא</p>
-      <h2>האתר הבא שמביא לקוחות יכול להיות שלכם.</h2>
+
+<section class="lead" id="lead" data-journey="4">
+  <div class="lead-inner">
+    <div class="lead-copy rv">
+      <p class="eyebrow">שלב אחרון</p>
+      <h2>בואו נתחיל. זה לוקח 30 שניות.</h2>
+      <p class="lead-sub">השאירו פרטים ונחזור אליכם תוך יום עסקים. בלי התחייבות ובלי עלויות נסתרות.</p>
       <ol class="next-steps">
-        <li><b>1</b>שולחים לנו הודעה קצרה על העסק</li>
+        <li><b>1</b>אנחנו חוזרים אליכם ומתאמים שיחה</li>
         <li><b>2</b>מדברים 15 דקות ומבינים מה אתם צריכים</li>
-        <li><b>3</b>מקבלים הצעת מחיר ולוח זמנים, בלי התחייבות</li>
+        <li><b>3</b>מקבלים הצעת מחיר ולוח זמנים</li>
       </ol>
+      <div class="cta-phones"><span>מעדיפים לדבר עכשיו?</span><a href="tel:+972556658131">055-6658131</a><a href="tel:+972545791574">054-5791574</a></div>
     </div>
-    <div class="cta-side">
-      <p>אנחנו חוזרים לכל פנייה תוך יום עסקים.</p>
-      <a href="https://wa.me/972556658131?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-wa"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2Zm0 25.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.1 1.1 1.1-4-.3-.5C4.6 20 4 18 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.4-12 11.4Zm6.6-8.7c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.5-.3.4-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4Z"/></svg><span>שלחו הודעה בוואטסאפ</span></a>
-      <p class="cta-or">או התקשרו:</p>
-      <div class="cta-phones">
-        <a href="tel:+972556658131">055-6658131</a>
-        <a href="tel:+972545791574">054-5791574</a>
+    <form class="lead-form rv" id="leadForm" novalidate>
+      <div class="lf-field">
+        <label for="lf-name">שם מלא</label>
+        <input id="lf-name" name="name" type="text" autocomplete="name" required placeholder="איך קוראים לכם?">
       </div>
-    </div>
+      <div class="lf-field">
+        <label for="lf-phone">טלפון</label>
+        <input id="lf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="050-0000000" dir="ltr">
+      </div>
+      <div class="lf-field">
+        <span class="lf-label" id="lf-type-label">מה אתם צריכים?</span>
+        <div class="lf-chips" role="radiogroup" aria-labelledby="lf-type-label">
+          <label><input type="radio" name="type" id="lf-t-landing" value="דף נחיתה"><span>דף נחיתה</span></label>
+          <label><input type="radio" name="type" id="lf-t-site" value="אתר תדמית" checked><span>אתר תדמית</span></label>
+          <label><input type="radio" name="type" id="lf-t-shop" value="חנות אונליין"><span>חנות אונליין</span></label>
+          <label><input type="radio" name="type" id="lf-t-unsure" value="עוד לא בטוחים"><span>עוד לא בטוחים</span></label>
+        </div>
+      </div>
+      <div class="lf-field">
+        <label for="lf-note">ספרו בקצרה על העסק <small>(לא חובה)</small></label>
+        <textarea id="lf-note" name="note" rows="2" placeholder="למשל: קליניקה לפיזיותרפיה בחיפה"></textarea>
+      </div>
+      <p class="lf-error" id="lfError" role="alert" hidden></p>
+      <button type="submit" class="btn btn-primary btn-flare lf-submit">שלחו ונחזור אליכם</button>
+      <p class="lf-trust">🔒 הפרטים נשלחים רק אלינו ולא מועברים לאף אחד.</p>
+      <div class="lf-done" id="lfDone" hidden>
+        <b>כמעט סיימנו</b>
+        <p>פתחנו לכם וואטסאפ עם הפרטים. לחצו "שליחה" שם, ונחזור אליכם בהקדם.</p>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-wa" id="lfWa"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2Zm0 25.4c-2.3 0-4.5-.6-6.4-1.8l-.5-.3-4.1 1.1 1.1-4-.3-.5C4.6 20 4 18 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.4-12 11.4Zm6.6-8.7c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.7.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.5-.3.4-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.9 5.1.8.3 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.7-.4Z"/></svg><span>לא נפתח? לחצו כאן</span></a>
+      </div>
+    </form>
   </div>
 </section>
 <footer class="site-footer">
@@ -484,5 +572,8 @@
 <script src="/js/carousel.js"></script>
 <script src="/js/anatomy.js"></script>
 <script src="/js/quiz.js"></script>
+<script src="/js/flow.js"></script>
+<script src="/js/journey.js"></script>
+<script src="/js/lead.js"></script>
 </body>
 </html>
