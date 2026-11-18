@@ -382,10 +382,10 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
    ========================================================= */
 .pixel{
   position:fixed; z-index:640; left:0; top:0;
-  width:110px; height:104px; padding:0; border:none; background:none; cursor:pointer;
+  width:112px; height:112px; padding:0; border:none; background:none; cursor:pointer;
   will-change:transform; -webkit-tap-highlight-color:transparent;
 }
-.px-rig{ display:block; width:100%; height:100%; transform-origin:50% 60%; filter:drop-shadow(0 6px 8px rgba(26,25,24,.18)); }
+.px-rig{ display:block; width:100%; height:100%; transform-origin:50% 55%; filter:drop-shadow(0 8px 10px rgba(30,60,100,.25)); }
 .px-rig svg{ width:100%; height:100%; overflow:visible; }
 .px-shadow{ position:absolute; left:50%; bottom:-6px; width:56px; height:10px; margin-left:-28px; border-radius:50%; background:radial-gradient(closest-side, rgba(26,25,24,.28), transparent); pointer-events:none; }
 .pixel:focus-visible{ outline:2px solid var(--clay); outline-offset:4px; border-radius:16px; }
@@ -396,7 +396,7 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
   animation:fadeUp .35s var(--ease) both;
 }
 .px-bubble[hidden]{ display:none; }
-@media (max-width:700px){ .pixel{ width:78px; height:74px; } .px-bubble{ font-size:13px; } }
+@media (max-width:700px){ .pixel{ width:80px; height:80px; } .px-bubble{ font-size:13px; } }
 
 .dani-panel{
   position:fixed; z-index:660; left:16px; bottom:16px;

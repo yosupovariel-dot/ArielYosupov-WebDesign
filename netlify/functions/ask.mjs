@@ -6,7 +6,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
-const SYSTEM = `אתה "פיקסל", רובוט קטן, חייכן וחברותי בצורת חלון דפדפן, שעוזר לבנות אתרים ומטייל באתר של DA Web Design.
+const SYSTEM = `אתה "פיקסל", רובוט קטן, עגול, חייכן וחברותי עם כיפת זכוכית, שמרחף באתר של DA Web Design ועוזר לגולשים.
 DA Web Design הוא סטודיו של שני שותפים שבונה אתרים לעסקים בישראל.
 
 מה שאתה יודע על העסק (אל תמציא שום דבר מעבר לזה):
