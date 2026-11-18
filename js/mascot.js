@@ -12,71 +12,20 @@
     set(k, v) { try { sessionStorage.setItem(k, v); } catch { /* storage blocked */ } },
   };
 
-  /* ---------- the character (layered so each part can move on its own) ---------- */
-  const BODY = `
-    <defs>
-      <radialGradient id="pxBody" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#8DBBE3"/><stop offset=".55" stop-color="#4F82B3"/><stop offset="1" stop-color="#2C5680"/></radialGradient>
-      <radialGradient id="pxFace" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#9CCAEC"/><stop offset=".7" stop-color="#5E93C4"/><stop offset="1" stop-color="#3F6F9E"/></radialGradient>
-      <radialGradient id="pxIris" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#5A8FD8"/><stop offset=".6" stop-color="#26407A"/><stop offset="1" stop-color="#121D3C"/></radialGradient>
-      <linearGradient id="pxMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FA6C9"/><stop offset="1" stop-color="#3A6189"/></linearGradient>
-      <radialGradient id="pxGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E8FFFF"/><stop offset=".45" stop-color="#7FE6F7"/><stop offset="1" stop-color="#7FE6F7" stop-opacity="0"/></radialGradient>
-      <clipPath id="pxEyeL"><ellipse cx="51" cy="62" rx="11.5" ry="12.5"/></clipPath><clipPath id="pxEyeR"><ellipse cx="89" cy="62" rx="11.5" ry="12.5"/></clipPath>
-      <radialGradient id="pxCheek" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F28B8B" stop-opacity=".85"/><stop offset="1" stop-color="#F28B8B" stop-opacity="0"/></radialGradient>
-    </defs>
-    <g class="px-legs"><g class="px-leg px-leg-l"></g><g class="px-leg px-leg-r"></g></g>
-    <g class="px-prop"><ellipse cx="70" cy="130" rx="26" ry="9" fill="url(#pxGlow)"/><path d="M58 122 L82 122 L76 138 L64 138 Z" fill="url(#pxGlow)" opacity=".7"/></g>
-    <g class="px-arm px-arm-l">
-      <path d="M26 86 Q14 92 12 104" fill="none" stroke="#3A6189" stroke-width="8" stroke-linecap="round"/>
-      <path d="M26 86 Q14 92 12 104" fill="none" stroke="#6E9CC6" stroke-width="4" stroke-linecap="round"/>
-      <g transform="translate(11 107)"><ellipse rx="7.5" ry="7" fill="#5C8DBD" stroke="#3A6189" stroke-width="1.6"/><ellipse cx="-6.5" cy="-2" rx="2.6" ry="3.6" fill="#5C8DBD" stroke="#3A6189" stroke-width="1.4"/><path d="M-3 4 L-3 7 M1 4.5 L1 7.5 M4.5 3.5 L4.5 6.5" stroke="#3A6189" stroke-width="1.6" stroke-linecap="round"/></g>
-    </g>
-    <g class="px-arm px-arm-r">
-      <path d="M114 84 Q126 90 128 102" fill="none" stroke="#3A6189" stroke-width="8" stroke-linecap="round"/>
-      <path d="M114 84 Q126 90 128 102" fill="none" stroke="#6E9CC6" stroke-width="4" stroke-linecap="round"/>
-      <g transform="translate(129 105)"><ellipse rx="7.5" ry="7" fill="#5C8DBD" stroke="#3A6189" stroke-width="1.6"/><ellipse cx="6.5" cy="-2" rx="2.6" ry="3.6" fill="#5C8DBD" stroke="#3A6189" stroke-width="1.4"/><path d="M3 4 L3 7 M-1 4.5 L-1 7.5 M-4.5 3.5 L-4.5 6.5" stroke="#3A6189" stroke-width="1.6" stroke-linecap="round"/></g>
-    </g>
-    <g class="px-body">
-      <circle cx="70" cy="72" r="48" fill="url(#pxBody)"/>
-      <path d="M36 100 Q70 114 104 100" fill="none" stroke="#2C5680" stroke-width="1.4" opacity=".6"/>
-      <path d="M64 96 L64 112 M84 95 L82 110" stroke="#2C5680" stroke-width="1.4" opacity=".5"/>
-      <rect x="86" y="88" width="10" height="7" rx="2" fill="#46739F" stroke="#2C5680" stroke-width="1"/>
-      <ellipse cx="70" cy="116" rx="17" ry="5.5" fill="#2A4F78"/>
-      <ellipse cx="70" cy="115" rx="11" ry="3.4" fill="#BDF6FF"/>
-      <circle cx="70" cy="66" r="40" fill="url(#pxFace)"/>
-      <path d="M24 84 Q70 100 116 84 L116 90 Q70 106 24 90 Z" fill="url(#pxMetal)" stroke="#2C5680" stroke-width="1.2"/>
-      <g fill="#2C5680"><circle cx="34" cy="89" r="1.4"/><circle cx="48" cy="93" r="1.4"/><circle cx="62" cy="95" r="1.4"/><circle cx="78" cy="95" r="1.4"/><circle cx="92" cy="93" r="1.4"/><circle cx="106" cy="89" r="1.4"/></g>
-      <g fill="#fff" opacity=".7"><circle cx="46" cy="40" r=".9"/><circle cx="52" cy="46" r=".6"/><circle cx="40" cy="52" r=".7"/><path d="M58 38 l1 2.4 2.4 1 -2.4 1 -1 2.4 -1 -2.4 -2.4 -1 2.4 -1z"/></g>
-      <g class="px-face">
-        <path d="M44 47 Q50 43 56 46" fill="none" stroke="#2E5A86" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M84 46 Q90 43 96 47" fill="none" stroke="#2E5A86" stroke-width="2.2" stroke-linecap="round"/>
-        <g class="px-eye px-eye-l">
-          <ellipse cx="51" cy="62" rx="11" ry="12" fill="#152447"/>
-          <g class="px-pupil"><ellipse cx="51" cy="63" rx="8.6" ry="9.6" fill="url(#pxIris)"/><circle cx="48" cy="67" r="1" fill="#B9D8FF"/><circle cx="55" cy="68" r=".8" fill="#B9D8FF"/></g>
-          <g class="px-glint"><circle cx="54.5" cy="57.5" r="4" fill="#fff"/><circle cx="47" cy="66" r="1.8" fill="#fff"/></g>
-          <g clip-path="url(#pxEyeL)"><rect class="px-lid" x="38" y="49" width="26" height="27" fill="#6FA4D2"/></g>
-        </g>
-        <g class="px-eye px-eye-r">
-          <ellipse cx="89" cy="62" rx="11" ry="12" fill="#152447"/>
-          <g class="px-pupil"><ellipse cx="89" cy="63" rx="8.6" ry="9.6" fill="url(#pxIris)"/><circle cx="86" cy="67" r="1" fill="#B9D8FF"/><circle cx="93" cy="68" r=".8" fill="#B9D8FF"/></g>
-          <g class="px-glint"><circle cx="92.5" cy="57.5" r="4" fill="#fff"/><circle cx="85" cy="66" r="1.8" fill="#fff"/></g>
-          <g clip-path="url(#pxEyeR)"><rect class="px-lid" x="76" y="49" width="26" height="27" fill="#6FA4D2"/></g>
-        </g>
-        <ellipse cx="38" cy="76" rx="8" ry="5" fill="url(#pxCheek)"/>
-        <ellipse cx="102" cy="76" rx="8" ry="5" fill="url(#pxCheek)"/>
-        <clipPath id="pxMouthClip"><path class="px-mouth-clip" d="M60 73 Q70 89 80 73 Q70 77 60 73 Z"/></clipPath><path class="px-mouth" d="M60 73 Q70 89 80 73 Q70 77 60 73 Z" fill="#7A2430" stroke="#4A1A24" stroke-width="1.2" stroke-linejoin="round"/><ellipse cx="70" cy="85" rx="7" ry="5" fill="#E8707A" clip-path="url(#pxMouthClip)"/>
-      </g>
-      <circle cx="26" cy="68" r="8" fill="url(#pxMetal)" stroke="#2C5680" stroke-width="1.2"/><circle cx="26" cy="68" r="3.6" fill="#5C8DBD" stroke="#2C5680" stroke-width="1"/>
-      <circle cx="114" cy="68" r="8" fill="url(#pxMetal)" stroke="#2C5680" stroke-width="1.2"/><circle cx="114" cy="68" r="3.6" fill="#5C8DBD" stroke="#2C5680" stroke-width="1"/>
-      <path d="M26 64 A44 44 0 0 1 114 64" fill="#DFF3FF" opacity=".16" stroke="#E9F7FF" stroke-width="1.6" stroke-opacity=".7"/>
-      <path d="M36 40 Q48 24 70 22" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".6"/><path d="M30 56 Q31 48 35 43" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".4"/>
-      <ellipse cx="92" cy="30" rx="7" ry="4" fill="#fff" opacity=".35" transform="rotate(25 92 30)"/>
-    </g>
-    <g class="px-hat">
-      <ellipse cx="42" cy="27" rx="11" ry="6" fill="url(#pxMetal)" stroke="#2C5680" stroke-width="1.2" transform="rotate(-35 42 27)"/>
-      <ellipse cx="40" cy="23" rx="8" ry="4.4" fill="#5C8DBD" stroke="#2C5680" stroke-width="1.2" transform="rotate(-35 40 23)"/>
-      <circle cx="40" cy="23" r="1.6" fill="#2C5680"/>
-    </g>`;
-  const SVG = `<svg viewBox="0 0 140 140" aria-hidden="true">${BODY}</svg>`;
+  /* ---------- the character: layered artwork (body + two arms) so each part can move ---------- */
+  const SRC = document.currentScript && document.currentScript.src;
+  const BASE = SRC ? new URL('../assets/mascot/', SRC).href : '/assets/mascot/';
+  const LIDS = `
+    <svg class="px-lids" viewBox="0 0 300 276" aria-hidden="true">
+      <defs>
+        <clipPath id="pxClipL"><ellipse cx="106.9" cy="123.9" rx="22.5" ry="23.8"/></clipPath>
+        <clipPath id="pxClipR"><ellipse cx="191.8" cy="120.4" rx="22.5" ry="23.8"/></clipPath>
+        <radialGradient id="pxLid" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#8CC4E0"/><stop offset=".7" stop-color="#6FA9CF"/><stop offset="1" stop-color="#5C93BE"/></radialGradient>
+      </defs>
+      <g clip-path="url(#pxClipL)"><rect class="px-lid" x="82" y="99" width="50" height="50" fill="url(#pxLid)"/><path class="px-lash" d="M90 124 Q107 138 124 124" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
+      <g clip-path="url(#pxClipR)"><rect class="px-lid" x="167" y="95" width="50" height="50" fill="url(#pxLid)"/><path class="px-lash" d="M175 120 Q192 134 209 120" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
+    </svg>`;
+  const SVG = `<img src="${BASE}pixel-full.png" alt="" width="300" height="276">`;
 
   const LOCAL = [
     { k: ['מחיר', 'עולה', 'עלות', 'כמה זה', 'תקציב'], a: 'המחיר נקבע לפי סוג האתר וההיקף שלו, ולכן אין מחיר אחיד. אחרי שיחה קצרה תקבלו הצעת מחיר מסודרת וסופית, בלי התחייבות. הכי מהיר: וואטסאפ או 055-6658131.' },
@@ -104,7 +53,7 @@
   bot.className = 'pixel';
   bot.setAttribute('aria-label', 'פיקסל, העוזר של האתר: פתיחת צ\'אט שאלות ותשובות');
   bot.setAttribute('aria-expanded', 'false');
-  bot.innerHTML = `<span class="px-rig">${SVG}</span><span class="px-shadow"></span><span class="px-bubble" hidden></span>`;
+  bot.innerHTML = `<span class="px-rig"><span class="px-glow"></span><img class="px-img px-arm-l" src="${BASE}pixel-arm-l.png" alt="" draggable="false"><img class="px-img px-arm-r" src="${BASE}pixel-arm-r.png" alt="" draggable="false"><img class="px-img px-body-img" src="${BASE}pixel-body.png" alt="" draggable="false">${LIDS}</span><span class="px-shadow"></span><span class="px-bubble" hidden></span>`;
 
   const panel = document.createElement('div');
   panel.className = 'dani-panel';
@@ -134,10 +83,9 @@
 
   const $ = (sel) => bot.querySelector(sel);
   const rig = $('.px-rig'), shadow = $('.px-shadow'), bubble = $('.px-bubble');
-  const prop = $('.px-prop'), body = $('.px-body'), hat = $('.px-hat');
-  const armL = $('.px-arm-l'), armR = $('.px-arm-r'), legL = $('.px-leg-l'), legR = $('.px-leg-r');
-  const pupils = bot.querySelectorAll('.px-pupil'), glints = bot.querySelectorAll('.px-glint');
-  const lids = bot.querySelectorAll('.px-lid'), mouth = $('.px-mouth'), mouthClip = $('.px-mouth-clip');
+  const glowEl = $('.px-glow'), faceImg = $('.px-body-img'), lidsSvg = $('.px-lids');
+  const armL = $('.px-arm-l'), armR = $('.px-arm-r');
+  const lids = bot.querySelectorAll('.px-lid'), lashes = bot.querySelectorAll('.px-lash');
 
   /* ---------- chat ---------- */
   const log = panel.querySelector('.dp-log');
@@ -221,7 +169,7 @@
      - blinking at random intervals, eyes that follow the pointer
      - landing on parts of the page (cards, headings) to rest, then taking off
      ========================================================= */
-  const W = () => bot.offsetWidth || 110, H = () => bot.offsetHeight || 104;
+  const W = () => bot.offsetWidth || 120, H = () => bot.offsetHeight || 104;
   const pos = { x: 30, y: Math.max(140, window.innerHeight * 0.6) };
   const vel = { x: 0, y: 0 };
   let goal = { x: pos.x, y: pos.y }, perchEl = null, perchDx = 0;
@@ -341,31 +289,27 @@
     propA += dt * 0.25;
     const flicker = 0.9 + Math.sin(propA * 3.1) * 0.06 + Math.sin(propA * 7.3) * 0.04;
     const glow = clamp(propSpeed * flicker, 0.15, 1.6);
-    prop.setAttribute('transform', `translate(70 118) scale(${(0.6 + glow * 0.45).toFixed(3)} ${(0.4 + glow * 0.7).toFixed(3)}) translate(-70 -118)`);
-    prop.style.opacity = clamp(0.25 + glow * 0.55, 0, 1).toFixed(2);
+    glowEl.style.transform = `translate(-50%, -50%) scale(${(0.7 + glow * 0.5).toFixed(3)}, ${(0.6 + glow * 0.8).toFixed(3)})`;
+    glowEl.style.opacity = clamp(0.3 + glow * 0.5, 0, 1).toFixed(2);
 
     const swing = mode === 'perch' ? Math.sin(t * 1.4) * 4 : Math.sin(t * 5.2) * 6;
-    armLA = lerp(armLA, clamp(-vel.y * 6 + vel.x * 3, -35, 35) + swing, 0.15 * dt);
-    let rTarget = clamp(-vel.y * 6 - vel.x * 3, -35, 35) - swing;
-    if (wave > 0) { rTarget = -95 + Math.sin(t * 16) * 22; wave -= 0.006 * dt; }
+    armLA = lerp(armLA, clamp(-vel.y * 5 - vel.x * 2, -25, 25) + swing, 0.15 * dt);
+    let rTarget = clamp(vel.y * 4 + Math.abs(vel.x) * 5, -10, 45) - swing * 0.6;   // tucks in when flying fast
+    if (wave > 0) { rTarget = Math.sin(t * 15) * 16 - 6; wave -= 0.006 * dt; }
     armRA = lerp(armRA, rTarget, 0.18 * dt);
-    armL.setAttribute('transform', `rotate(${armLA.toFixed(1)} 26 86)`);
-    armR.setAttribute('transform', `rotate(${armRA.toFixed(1)} 114 84)`);
-    legA = lerp(legA, mode === 'perch' ? 0 : clamp(-vel.x * 5, -25, 25) + Math.sin(t * 3) * 6, 0.12 * dt);
-    
-    hat.setAttribute('transform', `rotate(${(-bank * 0.3).toFixed(1)} 70 70)`);
+    armL.style.transform = `rotate(${armLA.toFixed(1)}deg)`;
+    armR.style.transform = `rotate(${armRA.toFixed(1)}deg)`;
 
     /* eyes: look at the pointer when it is around, otherwise where it is going */
-    let lx = clamp(vel.x * 0.6, -2.4, 2.4), ly = clamp(vel.y * 0.5, -2, 2);
+    let lx = clamp(vel.x * 0.4, -1.5, 1.5), ly = clamp(vel.y * 0.3, -1.2, 1.2);
     if (now - pointer.t < 3000) {
       const ex = pointer.x - (pos.x + W() / 2), ey = pointer.y - (pos.y + H() / 2);
       const d = Math.hypot(ex, ey) || 1;
-      if (d < 500) { lx = (ex / d) * 2.6 * faceS; ly = (ey / d) * 2.2; }
+      if (d < 500) { lx = (ex / d) * 1.6 * Math.sign(faceS || 1); ly = (ey / d) * 1.3; }
     }
-    if (mood === 'think') { lx = 2.2; ly = -2.2; }
-    lookX = lerp(lookX, lx, 0.2 * dt); lookY = lerp(lookY, ly, 0.2 * dt);
-    pupils.forEach(p => p.setAttribute('transform', `translate(${(lookX * 0.9).toFixed(2)} ${(lookY * 0.9).toFixed(2)})`));
-    glints.forEach(g => g.setAttribute('transform', `translate(${(lookX * 0.6).toFixed(2)} ${(lookY * 0.6).toFixed(2)})`));
+    lookX = lerp(lookX, lx, 0.15 * dt); lookY = lerp(lookY, ly, 0.15 * dt);
+    faceImg.style.transform = `translate(${lookX.toFixed(2)}px, ${lookY.toFixed(2)}px)`;
+    lidsSvg.style.transform = faceImg.style.transform;
 
     /* blinking at random intervals, sometimes twice */
     if (blinkT < 0 && now > blinkAt) blinkT = 0;
@@ -375,13 +319,10 @@
       lid = blinkT < 70 ? blinkT / 70 : blinkT < 140 ? 1 - (blinkT - 70) / 70 : 0;
       if (blinkT >= 140) { blinkT = -1; blinkAt = now + (Math.random() < 0.2 ? 160 : 2200 + Math.random() * 4200); }
     }
-    lids.forEach(l => l.setAttribute('transform', `translate(0 ${(-27 + lid * 27).toFixed(2)})`));
+    lids.forEach(l => l.setAttribute('transform', `translate(0 ${(-50 + lid * 50).toFixed(2)})`));
+    lashes.forEach(l => { l.style.opacity = lid > 0.85 ? '1' : '0'; });
 
-    /* mouth */
     if (moodUntil && now > moodUntil) { mood = 'smile'; moodUntil = 0; }
-    const fast = Math.hypot(vel.x, vel.y) > 3.4;
-    const m = mood === 'happy' || !panel.hidden ? 'M57 72 Q70 93 83 72 Q70 77 57 72 Z' : mood === 'think' ? 'M64 77 Q70 75 76 77 Q70 79 64 77 Z' : fast ? 'M64 73 Q70 86 76 73 Q70 69 64 73 Z' : 'M60 73 Q70 89 80 73 Q70 77 60 73 Z';
-    if (mouth.getAttribute('d') !== m) { mouth.setAttribute('d', m); mouthClip && mouthClip.setAttribute('d', m); }
 
     /* compose: position, then a rig with facing, bank, squash and a click spin */
     if (spin > 0) spin = Math.max(0, spin - 0.035 * dt);

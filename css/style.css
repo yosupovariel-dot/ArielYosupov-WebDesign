@@ -382,11 +382,16 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
    ========================================================= */
 .pixel{
   position:fixed; z-index:640; left:0; top:0;
-  width:112px; height:112px; padding:0; border:none; background:none; cursor:pointer;
+  width:124px; height:114px; padding:0; border:none; background:none; cursor:pointer;
   will-change:transform; -webkit-tap-highlight-color:transparent;
 }
 .px-rig{ display:block; width:100%; height:100%; transform-origin:50% 55%; filter:drop-shadow(0 8px 10px rgba(30,60,100,.25)); }
-.px-rig svg{ width:100%; height:100%; overflow:visible; }
+.px-rig{ position:relative; }
+.px-img, .px-lids{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+.px-arm-r{ transform-origin:80.7% 64.9%; }
+.px-arm-l{ transform-origin:15.3% 71.6%; }
+.px-glow{ position:absolute; left:50.9%; top:89.5%; width:44%; height:16%; border-radius:50%; background:radial-gradient(closest-side, rgba(232,255,255,.95), rgba(127,230,247,.55) 45%, rgba(127,230,247,0)); filter:blur(1px); }
+.dp-avatar img{ width:100%; height:100%; object-fit:contain; }
 .px-shadow{ position:absolute; left:50%; bottom:-6px; width:56px; height:10px; margin-left:-28px; border-radius:50%; background:radial-gradient(closest-side, rgba(26,25,24,.28), transparent); pointer-events:none; }
 .pixel:focus-visible{ outline:2px solid var(--clay); outline-offset:4px; border-radius:16px; }
 .px-bubble{
@@ -396,7 +401,7 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
   animation:fadeUp .35s var(--ease) both;
 }
 .px-bubble[hidden]{ display:none; }
-@media (max-width:700px){ .pixel{ width:80px; height:80px; } .px-bubble{ font-size:13px; } }
+@media (max-width:700px){ .pixel{ width:88px; height:81px; } .px-bubble{ font-size:13px; } }
 
 .dani-panel{
   position:fixed; z-index:660; left:16px; bottom:16px;
