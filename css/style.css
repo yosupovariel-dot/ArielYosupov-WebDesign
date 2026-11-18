@@ -448,3 +448,14 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
 html.a11y-motion .dani-bob, html.a11y-motion .d-arm, html.a11y-motion .d-lights circle{ animation:none; }
 
 .site-footer p{ color:var(--night-ink-2); }
+
+/* contact card (replaces the form) */
+.contact-card{ background:var(--paper); border-radius:var(--r); padding:10px; display:grid; gap:4px; }
+.cc-row{ display:flex; align-items:center; gap:16px; padding:18px 20px; border-radius:10px; color:var(--ink); transition:background .2s; }
+.cc-row:hover{ background:var(--oat); color:var(--ink); }
+.cc-row b{ display:block; font-weight:500; font-size:18px; }
+.cc-row small{ display:block; color:var(--ink-3); font-size:14px; }
+.cc-icon{ width:46px; height:46px; flex:0 0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--oat); color:var(--ink); font-size:18px; }
+.cc-icon svg{ width:24px; height:24px; }
+.cc-wa .cc-icon{ background:#25D366; color:#fff; }
+.cc-wa{ background:var(--ivory); }
