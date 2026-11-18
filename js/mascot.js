@@ -25,8 +25,8 @@
     <circle cx="46" cy="55" r="3" fill="#FF8FA3" opacity=".7"/><circle cx="74" cy="55" r="3" fill="#FF8FA3" opacity=".7"/>
     <g class="d-arm"><path d="M80 56 Q90 48 92 40" fill="none" stroke="#7CD992" stroke-width="5" stroke-linecap="round"/><circle cx="92" cy="39" r="4" fill="#7CD992"/></g>
     <path d="M30 60 A30 30 0 0 1 90 60 Z" fill="#CFEFFF" opacity=".45" stroke="#fff" stroke-width="2"/>
-    <ellipse cx="60" cy="68" rx="54" ry="14" fill="#2A7AC0"/>
-    <ellipse cx="60" cy="62" rx="40" ry="8" fill="#5BA3E0"/>
+    <ellipse cx="60" cy="68" rx="54" ry="14" fill="#C2613F"/>
+    <ellipse cx="60" cy="62" rx="40" ry="8" fill="#E08A68"/>
     <g class="d-lights"><circle cx="24" cy="70" r="3.4" fill="#FFD54A"/><circle cx="42" cy="75" r="3.4" fill="#F39C12"/>
       <circle cx="60" cy="77" r="3.4" fill="#FFD54A"/><circle cx="78" cy="75" r="3.4" fill="#F39C12"/><circle cx="96" cy="70" r="3.4" fill="#FFD54A"/></g>
   </svg>`;

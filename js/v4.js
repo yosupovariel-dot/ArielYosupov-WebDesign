@@ -1,0 +1,75 @@
+// =========================================================
+// DA Web Design | Why / How / What pill, media slots, gentle reveals
+// =========================================================
+(function chapters() {
+  const pill = document.getElementById('gc');
+  if (!pill) return;
+  const links = Array.from(pill.querySelectorAll('a[data-gc]'));
+  const order = links.map(a => a.dataset.gc);
+  const sections = order.map(k => document.querySelector(`[data-gc-section="${k}"]`));
+  let raf = 0;
+  function update() {
+    raf = 0;
+    const line = window.innerHeight * 0.4;
+    let current = -1;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < line) current = i; });
+    links.forEach((a, i) => {
+      a.classList.toggle('is-current', i === current);
+      a.classList.toggle('is-done', i < current);
+      if (i === current) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  update();
+})();
+
+(function navBorder() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+  const set = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', set, { passive: true });
+  set();
+})();
+
+/* Media slots: files listed in assets/media/manifest.json replace their placeholders. */
+(function mediaSlots() {
+  const slots = Array.from(document.querySelectorAll('.media-slot[data-file]'));
+  if (!slots.length) return;
+  const base = (document.querySelector('script[src$="js/v4.js"]')?.getAttribute('src') || '').replace(/js\/v4\.js$/, '');
+  fetch(base + 'assets/media/manifest.json', { cache: 'no-cache' })
+    .then(r => (r.ok ? r.json() : { files: [] }))
+    .catch(() => ({ files: [] }))
+    .then(({ files = [] }) => {
+      slots.forEach((slot) => {
+        const file = slot.dataset.file;
+        if (!files.includes(file.split('/').pop())) return;
+        const src = base + file;
+        const isVideo = /\.(mp4|webm|mov)$/i.test(file);
+        const el = document.createElement(isVideo ? 'video' : 'img');
+        el.src = src;
+        if (isVideo) { el.controls = true; el.playsInline = true; el.preload = 'metadata'; }
+        else { el.alt = slot.querySelector('figcaption b')?.textContent || ''; el.loading = 'lazy'; }
+        slot.replaceChildren(el);
+        slot.classList.add('is-filled');
+      });
+    });
+})();
+
+(function reveal() {
+  const off = matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    document.documentElement.classList.contains('a11y-motion');
+  if (off) return;
+  const els = Array.from(document.querySelectorAll('.chapter, .statement, .beliefs li, .principles article, .process-wrap, .offer, .proof, .voices .media-slot, .faq-item, .lead-form, .media-short'));
+  let pending = els.filter(el => el.getBoundingClientRect().top > window.innerHeight);
+  pending.forEach((el, i) => { el.classList.add('rv-wait', 'rv-in'); el.style.transitionDelay = `${(i % 4) * 70}ms`; });
+  let raf = 0;
+  function check() {
+    raf = 0;
+    const limit = window.innerHeight - 40;
+    pending = pending.filter(el => {
+      if (el.getBoundingClientRect().top < limit) { el.classList.remove('rv-wait'); return false; }
+      return true;
+    });
+  }
+  window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(check); }, { passive: true });
+})();
