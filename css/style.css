@@ -1118,3 +1118,57 @@ html.menu-open .subnav{ visibility:hidden; }
 .dp-robot .px-img{ position:absolute; inset:0; width:100%; height:100%; }
 .px-bubble{ display:none !important; }
 .px-lash{ opacity:0; }
+
+/* =========================================================
+   Bipi chat: the main door into the site
+   ========================================================= */
+.btn-bipi{ background:#fff; color:var(--ink); border:1.5px solid var(--ink); }
+.btn-bipi:hover{ background:var(--ink); color:#fff; }
+.btn-bipi svg, .nav-cta svg{ width:20px; height:20px; flex:0 0 auto; }
+.nav-cta{ display:inline-flex; align-items:center; gap:8px; }
+.cc-bipi{ background:#EAF1FF; }
+.cc-bipi .cc-icon{ background:var(--clay); color:#fff; }
+.cc-bipi .cc-icon svg{ width:22px; height:22px; }
+
+.bipi-panel{ width:min(390px, calc(100vw - 32px)); height:min(600px, calc(100vh - 110px)); border-radius:16px; border:1px solid var(--line); box-shadow:0 30px 70px -20px rgba(20,33,61,.45); }
+.bipi-panel .dp-head{ background:var(--ink); padding:12px 14px; }
+.bipi-panel .dp-avatar{ width:46px; height:46px; background:#fff; border-radius:50%; padding:3px; }
+.bipi-panel .dp-head small{ display:flex; align-items:center; gap:6px; color:#B9C4D8; }
+.dp-online{ width:8px; height:8px; border-radius:50%; background:#22C55E; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
+.bipi-panel .dp-log{ background:#F4F6FA; padding:16px 14px; gap:9px; }
+.bipi-panel .dp-msg{ font-size:15.5px; max-width:88%; }
+.bipi-panel .dp-msg.bot{ background:#fff; border:1px solid #E3E8F0; color:var(--ink); }
+.bipi-panel .dp-msg.me{ background:var(--clay); color:#fff; }
+.dp-options{ display:flex; flex-wrap:wrap; gap:8px; padding:10px 12px 4px; background:#F4F6FA; justify-content:flex-start; }
+.dp-options:empty{ display:none; }
+.dp-options button{ font:inherit; font-size:15px; padding:9px 15px; border-radius:999px; border:1.5px solid var(--clay); background:#fff; color:var(--clay); cursor:pointer; transition:background .15s, color .15s, transform .15s; animation:fadeUp .3s ease both; }
+.dp-options button:hover{ background:var(--clay); color:#fff; }
+.dp-options button:active{ transform:scale(.97); }
+.dp-options .opt-main{ background:var(--clay); color:#fff; font-weight:500; }
+.dp-options .opt-main:hover{ background:var(--clay-2); }
+.dp-progress{ display:flex; align-items:center; gap:10px; padding:8px 14px; background:#F4F6FA; font-size:12.5px; color:var(--ink-3); }
+.dp-progress[hidden]{ display:none; }
+.dp-progress-bar{ flex:1; height:6px; border-radius:3px; background:#DDE3EC; overflow:hidden; }
+.dp-progress-bar i{ display:block; height:100%; width:0; border-radius:3px; background:linear-gradient(90deg, var(--clay), #4D8DFF); transition:width .5s cubic-bezier(.2,.7,.2,1); }
+.dp-wa{ display:flex; align-items:center; justify-content:center; gap:8px; padding:8px 12px; font-size:13.5px; color:#128C4B; background:#EFFAF3; border-top:1px solid #DDF1E4; }
+.dp-wa svg{ width:18px; height:18px; }
+.dp-wa:hover{ color:#0B6B37; }
+.dp-cta-card{ align-self:stretch; display:grid; gap:8px; padding:14px; border-radius:14px; background:#fff; border:1.5px solid #25D366; box-shadow:0 10px 24px -16px rgba(37,211,102,.7); animation:fadeUp .35s ease both; }
+.dp-cta-wa{ display:flex; align-items:center; justify-content:center; gap:10px; padding:13px; border-radius:10px; background:#25D366; color:#fff; font-weight:700; font-size:16px; }
+.dp-cta-wa:hover{ background:#1DA851; color:#fff; }
+.dp-cta-wa svg{ width:22px; height:22px; }
+.dp-cta-call{ text-align:center; font-size:14px; color:var(--ink-2); }
+.dp-cta-card p{ margin:0; text-align:center; font-size:12.5px; color:var(--ink-3); }
+.bipi-panel .dp-form{ border-top:1px solid #E5E9F0; }
+.bipi-panel .dp-form button{ background:var(--clay); }
+
+/* mobile: the chat becomes a bottom sheet; "Ask Bipi" sits in the bottom bar */
+.mc-chat{ background:var(--clay); color:#fff; }
+@media (max-width:700px){
+  .bipi-panel{ left:0; right:0; bottom:0; width:100%; height:min(86vh, 640px); border-radius:18px 18px 0 0; border:none; }
+  html.chat-open .mobile-cta, html.chat-open .a11y-toggle, html.chat-open .to-top{ display:none; }
+  .mobile-cta a.mc-chat{ background:var(--clay); }
+  .hero .hero-actions .btn-bipi{ width:100%; padding:14px; }
+}
+@media (max-width:1000px){ .nav-cta{ display:none !important; } }
+@media (max-width:700px){ .bipi-panel{ z-index:720; } }

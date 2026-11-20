@@ -1,5 +1,5 @@
 // =========================================================
-// DA Web Design | "פיקסל": רובוט קטן בצבעי האתר (כחול כהה, כחול, לבן) עם מנוע ריחוף,
+// DA Web Design | "ביפי": רובוט קטן בצבעי האתר (כחול כהה, כחול, לבן) עם מנוע ריחוף,
 // שמטייל באתר, נוחת על חלקים בדף ועונה על שאלות.
 // השאלות נשלחות ל-/api/ask (Claude). כשהשרת לא זמין, יש תשובות מוכנות מראש.
 // =========================================================
@@ -56,6 +56,7 @@
       <path class="px-joy" d="M109 106 Q122 92 135 106" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
       <path class="px-joy" d="M165 106 Q178 92 191 106" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
     </svg>`;
+  const ICON_WA_SMALL = '<svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.8c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2Zm6.6 18.7c-.3.8-1.7 1.5-2.4 1.6-.6.1-1.4.2-2.2-.1-.5-.2-1.2-.4-2-.7-3.5-1.4-5.7-4.9-5.9-5.1-.2-.3-1.4-1.8-1.4-3.5s.9-2.4 1.2-2.8c.3-.4.7-.5.9-.5h.7c.2 0 .5 0 .8.6.3.7 1 2.5 1.1 2.7.1.2.1.5 0 .7-.1.3-.1.5-.3.7-.1.3-.3.5-.5.7-.2.2-.4.4-.2.8.2.4 1 1.6 2.1 2.6 1.4 1.3 2.6 1.7 3 1.9.4.2.6.1.8-.1.2-.2.9-1 1.1-1.4.2-.4.5-.3.8-.2.3.1 2 1 2.4 1.2.4.1.6.2.7.4.1.1.1.8-.2 1.6Z"/></svg>';
   const SVG = `<span class="dp-robot">${ARM_L}${ARM_R}${BODY}</span>`;
 
   const LOCAL = [
@@ -82,34 +83,34 @@
   bot.type = 'button';
   bot.id = 'pixel';
   bot.className = 'pixel';
-  bot.setAttribute('aria-label', 'פיקסל, העוזר של האתר: פתיחת צ\'אט שאלות ותשובות');
+  bot.setAttribute('aria-label', 'ביפי, הרובוט של האתר: פתיחת צ\'אט');
   bot.setAttribute('aria-expanded', 'false');
   bot.innerHTML = `<span class="px-rig"><span class="px-glow"></span>${ARM_L}${ARM_R}${BODY}${LIDS}</span><span class="px-shadow"></span><span class="px-bubble" hidden></span>`;
 
+  const WA_NUMBER = '972556658131';
+  const PHONE = '055-6658131';
   const panel = document.createElement('div');
-  panel.className = 'dani-panel';
+  panel.className = 'dani-panel bipi-panel';
   panel.id = 'pixelPanel';
   panel.setAttribute('role', 'dialog');
-  panel.setAttribute('aria-label', 'שאלות ותשובות עם פיקסל');
+  panel.setAttribute('aria-label', 'צ\'אט עם ביפי');
   panel.hidden = true;
   panel.innerHTML = `
     <div class="dp-head">
       <span class="dp-avatar">${SVG}</span>
-      <div><b>פיקסל</b><small>עונה בעזרת בינה מלאכותית</small></div>
+      <div><b>ביפי</b><small><span class="dp-online"></span>הרובוט של DA Web Design · עונה מיד</small></div>
       <button type="button" class="dp-close" aria-label="סגירת הצ'אט">✕</button>
     </div>
     <div class="dp-log" aria-live="polite"></div>
-    <div class="dp-chips">
-      <button type="button">כמה עולה אתר?</button>
-      <button type="button">כמה זמן זה לוקח?</button>
-      <button type="button">דף נחיתה או אתר תדמית?</button>
-    </div>
+    <div class="dp-options"></div>
+    <div class="dp-progress" hidden><span class="dp-progress-label"></span><span class="dp-progress-bar"><i></i></span></div>
+    <a class="dp-wa" href="https://wa.me/${WA_NUMBER}" target="_blank" rel="noopener noreferrer">${ICON_WA_SMALL}<span>מעדיפים לדבר עם בני אדם? וואטסאפ</span></a>
     <form class="dp-form">
       <label for="pixelInput" class="sr-only">השאלה שלכם</label>
-      <input id="pixelInput" type="text" maxlength="400" autocomplete="off" placeholder="כתבו שאלה...">
+      <input id="pixelInput" type="text" maxlength="400" autocomplete="off" placeholder="או כתבו לי כל שאלה...">
       <button type="submit" aria-label="שליחה">➤</button>
     </form>
-    <p class="dp-note" hidden>מצב תצוגה מקדימה: התשובות כאן מוכנות מראש. באתר החי פיקסל עונה בעזרת בינה מלאכותית.</p>`;
+    <p class="dp-note" hidden>מצב תצוגה מקדימה: על שאלות חופשיות ביפי עונה כאן מתשובות מוכנות. באתר החי הוא עונה בעזרת בינה מלאכותית.</p>`;
   document.body.append(bot, panel);
 
   const $ = (sel) => bot.querySelector(sel);
@@ -118,15 +119,48 @@
   const armL = $('.px-arm-l'), armR = $('.px-arm-r');
   const lids = bot.querySelectorAll('.px-lid'), lashes = bot.querySelectorAll('.px-lash'), joys = bot.querySelectorAll('.px-joy'), blush = $('.px-blush');
 
-  /* ---------- chat ---------- */
+  /* =========================================================
+     The conversation. Built on a few well-known ideas:
+     - small, easy first steps (three taps, no typing) before any bigger ask
+     - a progress bar at the bottom that starts part-filled, so it feels close
+     - give first: a free tip for their business before asking for anything
+     - reflect their own answers back, then make the next step one tap:
+       WhatsApp opens with a message that is already written for them
+     - a way to talk to people is always visible, and free questions work too
+     ========================================================= */
   const log = panel.querySelector('.dp-log');
   const form = panel.querySelector('.dp-form');
   const input = panel.querySelector('#pixelInput');
-  const chips = panel.querySelector('.dp-chips');
+  const options = panel.querySelector('.dp-options');
+  const progress = panel.querySelector('.dp-progress');
+  const progressLabel = panel.querySelector('.dp-progress-label');
+  const progressBar = panel.querySelector('.dp-progress-bar i');
   const note = panel.querySelector('.dp-note');
   const history = [];
-  let busy = false, apiOk = true;
+  const answers = {};
+  let busy = false, apiOk = true, started = false, flowDone = false, step = 0;
 
+  const STEPS = [
+    { key: 'biz', q: 'בואו נתחיל ממשהו קל 😊 איזה עסק יש לכם?', opts: ['נותני שירות', 'חנות / מוצרים', 'עצמאי או קליניקה', 'משהו אחר'],
+      react: { 'נותני שירות': 'מעולה, אני אוהב עסקים שעוזרים לאנשים 🙌', 'חנות / מוצרים': 'יש! אני כבר מדמיין את עגלת הקניות מתמלאת 🛒', 'עצמאי או קליניקה': 'אחלה. אצלכם האמון הוא הכול, ואתר טוב בונה אותו 💪', 'משהו אחר': 'אני בכלל רובוט, אז אני לא שופט 😄' } },
+    { key: 'goal', q: 'מה הכי חשוב לכם שהאתר יעשה?', opts: ['יביא פניות ושיחות', 'ימכור באתר', 'ישמש לקמפיין', 'ייראה מקצועי'],
+      react: { 'יביא פניות ושיחות': 'זה בדיוק מה שאנחנו הכי אוהבים לבנות 📞', 'ימכור באתר': 'מכירות גם כשאתם ישנים? כן, בבקשה 🌙', 'ישמש לקמפיין': 'קמפיין טוב צריך דף שלא מבזבז אף קליק 🎯', 'ייראה מקצועי': 'רושם ראשון אי אפשר לעשות פעמיים ✨' } },
+    { key: 'site', q: 'ואחרונה (הבטחתי שזה מהיר): יש לכם כבר אתר?', opts: ['כן, אבל הוא לא עובד', 'כן, רוצים לחדש', 'עוד אין', 'רק עמוד ברשתות'],
+      react: { 'כן, אבל הוא לא עובד': 'קורה להרבה עסקים. החדשות הטובות: את זה מתקנים 🔧', 'כן, רוצים לחדש': 'רענון זה תמיד כיף 🎨', 'עוד אין': 'מושלם, מתחילים נקי בלי לפרק כלום 🧱', 'רק עמוד ברשתות': 'עמוד ברשתות זה התחלה. אתר משלכם זה בית 🏠' } },
+  ];
+  const RECOMMEND = (a) => {
+    if (a.goal === 'ימכור באתר' || (a.biz === 'חנות / מוצרים' && a.goal !== 'ישמש לקמפיין')) return { name: 'חנות אונליין', time: 'כשבועיים' };
+    if (a.goal === 'ישמש לקמפיין') return { name: 'דף נחיתה', time: 'כיומיים' };
+    return { name: 'אתר תדמית', time: 'כשבוע' };
+  };
+  const TIPS = {
+    'יביא פניות ושיחות': 'שימו כפתור וואטסאפ או טלפון שנראה בכל מסך, גם בטלפון. ככה מי שמתעניין לא צריך לחפש איך לפנות.',
+    'ימכור באתר': 'תמונות מוצר אמיתיות, מכמה זוויות, עובדות בדרך כלל טוב יותר מכל תיאור ארוך.',
+    'ישמש לקמפיין': 'בדף לקמפיין, הורידו את התפריט והשאירו פעולה אחת בלבד. פחות אפשרויות, פחות פספוסים.',
+    'ייראה מקצועי': 'תמונה אמיתית שלכם ושתיים־שלוש המלצות בונות אמון מהר יותר מעיצוב מפוצץ.',
+  };
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, motionOff() ? 0 : ms));
   function add(cls, text) {
     const el = document.createElement('div');
     el.className = 'dp-msg ' + cls;
@@ -135,9 +169,94 @@
     log.scrollTop = log.scrollHeight;
     return el;
   }
+  async function say(text, wait = 650) {
+    const typing = add('bot typing', '');
+    typing.innerHTML = '<i></i><i></i><i></i>';
+    await sleep(Math.min(1400, wait + text.length * 6));
+    typing.remove();
+    return add('bot', text);
+  }
+  function setOptions(list) {
+    options.innerHTML = '';
+    list.forEach(({ label, onClick, cls }) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      if (cls) b.className = cls;
+      b.addEventListener('click', onClick);
+      options.appendChild(b);
+    });
+    log.scrollTop = log.scrollHeight;
+  }
+  function setProgress(done) {
+    progress.hidden = false;
+    // starts part-filled: opening the chat already counts as the first step
+    const total = STEPS.length + 1;
+    progressBar.style.width = `${((done + 1) / total) * 100}%`;
+    progressLabel.textContent = done < STEPS.length ? `שלב ${done + 1} מתוך ${STEPS.length}` : 'כמעט סיימנו';
+  }
+  function waLink(text) { return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`; }
+
+  async function runStep() {
+    const s = STEPS[step];
+    setProgress(step);
+    await say(s.q, 450);
+    setOptions(s.opts.map(o => ({ label: o, onClick: () => pick(s, o) })));
+  }
+  async function pick(s, value) {
+    if (busy) return;
+    busy = true;
+    options.innerHTML = '';
+    add('me', value);
+    answers[s.key] = value;
+    joyUntil = performance.now() + 700;
+    await say(s.react[value] || 'מעולה!', 300);
+    step++;
+    busy = false;
+    if (step < STEPS.length) runStep(); else finish();
+  }
+  async function finish() {
+    busy = true;
+    setProgress(STEPS.length);
+    const r = RECOMMEND(answers);
+    await say('רגע, אני מחשב... 🤖💭', 300);
+    await say(`יופי, הנה מה שהבנתי: ${answers.biz}, שרוצים שהאתר ${answers.goal}. לדעתי הכי מתאים לכם ${r.name}, ובדרך כלל הוא מוכן תוך ${r.time}.`, 500);
+    await say(`ובינתיים, טיפ חינם ממני 🎁 ${TIPS[answers.goal] || TIPS['יביא פניות ושיחות']}`, 500);
+    await say('רוצים שהשותפים יחזרו אליכם עם הצעה מותאמת? כתבתי בשבילכם את ההודעה, רק לשלוח 👇', 400);
+    const msg = `היי, דיברתי עם ביפי באתר 🤖\nסוג העסק: ${answers.biz}\nמה חשוב לנו: ${answers.goal}\nאתר קיים: ${answers.site}\nההמלצה של ביפי: ${r.name}\nאשמח להצעה!`;
+    const card = document.createElement('div');
+    card.className = 'dp-cta-card';
+    card.innerHTML = `<a class="dp-cta-wa" href="${waLink(msg)}" target="_blank" rel="noopener noreferrer">${ICON_WA_SMALL}<span>שלחו לנו את זה בוואטסאפ</span></a><a class="dp-cta-call" href="tel:+${WA_NUMBER}">או התקשרו: <b dir="ltr">${PHONE}</b></a><p>עונים תוך יום עסקים · בלי התחייבות</p>`;
+    card.querySelector('.dp-cta-wa').addEventListener('click', () => { delight(3); setTimeout(() => say('יש! 🎉 נדבר בקרוב. בינתיים אני חוזר לרחף פה.', 200), 400); });
+    log.appendChild(card);
+    log.scrollTop = log.scrollHeight;
+    flowDone = true;
+    setOptions([
+      { label: 'יש לי עוד שאלה', onClick: () => { options.innerHTML = ''; input.focus(); } },
+      { label: 'להתחיל מחדש', onClick: restart },
+    ]);
+    busy = false;
+  }
+  function restart() {
+    log.innerHTML = ''; options.innerHTML = '';
+    Object.keys(answers).forEach(k => delete answers[k]);
+    step = 0; flowDone = false; started = false;
+    start();
+  }
+  async function start() {
+    if (started) return;
+    started = true;
+    await say('היי! אני ביפי 👋 הרובוט הכי חרוץ בבניין (טוב, אני היחיד בבניין).', 300);
+    await say('אני יכול לעזור לכם להבין איזה אתר יביא לכם הכי הרבה לקוחות. 3 שאלות קטנות, בלי להקליד כלום. מוכנים?', 400);
+    setOptions([
+      { label: 'יאללה, בוא נתחיל 🚀', cls: 'opt-main', onClick: () => { options.innerHTML = ''; add('me', 'יאללה!'); runStep(); } },
+      { label: 'יש לי שאלה אחרת', onClick: () => { options.innerHTML = ''; input.focus(); } },
+    ]);
+  }
+
+  /* free questions: answered by the AI on the live site, ready-made answers otherwise */
   async function ask(question) {
     if (busy || !question.trim()) return;
-    busy = true; chips.hidden = true;
+    busy = true; options.innerHTML = '';
     add('me', question);
     history.push({ role: 'user', content: question });
     const typing = add('bot typing', '');
@@ -155,13 +274,13 @@
         clearTimeout(timer);
         const data = res.ok ? await res.json() : null;
         if (data && data.answer) answer = data.answer;
-        else if (res.status === 429) answer = 'קיבלתי הרבה שאלות בבת אחת 😅 נסו שוב בעוד כמה דקות, או דברו עם השותפים בוואטסאפ.';
+        else if (res.status === 429) answer = 'וואו, הרבה שאלות בבת אחת 😅 נסו שוב בעוד כמה דקות, או כתבו לשותפים בוואטסאפ.';
         else apiOk = false;
       } catch { apiOk = false; }
     }
     if (!answer) {
       if (!apiOk) note.hidden = false;
-      await new Promise(r => setTimeout(r, motionOff() ? 0 : 650));
+      await sleep(650);
       answer = localAnswer(question);
     }
     typing.remove();
@@ -169,27 +288,37 @@
     history.push({ role: 'assistant', content: answer });
     mood = 'happy'; moodUntil = performance.now() + 1500;
     joyUntil = performance.now() + 900; heart();
+    // after a free question, offer the easy next step
+    setOptions(flowDone
+      ? [{ label: 'לשלוח הודעה לשותפים', cls: 'opt-main', onClick: () => window.open(waLink(`היי, דיברתי עם ביפי באתר ויש לי שאלה: ${question}`), '_blank', 'noopener') }]
+      : [{ label: 'שנעשה את 3 השאלות? 🙂', cls: 'opt-main', onClick: () => { options.innerHTML = ''; runStep(); } },
+         { label: 'לשאול את השותפים בוואטסאפ', onClick: () => window.open(waLink(`היי, דיברתי עם ביפי באתר ויש לי שאלה: ${question}`), '_blank', 'noopener') }]);
     busy = false;
     input.focus();
   }
+
   function openPanel() {
     panel.hidden = false;
     bot.classList.add('is-open');
     bot.setAttribute('aria-expanded', 'true');
-    bubble.hidden = true;
-    if (!log.children.length) add('bot', 'היי! אני פיקסל 🤖, הרובוט של DA Web Design. אשמח לענות על כל שאלה על אתרים ועל DA Web Design.');
-    setTimeout(() => input.focus(), 50);
+    document.documentElement.classList.add('chat-open');
+    start();
+    if (window.innerWidth > 700) setTimeout(() => input.focus({ preventScroll: true }), 60);
   }
   function closePanel() {
     panel.hidden = true;
     bot.classList.remove('is-open');
     bot.setAttribute('aria-expanded', 'false');
-    bot.focus();
+    document.documentElement.classList.remove('chat-open');
   }
+  window.openBipi = openPanel;
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-open-chat]');
+    if (t) { e.preventDefault(); openPanel(); }
+  });
   panel.querySelector('.dp-close').addEventListener('click', closePanel);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
   form.addEventListener('submit', (e) => { e.preventDefault(); const q = input.value; input.value = ''; ask(q); });
-  chips.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) ask(b.textContent); });
 
   /* =========================================================
      Motion. A small physics model drives everything:
