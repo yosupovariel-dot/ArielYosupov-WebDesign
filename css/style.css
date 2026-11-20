@@ -5,22 +5,28 @@
    Page story follows Why -> How -> What -> Start.
    ========================================================= */
 :root{
-  --ivory:#F5F3EE;
-  --oat:#ECE8DF;
-  --paper:#FBFAF7;
-  --ink:#1A1918;
-  --ink-2:#5C5A54;
-  --ink-3:#8C8A83;
-  --line:#DCD7CC;
-  --clay:#C2613F;
-  --clay-2:#A84F30;
-  --night:#1F1E1B;
-  --night-2:#2A2925;
-  --night-ink:#EDEAE2;
-  --night-ink-2:#A9A59B;
+  --ivory:#F3FBF8;
+  --oat:#DFF5EC;
+  --paper:#FFFFFF;
+  --ink:#0F2A3D;
+  --ink-2:#43606E;
+  --ink-3:#7A929C;
+  --line:#CDE5DD;
+  --clay:#FF5A36;
+  --clay-2:#E2401C;
+  --night:#0D3940;
+  --night-2:#124B53;
+  --night-ink:#E6FAF5;
+  --night-ink-2:#9CCFC5;
   --serif:'Frank Ruhl Libre', 'Times New Roman', serif;
   --sans:'Heebo', Arial, sans-serif;
-  --r:14px;
+  --r:16px;
+  --aqua:#0FB5A5;
+  --aqua-2:#0A8F83;
+  --sun:#FFC83A;
+  --sun-2:#D99A00;
+  --berry:#FF4F8B;
+  --sky:#E4F2FF;
   --ease:cubic-bezier(.2,.7,.2,1);
   /* aliases used by shared scripts and inner pages */
   --blue:var(--ink); --orange:var(--clay); --orange-2:var(--clay-2); --dark:var(--night); --line-c:var(--line);
@@ -452,3 +458,111 @@ html.a11y-motion *, html.a11y-motion *::before, html.a11y-motion *::after{ anima
 .cc-icon svg{ width:24px; height:24px; }
 .cc-wa .cc-icon{ background:#25D366; color:#fff; }
 .cc-wa{ background:var(--ivory); }
+
+
+/* =========================================================
+   Fresh palette: mint paper, deep teal ink, coral action,
+   aqua and sunshine as supporting colours, one per chapter.
+   ========================================================= */
+::selection{ background:var(--sun); color:var(--ink); }
+
+/* hero: soft colour light behind the headline */
+.hero{
+  background:
+    radial-gradient(520px 360px at 88% 8%, rgba(15,181,165,.20), transparent 70%),
+    radial-gradient(460px 320px at 6% 38%, rgba(255,200,58,.26), transparent 70%),
+    radial-gradient(620px 380px at 55% 105%, rgba(255,90,54,.13), transparent 70%);
+}
+.hero-title em{
+  background:linear-gradient(95deg, var(--clay) 10%, var(--berry) 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.kicker{ color:var(--aqua-2); font-weight:500; }
+.btn-clay{ box-shadow:0 12px 26px -12px rgba(255,90,54,.75); }
+.btn-clay:hover{ box-shadow:0 14px 30px -12px rgba(226,64,28,.8); }
+.btn-link{ border-bottom-width:2px; border-color:var(--aqua); }
+.btn-link:hover{ color:var(--aqua-2); border-color:var(--aqua-2); }
+
+/* nav */
+.nav{ background:rgba(243,251,248,.9); }
+.nav-links a:hover{ background:var(--oat); }
+.nav-links a.active{ color:var(--aqua-2); }
+
+/* chapter colours: why = coral, how = aqua, what = sunshine, start = sunshine on teal */
+#why .chapter span{ color:var(--clay); border-color:var(--clay); }
+#how .chapter span{ color:var(--aqua-2); border-color:var(--aqua); }
+#what .chapter span{ color:var(--sun-2); border-color:var(--sun); }
+#faq .chapter span{ color:var(--berry); border-color:var(--berry); }
+#contact .chapter span{ color:var(--sun); border-color:var(--sun); }
+#how{ background:linear-gradient(180deg, var(--sky), #EAF7F3); }
+#faq{ background:var(--oat); }
+
+/* chapter pill */
+.gc{ background:rgba(255,255,255,.92); border-color:var(--line); }
+.gc a.is-done{ color:var(--aqua-2); }
+.gc a.is-current{ background:linear-gradient(95deg, var(--clay), var(--berry)); color:#fff; }
+
+/* why */
+.beliefs li{ position:relative; padding-inline-start:22px; }
+.beliefs li::before{ content:''; position:absolute; inset-inline-start:0; top:30px; width:10px; height:10px; border-radius:50%; background:var(--clay); }
+.beliefs li:nth-child(2)::before{ background:var(--aqua); }
+.beliefs li:nth-child(3)::before{ background:var(--sun); }
+
+/* how */
+.principles article:nth-child(1) .p-num{ color:var(--clay); }
+.principles article:nth-child(2) .p-num{ color:var(--aqua-2); }
+.principles article:nth-child(3) .p-num{ color:var(--sun-2); }
+.principles article:nth-child(4) .p-num{ color:var(--berry); }
+.process-wrap{ box-shadow:0 30px 60px -40px rgba(13,57,64,.45); }
+.howto li.is-done .h-num{ background:var(--aqua); border-color:var(--aqua); color:#fff; }
+.howto li.is-current .h-num{ background:var(--clay); border-color:var(--clay); box-shadow:0 0 0 6px rgba(255,90,54,.18); }
+.hp h3 small{ color:var(--aqua-2); border-color:var(--aqua); }
+.hp-bar i{ background:linear-gradient(90deg, var(--aqua), var(--clay)); }
+
+/* what */
+.o-time{ display:inline-block; align-self:flex-start; padding:3px 12px; border-radius:999px; font-weight:500; }
+.row-3 .offer:nth-child(1) .o-time{ background:#FFE7E0; color:var(--clay-2); }
+.row-3 .offer:nth-child(2) .o-time{ background:#D8F6F1; color:var(--aqua-2); }
+.row-3 .offer:nth-child(3) .o-time{ background:#FFF3CF; color:#9A6B00; }
+.o-time span{ color:inherit; font-weight:700; }
+.offer{ box-shadow:0 20px 40px -32px rgba(13,57,64,.5); }
+.offer-featured{ outline:2px solid var(--aqua); }
+.sc-window{ border-color:var(--line); box-shadow:0 40px 70px -40px rgba(13,57,64,.55); }
+.sc-bar i:nth-child(1){ background:#FF6B5B; } .sc-bar i:nth-child(2){ background:var(--sun); } .sc-bar i:nth-child(3){ background:var(--aqua); }
+.sc-dot.is-on{ background:linear-gradient(90deg, var(--clay), var(--berry)); }
+
+/* media placeholders take the colour of their chapter */
+.media-slot{ border-color:#9ED9CF; background:repeating-linear-gradient(135deg, rgba(15,181,165,.07) 0 12px, transparent 12px 24px), #E9F8F4; }
+.media-slot .ms-icon{ color:var(--aqua); }
+#why .media-slot{ border-color:#FFB9A6; background:repeating-linear-gradient(135deg, rgba(255,90,54,.07) 0 12px, transparent 12px 24px), #FFF1EC; }
+#why .media-slot .ms-icon{ color:var(--clay); }
+#what .media-slot{ border-color:#F2D27A; background:repeating-linear-gradient(135deg, rgba(255,200,58,.12) 0 12px, transparent 12px 24px), #FFF8E3; }
+#what .media-slot .ms-icon{ color:var(--sun-2); }
+
+/* faq */
+.faq-item summary::after{ color:var(--berry); }
+
+/* contact on deep teal */
+.block-dark{ background:
+    radial-gradient(600px 360px at 90% 0%, rgba(15,181,165,.35), transparent 70%),
+    radial-gradient(500px 300px at 0% 100%, rgba(255,200,58,.16), transparent 70%),
+    var(--night); }
+.next-steps b{ color:var(--sun); border-color:rgba(255,200,58,.6); }
+.cc-row:hover{ background:#EAF8F4; }
+.cc-icon{ background:#E4F6F1; color:var(--aqua-2); }
+
+/* inner pages + blog */
+.eyebrow{ color:var(--aqua-2); font-weight:500; }
+.svc-icon, .card-icon{ color:var(--clay); }
+.svc-time b, .blog-card-time{ color:var(--aqua-2); }
+.step-num{ color:var(--clay); }
+.cell-check{ color:var(--aqua-2); }
+.legal-body h3{ color:var(--ink); }
+.blog-card{ border-top:3px solid var(--aqua); }
+.blog-card:nth-child(3n+2){ border-top-color:var(--clay); }
+.blog-card:nth-child(3n){ border-top-color:var(--sun); }
+
+/* footer */
+.site-footer{ background:#0A2E34; }
+.fcol h4{ color:#fff; }
+.a11y-toggle{ background:var(--night); }
