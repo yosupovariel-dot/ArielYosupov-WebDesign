@@ -22,8 +22,9 @@
         <clipPath id="pxClipR"><ellipse cx="191.8" cy="120.4" rx="22.5" ry="23.8"/></clipPath>
         <radialGradient id="pxLid" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#8CC4E0"/><stop offset=".7" stop-color="#6FA9CF"/><stop offset="1" stop-color="#5C93BE"/></radialGradient>
       </defs>
-      <g clip-path="url(#pxClipL)"><rect class="px-lid" x="82" y="99" width="50" height="50" fill="url(#pxLid)"/><path class="px-lash" d="M90 124 Q107 138 124 124" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
-      <g clip-path="url(#pxClipR)"><rect class="px-lid" x="167" y="95" width="50" height="50" fill="url(#pxLid)"/><path class="px-lash" d="M175 120 Q192 134 209 120" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
+      <g class="px-blush"><ellipse cx="101" cy="159" rx="15" ry="8" fill="#FF7E95"/><ellipse cx="202" cy="152" rx="15" ry="8" fill="#FF7E95"/></g>
+      <g clip-path="url(#pxClipL)"><rect class="px-lid" x="82" y="99" width="50" height="50" fill="url(#pxLid)"/><path class="px-joy" d="M90 130 Q107 112 124 130" fill="none" stroke="#1E3557" stroke-width="3.8" stroke-linecap="round"/><path class="px-lash" d="M90 124 Q107 138 124 124" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
+      <g clip-path="url(#pxClipR)"><rect class="px-lid" x="167" y="95" width="50" height="50" fill="url(#pxLid)"/><path class="px-joy" d="M175 126 Q192 108 209 126" fill="none" stroke="#1E3557" stroke-width="3.8" stroke-linecap="round"/><path class="px-lash" d="M175 120 Q192 134 209 120" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
     </svg>`;
   const SVG = `<img src="${BASE}pixel-full.png" alt="" width="300" height="276">`;
 
@@ -85,7 +86,7 @@
   const rig = $('.px-rig'), shadow = $('.px-shadow'), bubble = $('.px-bubble');
   const glowEl = $('.px-glow'), faceImg = $('.px-body-img'), lidsSvg = $('.px-lids');
   const armL = $('.px-arm-l'), armR = $('.px-arm-r');
-  const lids = bot.querySelectorAll('.px-lid'), lashes = bot.querySelectorAll('.px-lash');
+  const lids = bot.querySelectorAll('.px-lid'), lashes = bot.querySelectorAll('.px-lash'), joys = bot.querySelectorAll('.px-joy'), blush = $('.px-blush');
 
   /* ---------- chat ---------- */
   const log = panel.querySelector('.dp-log');
@@ -137,6 +138,7 @@
     add('bot', answer);
     history.push({ role: 'assistant', content: answer });
     mood = 'happy'; moodUntil = performance.now() + 1500;
+    joyUntil = performance.now() + 900; heart();
     busy = false;
     input.focus();
   }
@@ -181,6 +183,25 @@
   let blinkAt = performance.now() + 2000, blinkT = -1;
   let mood = 'smile', moodUntil = 0, wave = 0, spin = 0, lookX = 0, lookY = 0;
   let lastT = 0, seed = Math.random() * 100;
+  let joyUntil = 0, blushAmt = 0, hop = 0, nextCharm = performance.now() + 9000, tiltHead = 0;
+
+  /* little hearts that float up when he is happy */
+  function heart() {
+    if (motionOff()) return;
+    const h = document.createElement('span');
+    h.className = 'px-heart';
+    h.textContent = '♥';
+    h.style.setProperty('--dx', `${Math.round((Math.random() - 0.5) * 40)}px`);
+    h.style.left = `${40 + Math.random() * 20}%`;
+    bot.appendChild(h);
+    setTimeout(() => h.remove(), 1400);
+  }
+  function delight(hearts = 1) {
+    joyUntil = performance.now() + 1100;
+    wave = 1;
+    hop = 1;
+    for (let i = 0; i < hearts; i++) setTimeout(heart, i * 180);
+  }
 
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, k) => a + (b - a) * k;
@@ -319,18 +340,32 @@
       lid = blinkT < 70 ? blinkT / 70 : blinkT < 140 ? 1 - (blinkT - 70) / 70 : 0;
       if (blinkT >= 140) { blinkT = -1; blinkAt = now + (Math.random() < 0.2 ? 160 : 2200 + Math.random() * 4200); }
     }
+    const joyful = now < joyUntil;
+    if (joyful) lid = 1;
     lids.forEach(l => l.setAttribute('transform', `translate(0 ${(-50 + lid * 50).toFixed(2)})`));
-    lashes.forEach(l => { l.style.opacity = lid > 0.85 ? '1' : '0'; });
+    lashes.forEach(l => { l.style.opacity = !joyful && lid > 0.85 ? '1' : '0'; });
+    joys.forEach(j => { j.style.opacity = joyful ? '1' : '0'; });
+    blushAmt = lerp(blushAmt, joyful || !panel.hidden ? 0.75 : 0.18, 0.08 * dt);
+    blush.style.opacity = blushAmt.toFixed(2);
+
+    /* every so often, a small friendly gesture */
+    if (now > nextCharm && panel.hidden && mode !== 'fly') {
+      const r = Math.random();
+      if (r < 0.45) delight(1); else if (r < 0.75) { wave = 1; } else { joyUntil = now + 900; heart(); }
+      nextCharm = now + 11000 + Math.random() * 9000;
+    }
 
     if (moodUntil && now > moodUntil) { mood = 'smile'; moodUntil = 0; }
 
     /* compose: position, then a rig with facing, bank, squash and a click spin */
+    tiltHead = lerp(tiltHead, pointerNear ? clamp(lookX * 6, -10, 10) : 0, 0.1 * dt);
+    if (hop > 0) { vel.y -= 1.6 * hop; squashV += 0.05 * hop; hop = 0; }
     if (spin > 0) spin = Math.max(0, spin - 0.035 * dt);
     const spinDeg = (1 - spin) * 360 * (spin > 0 ? 1 : 0);
     const sx = (1 + squash * -0.9) * (faceS < 0 ? -1 : 1) * Math.max(0.25, Math.abs(faceS));
     const sy = 1 + squash;
     bot.style.transform = `translate3d(${(pos.x + hx).toFixed(1)}px, ${(pos.y + hy).toFixed(1)}px, 0)`;
-    rig.style.transform = `rotate(${(bank + spinDeg).toFixed(2)}deg) scale(${sx.toFixed(3)}, ${sy.toFixed(3)})`;
+    rig.style.transform = `rotate(${(bank + spinDeg + tiltHead).toFixed(2)}deg) scale(${sx.toFixed(3)}, ${sy.toFixed(3)})`;
     const ground = mode === 'perch' ? 1 : 0.55;
     shadow.style.opacity = ground.toFixed(2);
     shadow.style.transform = `translateY(${mode === 'perch' ? 0 : 14 + Math.abs(hy)}px) scale(${(mode === 'perch' ? 1 : 0.7 - hy * 0.01).toFixed(2)})`;
@@ -350,12 +385,17 @@
   }
 
   window.addEventListener('pointermove', (e) => { pointer = { x: e.clientX, y: e.clientY, t: performance.now() }; }, { passive: true });
+  let lastHover = 0;
+  bot.addEventListener('pointerenter', () => {
+    const now = performance.now();
+    if (now - lastHover > 2500) { delight(2); lastHover = now; }
+  });
   window.addEventListener('resize', () => { const b = bounds(); pos.x = clamp(pos.x, b.minX, b.maxX); pos.y = clamp(pos.y, b.minY, b.maxY); });
   document.addEventListener('a11y-change', () => { if (motionOff()) restingPose(); });
 
   bot.addEventListener('click', () => {
     if (!panel.hidden) { closePanel(); return; }
-    if (!motionOff()) { spin = 1; mood = 'happy'; moodUntil = performance.now() + 1200; }
+    if (!motionOff()) { spin = 1; mood = 'happy'; moodUntil = performance.now() + 1200; delight(3); }
     setTimeout(openPanel, motionOff() ? 0 : 380);
   });
 
@@ -366,8 +406,8 @@
   if (!store.get('pixel-hello')) {
     setTimeout(() => {
       if (!panel.hidden) return;
-      bubble.textContent = 'היי! אני פיקסל. יש שאלה על אתרים? 👋';
-      bubble.hidden = false; wave = 1;
+      bubble.textContent = 'היי! אני פיקסל 😊 אפשר לשאול אותי כל דבר על אתרים';
+      bubble.hidden = false; delight(2);
       store.set('pixel-hello', '1');
       setTimeout(() => { bubble.hidden = true; }, 5500);
     }, 6000);

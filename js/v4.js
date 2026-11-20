@@ -58,7 +58,7 @@
 (function reveal() {
   const off = matchMedia('(prefers-reduced-motion: reduce)').matches ||
     document.documentElement.classList.contains('a11y-motion');
-  if (off) return;
+  return; // reveals switched off: content is simply there
   const els = Array.from(document.querySelectorAll('.chapter, .statement, .beliefs li, .principles article, .process-wrap, .offer, .proof, .voices .media-slot, .faq-item, .lead-form, .media-short'));
   let pending = els.filter(el => el.getBoundingClientRect().top > window.innerHeight);
   pending.forEach((el, i) => { el.classList.add('rv-wait', 'rv-in'); el.style.transitionDelay = `${(i % 4) * 70}ms`; });
