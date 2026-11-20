@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="ArielYosupov WebDesign">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="DA Web Design">
   <defs>
     <linearGradient id="bg" x1="15%" y1="0%" x2="85%" y2="100%">
       <stop offset="0%" stop-color="#1E3A66"/>
@@ -15,6 +15,6 @@
   <polygon points="110,4 204,57 204,163 110,216 16,163 16,57" fill="none" stroke="url(#gold)" stroke-width="3.5"/>
   <polygon points="110,20 190,65 190,155 110,200 30,155 30,65" fill="none" stroke="url(#gold)" stroke-width="1" opacity=".4"/>
 
-  <text x="110" y="132" text-anchor="middle" font-family="'Rubik', Arial, sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="url(#gold)">AY</text>
+  <text x="110" y="132" text-anchor="middle" font-family="'Rubik', Arial, sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="url(#gold)">DA</text>
   <rect x="68" y="146" width="84" height="2.5" fill="url(#gold)" opacity=".85"/>
 </svg>
