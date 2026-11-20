@@ -1,5 +1,5 @@
 // =========================================================
-// DA Web Design | "פיקסל": רובוט כדור חמוד עם כיפת זכוכית ומנוע ריחוף,
+// DA Web Design | "פיקסל": רובוט קטן בצבעי האתר (כחול כהה, כחול, לבן) עם מנוע ריחוף,
 // שמטייל באתר, נוחת על חלקים בדף ועונה על שאלות.
 // השאלות נשלחות ל-/api/ask (Claude). כשהשרת לא זמין, יש תשובות מוכנות מראש.
 // =========================================================
@@ -15,18 +15,48 @@
   /* ---------- the character: layered artwork (body + two arms) so each part can move ---------- */
   const SRC = document.currentScript && document.currentScript.src;
   const BASE = SRC ? new URL('../assets/mascot/', SRC).href : '/assets/mascot/';
+  /* Drawn in the site's own colours: navy, blue, white, one orange accent.
+     Separate layers (arms, body, eyelids) so each part can move. */
+  const NAVY = '#14213D', BLUE = '#1F5FD1', SKY = '#8DB8FF', ORANGE = '#F2994A';
+  const BODY = `
+    <svg class="px-img px-body-img" viewBox="0 0 300 276" aria-hidden="true">
+      <defs>
+        <linearGradient id="pxShell" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6ECF5"/></linearGradient>
+        <radialGradient id="pxCore" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#BFD6FF"/><stop offset=".5" stop-color="${BLUE}"/><stop offset="1" stop-color="#1747A0"/></radialGradient>
+      </defs>
+      <rect x="138" y="156" width="24" height="18" rx="5" fill="#D5DCE8" stroke="${NAVY}" stroke-width="5"/>
+      <rect x="104" y="170" width="92" height="64" rx="32" fill="url(#pxShell)" stroke="${NAVY}" stroke-width="6"/>
+      <circle cx="150" cy="202" r="11" fill="url(#pxCore)" stroke="${NAVY}" stroke-width="3"/>
+      <line x1="150" y1="42" x2="150" y2="18" stroke="${NAVY}" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="150" cy="15" r="10" fill="${ORANGE}" stroke="${NAVY}" stroke-width="4"/>
+      <circle cx="56" cy="104" r="15" fill="${BLUE}" stroke="${NAVY}" stroke-width="5"/>
+      <circle cx="244" cy="104" r="15" fill="${BLUE}" stroke="${NAVY}" stroke-width="5"/>
+      <rect x="60" y="40" width="180" height="128" rx="50" fill="url(#pxShell)" stroke="${NAVY}" stroke-width="6"/>
+      <path d="M84 60 Q100 48 124 47" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+      <rect x="82" y="62" width="136" height="86" rx="34" fill="${NAVY}"/>
+      <ellipse cx="122" cy="100" rx="15" ry="18" fill="#fff"/>
+      <ellipse cx="178" cy="100" rx="15" ry="18" fill="#fff"/>
+      <circle cx="127" cy="93" r="4.5" fill="${NAVY}" opacity=".18"/>
+      <circle cx="183" cy="93" r="4.5" fill="${NAVY}" opacity=".18"/>
+      <path class="px-smile" d="M134 124 Q150 139 166 124" fill="none" stroke="${SKY}" stroke-width="5.5" stroke-linecap="round"/>
+    </svg>`;
+  const ARM_L = `<svg class="px-img px-arm-l" viewBox="0 0 300 276" aria-hidden="true"><path d="M108 192 Q88 202 80 224" fill="none" stroke="${NAVY}" stroke-width="10" stroke-linecap="round"/><circle cx="78" cy="230" r="11" fill="#fff" stroke="${NAVY}" stroke-width="5"/></svg>`;
+  const ARM_R = `<svg class="px-img px-arm-r" viewBox="0 0 300 276" aria-hidden="true"><path d="M194 194 Q232 190 250 170" fill="none" stroke="${NAVY}" stroke-width="10" stroke-linecap="round"/><circle cx="254" cy="164" r="11" fill="#fff" stroke="${NAVY}" stroke-width="5"/></svg>`;
   const LIDS = `
     <svg class="px-lids" viewBox="0 0 300 276" aria-hidden="true">
       <defs>
-        <clipPath id="pxClipL"><ellipse cx="106.9" cy="123.9" rx="22.5" ry="23.8"/></clipPath>
-        <clipPath id="pxClipR"><ellipse cx="191.8" cy="120.4" rx="22.5" ry="23.8"/></clipPath>
-        <radialGradient id="pxLid" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#8CC4E0"/><stop offset=".7" stop-color="#6FA9CF"/><stop offset="1" stop-color="#5C93BE"/></radialGradient>
+        <clipPath id="pxClipL"><ellipse cx="122" cy="100" rx="16" ry="19"/></clipPath>
+        <clipPath id="pxClipR"><ellipse cx="178" cy="100" rx="16" ry="19"/></clipPath>
       </defs>
-      <g class="px-blush"><ellipse cx="101" cy="159" rx="15" ry="8" fill="#FF7E95"/><ellipse cx="202" cy="152" rx="15" ry="8" fill="#FF7E95"/></g>
-      <g clip-path="url(#pxClipL)"><rect class="px-lid" x="82" y="99" width="50" height="50" fill="url(#pxLid)"/><path class="px-joy" d="M90 130 Q107 112 124 130" fill="none" stroke="#1E3557" stroke-width="3.8" stroke-linecap="round"/><path class="px-lash" d="M90 124 Q107 138 124 124" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
-      <g clip-path="url(#pxClipR)"><rect class="px-lid" x="167" y="95" width="50" height="50" fill="url(#pxLid)"/><path class="px-joy" d="M175 126 Q192 108 209 126" fill="none" stroke="#1E3557" stroke-width="3.8" stroke-linecap="round"/><path class="px-lash" d="M175 120 Q192 134 209 120" fill="none" stroke="#1E3557" stroke-width="3.6" stroke-linecap="round"/></g>
+      <g class="px-blush"><ellipse cx="99" cy="130" rx="11" ry="6" fill="#FF8FA3"/><ellipse cx="201" cy="130" rx="11" ry="6" fill="#FF8FA3"/></g>
+      <g clip-path="url(#pxClipL)"><rect class="px-lid" x="104" y="80" width="36" height="50" fill="${NAVY}" transform="translate(0 -50)"/></g>
+      <g clip-path="url(#pxClipR)"><rect class="px-lid" x="160" y="80" width="36" height="50" fill="${NAVY}" transform="translate(0 -50)"/></g>
+      <path class="px-lash" d="M109 103 Q122 112 135 103" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+      <path class="px-lash" d="M165 103 Q178 112 191 103" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+      <path class="px-joy" d="M109 106 Q122 92 135 106" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+      <path class="px-joy" d="M165 106 Q178 92 191 106" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
     </svg>`;
-  const SVG = `<img src="${BASE}pixel-full.png" alt="" width="300" height="276">`;
+  const SVG = `<span class="dp-robot">${ARM_L}${ARM_R}${BODY}</span>`;
 
   const LOCAL = [
     { k: ['מחיר', 'עולה', 'עלות', 'כמה זה', 'תקציב'], a: 'המחיר נקבע לפי סוג האתר וההיקף שלו, ולכן אין מחיר אחיד. אחרי שיחה קצרה תקבלו הצעת מחיר מסודרת וסופית, בלי התחייבות. הכי מהיר: וואטסאפ או 055-6658131.' },
@@ -54,7 +84,7 @@
   bot.className = 'pixel';
   bot.setAttribute('aria-label', 'פיקסל, העוזר של האתר: פתיחת צ\'אט שאלות ותשובות');
   bot.setAttribute('aria-expanded', 'false');
-  bot.innerHTML = `<span class="px-rig"><span class="px-glow"></span><img class="px-img px-arm-l" src="${BASE}pixel-arm-l.png" alt="" draggable="false"><img class="px-img px-arm-r" src="${BASE}pixel-arm-r.png" alt="" draggable="false"><img class="px-img px-body-img" src="${BASE}pixel-body.png" alt="" draggable="false">${LIDS}</span><span class="px-shadow"></span><span class="px-bubble" hidden></span>`;
+  bot.innerHTML = `<span class="px-rig"><span class="px-glow"></span>${ARM_L}${ARM_R}${BODY}${LIDS}</span><span class="px-shadow"></span><span class="px-bubble" hidden></span>`;
 
   const panel = document.createElement('div');
   panel.className = 'dani-panel';
@@ -84,7 +114,7 @@
 
   const $ = (sel) => bot.querySelector(sel);
   const rig = $('.px-rig'), shadow = $('.px-shadow'), bubble = $('.px-bubble');
-  const glowEl = $('.px-glow'), faceImg = $('.px-body-img'), lidsSvg = $('.px-lids');
+  const glowEl = $('.px-glow'), faceImg = $('.px-body-img'), lidsSvg = $('.px-lids'), smileEl = $('.px-smile');
   const armL = $('.px-arm-l'), armR = $('.px-arm-r');
   const lids = bot.querySelectorAll('.px-lid'), lashes = bot.querySelectorAll('.px-lash'), joys = bot.querySelectorAll('.px-joy'), blush = $('.px-blush');
 
@@ -362,6 +392,8 @@
     }
 
     if (moodUntil && now > moodUntil) { mood = 'smile'; moodUntil = 0; }
+    const sm = mood === 'think' ? 'M138 127 Q150 129 162 127' : (joyful || mood === 'happy' || !panel.hidden) ? 'M130 121 Q150 145 170 121' : 'M134 124 Q150 139 166 124';
+    if (smileEl.getAttribute('d') !== sm) smileEl.setAttribute('d', sm);
 
     /* compose: position, then a rig with facing, bank, squash and a click spin */
     tiltHead = lerp(tiltHead, pointerNear ? clamp(lookX * 6, -10, 10) : 0, 0.1 * dt);
@@ -408,14 +440,6 @@
   if (motionOff()) restingPose();
   requestAnimationFrame(frame);
 
-  /* one short greeting per visit */
-  if (!store.get('pixel-hello')) {
-    setTimeout(() => {
-      if (!panel.hidden) return;
-      bubble.textContent = 'היי! אני פיקסל 😊 אפשר לשאול אותי כל דבר על אתרים';
-      bubble.hidden = false; delight(2);
-      store.set('pixel-hello', '1');
-      setTimeout(() => { bubble.hidden = true; }, 5500);
-    }, 6000);
-  }
+  /* no floating greeting: he just waves when the page opens */
+  setTimeout(() => { if (panel.hidden) delight(1); }, 2500);
 })();

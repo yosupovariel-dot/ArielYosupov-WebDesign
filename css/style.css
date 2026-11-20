@@ -1107,3 +1107,14 @@ html.menu-open .subnav{ visibility:hidden; }
   #why{ background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("../assets/visuals/bg-wireframe.jpg") center / cover no-repeat, #fff; }
 }
 #faq{ background: linear-gradient(rgba(243,245,248,.91), rgba(243,245,248,.94)), url("../assets/visuals/bg-code.jpg") center / cover no-repeat, var(--oat); }
+
+/* Pixel redrawn in the site colours */
+.px-arm-r{ transform-origin:64% 69.6%; }
+.px-arm-l{ transform-origin:36% 69.6%; }
+.px-img{ overflow:visible; }
+.px-glow{ top:91%; width:36%; height:13%; background:radial-gradient(closest-side, rgba(220,234,255,.95), rgba(31,95,209,.45) 50%, rgba(31,95,209,0)); }
+.px-rig{ filter:drop-shadow(0 8px 10px rgba(20,33,61,.22)); }
+.dp-robot{ position:relative; display:block; width:100%; height:100%; }
+.dp-robot .px-img{ position:absolute; inset:0; width:100%; height:100%; }
+.px-bubble{ display:none !important; }
+.px-lash{ opacity:0; }
