@@ -208,10 +208,15 @@
 
   function bounds() {
     const small = window.innerWidth < 700;
-    return { minX: 6, maxX: window.innerWidth - W() - 6, minY: 96, maxY: window.innerHeight - H() - (small ? 70 : 24) };
+    // on phones he peeks in from the screen edge so he covers as little text as possible
+    return { minX: small ? -W() * 0.32 : 4, maxX: window.innerWidth - W() * (small ? 0.68 : 1) - (small ? 0 : 4), minY: small ? 80 : 96, maxY: window.innerHeight - H() - (small ? 126 : 24) };
   }
   function flightGoal() {
     const b = bounds();
+    if (isPhone()) {   // hug the left or right edge, lower half of the screen
+      const left = Math.random() < 0.5;
+      return { x: left ? b.minX + Math.random() * 8 : b.maxX - Math.random() * 8, y: lerp(b.minY + (b.maxY - b.minY) * 0.45, b.maxY - 60, Math.random()) };
+    }
     const r = Math.random();
     if (r < 0.35) return { x: lerp(b.minX, b.minX + 60, Math.random()), y: lerp(b.minY, b.maxY, Math.random()) };
     if (r < 0.7) return { x: lerp(b.maxX - 60, b.maxX, Math.random()), y: lerp(b.minY, b.maxY, Math.random()) };
@@ -236,8 +241,9 @@
     const r = perchEl.getBoundingClientRect();
     return { x: r.left + perchDx, y: r.top - H() + 8 };
   }
+  const isPhone = () => window.innerWidth < 700;
   function nextMove(now) {
-    if (Math.random() < 0.55) {
+    if (!isPhone() && Math.random() < 0.55) {
       const p = findPerch();
       if (p) { perchEl = p.el; perchDx = p.dx; mode = 'fly'; goal = perchPoint(); return; }
     }

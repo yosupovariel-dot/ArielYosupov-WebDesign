@@ -800,3 +800,118 @@ h1, h2, .statement, .sub-title, .faq-item summary, .o-body h3, .p-info h3, .card
   20%{ opacity:1; transform:translate(-50%, -6px) scale(1.1); }
   100%{ opacity:0; transform:translate(calc(-50% + var(--dx)), -64px) scale(.9) rotate(12deg); }
 }
+
+/* =========================================================
+   Phone layout (max 700px): centred headings and actions,
+   full-width buttons, tighter rhythm, swipeable media rows.
+   ========================================================= */
+@media (max-width:700px){
+  body{ font-size:16px; }
+  .container{ padding:0 20px; }
+  .block{ padding:56px 0; }
+  section:not(.block):not(.hero){ padding:52px 20px; }
+
+  /* hero */
+  .hero{ padding:36px 0 44px; text-align:center; }
+  .hero-split{ gap:30px; }
+  .hero .kicker{ justify-content:center; font-size:14px; margin-bottom:12px; }
+  .hero .hero-title{ font-size:clamp(32px, 9vw, 40px); margin-bottom:16px; }
+  .hero .hero-lead{ font-size:17px; margin:0 auto 24px; }
+  .hero .hero-actions{ flex-direction:column; align-items:stretch; gap:14px; }
+  .hero .hero-actions .btn{ width:100%; padding:15px; font-size:17px; }
+  .hero .hero-actions .btn-link{ align-self:center; }
+  .hero-note{ font-size:14px; line-height:1.8; max-width:22em; margin:18px auto 0; }
+  .hero-stage .sc-slides{ aspect-ratio:16/11; }
+  .sc-foot{ flex-direction:column; gap:10px; }
+  .sc-name{ font-size:15px; }
+
+  /* chapter headings */
+  .chapter{ justify-content:center; }
+  .statement, .statement.narrow{ margin-inline:auto; text-align:center; font-size:clamp(25px, 7vw, 30px); margin-bottom:22px; }
+  .lead{ text-align:center; font-size:17px; margin-inline:auto; }
+  .sub-title{ text-align:center; font-size:22px; }
+  .section-head, .title{ text-align:center; margin-inline:auto; margin-bottom:32px; }
+  .section-head h2, .title h2{ font-size:clamp(28px, 8vw, 34px); }
+  .section-text{ font-size:17px; }
+  .eyebrow{ text-align:center; }
+
+  /* why */
+  .why-row{ gap:28px; }
+  .beliefs{ margin-top:26px; }
+  .beliefs li{ text-align:center; padding:16px 0; }
+  .media-portrait{ aspect-ratio:4/3; }
+
+  /* how */
+  .principles{ gap:12px; margin-bottom:36px; }
+  .principles article, .principles article + article{ text-align:center; padding:20px 18px; border-top:1px solid var(--line); }
+  .process-wrap{ padding:26px 14px 30px; }
+  .howto{ margin-bottom:20px; }
+  .h-num{ width:38px; height:38px; font-size:15px; }
+  .howto::before{ top:19px; }
+  .howto b{ font-size:12.5px; line-height:1.3; }
+  .hp h3{ font-size:20px; }
+  .hp h3 small{ display:inline-block; margin:6px 0 0; }
+  .media-short{ aspect-ratio:16/10; margin-top:36px; }
+
+  /* what */
+  .offers{ gap:18px; }
+  .o-body{ text-align:center; align-items:center; padding:20px 18px 24px; }
+  .o-body .btn-link{ align-self:center; }
+  .proof{ margin-top:64px; }
+  .proof-head{ flex-direction:column; align-items:center; gap:6px; margin-bottom:18px; }
+  .p-info{ text-align:center; }
+  .media-intro{ margin-top:48px; aspect-ratio:16/10; }
+  .voices{ margin-top:64px; }
+  /* testimonial videos: one swipeable row instead of three tall boxes */
+  .voices .row-3{ display:flex; grid-template-columns:none; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 -20px; padding:0 20px 8px; scrollbar-width:none; }
+  .voices .row-3::-webkit-scrollbar{ display:none; }
+  .voices .media-slot{ flex:0 0 72%; scroll-snap-align:center; aspect-ratio:3/4; }
+
+  /* faq */
+  .faq-item summary{ font-size:17px; padding:18px 0; }
+
+  /* contact */
+  .contact-row{ gap:28px; }
+  .contact-copy{ text-align:center; }
+  .next-steps{ display:inline-grid; text-align:start; margin:20px auto; }
+  .cc-row{ padding:14px; gap:12px; }
+  .cc-row b{ font-size:16px; }
+  .cc-icon{ width:40px; height:40px; }
+
+  /* inner pages */
+  .svc{ grid-template-columns:1fr; justify-items:center; text-align:center; gap:8px; padding:24px 0; }
+  .svc p, .svc-time{ grid-column:auto; justify-self:center; }
+  .svc-icon{ align-self:auto; }
+  .card{ text-align:center; padding:24px 20px; }
+  .card-icon{ display:flex; justify-content:center; }
+  .about-body{ text-align:center; font-size:17px; }
+  .step, .step + .step{ text-align:center; padding:22px 0; }
+  .contact-inner{ align-items:center; }
+  .whatsapp-cta{ width:100%; justify-content:center; padding:15px; }
+  .direct-contact{ justify-content:center; }
+  .cta-band-row{ flex-direction:column; text-align:center; }
+  .cta-band .statement{ font-size:26px; }
+  .cta-band .btn{ width:100%; }
+  .blog-card{ padding:22px; }
+  .article-page .section-head{ text-align:center; }
+  .legal-body p{ font-size:17px; }
+  .legal-body h3{ font-size:21px; }
+
+  /* footer */
+  .footer-cols{ text-align:center; gap:28px; padding-top:48px; padding-bottom:36px; }
+  .copyright-row{ flex-direction:column; align-items:center; text-align:center; gap:6px; }
+
+  /* Pixel: smaller on phones and kept to the edges */
+  .pixel{ width:70px; height:64px; }
+  .px-bubble{ font-size:12.5px; padding:7px 11px; }
+  .dani-panel{ bottom:64px; }
+}
+@media (max-width:380px){
+  .hero .hero-title{ font-size:30px; }
+  .howto b{ font-size:11.5px; }
+}
+@media (max-width:700px){
+  .a11y-toggle{ left:auto; right:14px; bottom:68px; width:44px; height:44px; }
+  .a11y-panel{ left:auto; right:14px; bottom:120px; }
+  .to-top{ right:14px; bottom:120px; width:40px; height:40px; }
+}
