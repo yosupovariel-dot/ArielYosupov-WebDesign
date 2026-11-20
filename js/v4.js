@@ -96,3 +96,17 @@
     setTimeout(() => cur.classList.remove('is-out'), 650);
   }, 2600);
 })();
+
+/* progress line under the why/how/what bar */
+(function subnavFill() {
+  const fill = document.getElementById('subnavFill');
+  if (!fill) return;
+  let raf = 0;
+  const set = () => {
+    raf = 0;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    fill.style.transform = `scaleX(${Math.min(scrollY / Math.max(max, 1), 1).toFixed(4)})`;
+  };
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(set); }, { passive: true });
+  set();
+})();

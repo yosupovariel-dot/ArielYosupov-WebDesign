@@ -1059,3 +1059,51 @@ h1, h2, .statement, .sub-title, .faq-item summary, .o-body h3, .p-info h3, .card
     url("../assets/visuals/hero-bg.jpg") center / cover no-repeat; }
 }
 .a11y-toggle{ box-shadow:0 0 0 2px rgba(255,255,255,.85), 0 6px 16px -6px rgba(0,0,0,.45); }
+
+/* =========================================================
+   Small "why / how / what / start" bar under the header
+   ========================================================= */
+.subnav{ position:sticky; top:72px; z-index:480; background:rgba(255,255,255,.94); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+.subnav-row{ display:flex; justify-content:center; gap:6px; padding-top:7px; padding-bottom:7px; }
+.subnav a{ display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border-radius:999px; font-size:15px; font-weight:500; color:var(--ink-3); transition:background .25s, color .25s; }
+.subnav a b{ width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; border:1px solid var(--line); color:var(--ink-3); background:#fff; transition:all .25s; }
+.subnav a:hover{ color:var(--ink); background:var(--oat); }
+.subnav a.is-done{ color:var(--ink-2); }
+.subnav a.is-done b{ background:var(--ink); border-color:var(--ink); color:#fff; }
+.subnav a.is-current{ color:var(--clay); background:#EAF1FF; }
+.subnav a.is-current b{ background:var(--clay); border-color:var(--clay); color:#fff; }
+.subnav-fill{ position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--clay); transform:scaleX(0); transform-origin:right; }
+#why, #how, #what, #faq, #contact, #work{ scroll-margin-top:130px; }
+@media (max-width:700px){
+  .subnav-row{ gap:2px; padding:6px 8px; justify-content:space-between; }
+  .subnav a{ padding:6px 8px; font-size:13.5px; gap:5px; }
+  .subnav a b{ width:20px; height:20px; font-size:11px; }
+  #why, #how, #what, #faq, #contact, #work{ scroll-margin-top:120px; }
+}
+html.menu-open .subnav{ visibility:hidden; }
+
+/* more backdrops in the same spirit */
+#why{
+  background:
+    linear-gradient(to left, rgba(255,255,255,.95) 0%, rgba(255,255,255,.88) 55%, rgba(255,255,255,.78) 100%),
+    url("../assets/visuals/bg-wireframe.jpg") center / cover no-repeat, #fff;
+}
+#what{
+  background:
+    linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.93)),
+    url("../assets/visuals/bg-devices.jpg") center / cover no-repeat, #fff;
+}
+#faq{
+  background:
+    linear-gradient(rgba(243,245,248,.84), rgba(243,245,248,.9)),
+    url("../assets/visuals/bg-code.jpg") center / cover no-repeat, var(--oat);
+}
+.site-footer{
+  background:
+    linear-gradient(rgba(12,21,40,.9), rgba(12,21,40,.95)),
+    url("../assets/visuals/bg-dark.jpg") center / cover no-repeat, #0F1A31;
+}
+@media (max-width:700px){
+  #why{ background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("../assets/visuals/bg-wireframe.jpg") center / cover no-repeat, #fff; }
+}
+#faq{ background: linear-gradient(rgba(243,245,248,.91), rgba(243,245,248,.94)), url("../assets/visuals/bg-code.jpg") center / cover no-repeat, var(--oat); }
