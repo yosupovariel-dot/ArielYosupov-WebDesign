@@ -1021,3 +1021,41 @@ h1, h2, .statement, .sub-title, .faq-item summary, .o-body h3, .p-info h3, .card
   .nav-links .nav-mobile-cta a.nm-call{ background:var(--ink); color:#fff; }
   .nav-links .nav-mobile-cta a.nm-btn::after{ content:none; }
 }
+
+/* =========================================================
+   Same backdrop idea through the site: soft walls of our own
+   client work, faded so text stays easy to read.
+   ========================================================= */
+/* "How" chapter: light variant */
+#how{
+  background:
+    linear-gradient(rgba(238,243,250,.9), rgba(238,243,250,.9)),
+    url("../assets/visuals/bg-light-2.jpg") center / cover no-repeat,
+    var(--oat);
+}
+/* "Start" chapter and the closing band on inner pages: dark variant */
+.block-dark, .cta-band{
+  background:
+    linear-gradient(rgba(16,27,50,.78), rgba(16,27,50,.86)),
+    url("../assets/visuals/bg-dark.jpg") center / cover no-repeat,
+    var(--night);
+}
+/* first section of inner pages (services, about, process, projects, contact, blog):
+   the same light wall as the home page, spread to the full width */
+.nav + section:not(.hero){ position:relative; isolation:isolate; }
+.nav + section:not(.hero)::before{
+  content:''; position:absolute; z-index:-1; top:0; bottom:0; left:50%; width:100vw; transform:translateX(-50%);
+  background:
+    linear-gradient(to left, rgba(244,248,253,.96) 0%, rgba(244,248,253,.9) 50%, rgba(244,248,253,.75) 100%),
+    url("../assets/visuals/hero-bg.jpg") center / cover no-repeat;
+  border-bottom:1px solid var(--line);
+}
+@media (max-width:700px){
+  #how{ background:
+    linear-gradient(rgba(238,243,250,.92), rgba(238,243,250,.92)),
+    url("../assets/visuals/bg-light-2.jpg") center / cover no-repeat, var(--oat); }
+  .nav + section:not(.hero)::before{ background:
+    linear-gradient(rgba(244,248,253,.9), rgba(244,248,253,.86)),
+    url("../assets/visuals/hero-bg.jpg") center / cover no-repeat; }
+}
+.a11y-toggle{ box-shadow:0 0 0 2px rgba(255,255,255,.85), 0 6px 16px -6px rgba(0,0,0,.45); }
