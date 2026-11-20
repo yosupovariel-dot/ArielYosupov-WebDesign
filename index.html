@@ -83,20 +83,49 @@
 </script>
 
 <section class="hero" id="home">
-  <div class="container">
-    <p class="kicker">DA Web Design · סטודיו לבניית אתרים לעסקים</p>
-    <h1 class="hero-title">עסק טוב צריך שיגיעו אליו <em>לקוחות.</em></h1>
-    <div class="hero-row">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <p class="kicker"><span class="live-dot"></span>DA Web Design · סטודיו לבניית אתרים לעסקים</p>
+      <h1 class="hero-title">אתרים שמביאים לעסק שלכם <span class="rotator" id="rotator" aria-live="polite"><span class="rot-word is-on">לקוחות.</span><span class="rot-word">פניות.</span><span class="rot-word">מכירות.</span><span class="rot-word">אמון.</span></span></h1>
       <p class="hero-lead">אנחנו מאמינים שכל עסק שעובד קשה ראוי לאתר שעובד קשה בשבילו: מביא פניות, בונה אמון ומוכר, גם כשאתם לא ליד הטלפון.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-clay">ספרו לנו על העסק</a>
-        <a href="#how" class="btn-link">איך אנחנו עושים את זה ←</a>
+        <a href="#work" class="btn btn-ghost-light">ראו אתרים שבנינו</a>
       </div>
+      <ul class="hero-chips">
+        <li><b>יומיים</b><span>דף נחיתה</span></li>
+        <li><b>שבוע</b><span>אתר תדמית</span></li>
+        <li><b>שבועיים</b><span>חנות אונליין</span></li>
+      </ul>
     </div>
-    <figure class="media-slot media-wide" data-slot="hero-video" data-file="assets/media/hero.mp4">
-      <span class="ms-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor"/></svg></span>
-      <figcaption><b>סרטון היכרות</b><span>כ-60 שניות: מי אנחנו ולמה אנחנו עושים את זה</span></figcaption>
-    </figure>
+    <div class="hero-stage">
+      <div class="showcase" id="showcase">
+        <div class="sc-window">
+          <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl" dir="ltr">levmeirisrael.com</span></div>
+          <div class="sc-slides">
+          <a class="sc-slide is-on" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer" data-url="eduardyonim.com" data-name="אדוארד הרחקת יונים"><img src="/assets/portfolio/eduardyonim.jpg" alt="אדוארד הרחקת יונים: eduardyonim.com"></a>
+          <a class="sc-slide" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer" data-url="levmeirisrael.com" data-name="הרב מאיר אליהו שליט״א"><img src="/assets/portfolio/levmeirisrael.jpg" alt="הרב מאיר אליהו שליט״א: levmeirisrael.com"></a>
+          <a class="sc-slide" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer" data-url="keterjudah.com" data-name="תשמישי קדושה"><img src="/assets/portfolio/keterjudah.jpg" alt="תשמישי קדושה: keterjudah.com"></a>
+          <a class="sc-slide" href="https://cyberlabsdpo.com" target="_blank" rel="noopener noreferrer" data-url="cyberlabsdpo.com" data-name="סייברלאבס"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="סייברלאבס: cyberlabsdpo.com"></a>
+          <a class="sc-slide" href="https://techno-tech.co.il" target="_blank" rel="noopener noreferrer" data-url="techno-tech.co.il" data-name="טכנו תשתיות גז"><img src="/assets/portfolio/techno-tech.jpg" alt="טכנו תשתיות גז: techno-tech.co.il"></a>
+          </div>
+        </div>
+        <div class="sc-foot">
+          <p class="sc-name" id="scName">הרב מאיר אליהו שליט״א</p>
+          <div class="sc-dots" id="scDots">
+          <button type="button" class="sc-dot is-on" aria-label="אדוארד הרחקת יונים"></button>
+          <button type="button" class="sc-dot" aria-label="הרב מאיר אליהו שליט״א"></button>
+          <button type="button" class="sc-dot" aria-label="תשמישי קדושה"></button>
+          <button type="button" class="sc-dot" aria-label="סייברלאבס"></button>
+          <button type="button" class="sc-dot" aria-label="טכנו תשתיות גז"></button>
+          </div>
+        </div>
+      </div>
+      <div class="float-card fc-1" aria-hidden="true"><span class="fc-dot"></span><b>פנייה חדשה מהאתר</b><small>"אשמח להצעת מחיר"</small></div>
+      <div class="float-card fc-2" aria-hidden="true"><b>✓ מותאם לנייד</b></div>
+      <div class="float-card fc-3" aria-hidden="true"><b>⚡ נטען מהר</b></div>
+    </div>
   </div>
 </section>
 
@@ -200,31 +229,37 @@
     <div class="proof" id="work">
       <div class="proof-head">
         <h3 class="sub-title">אתרים שבנינו, באוויר עכשיו</h3>
-        <p>לחצו על המסך כדי לפתוח את האתר.</p>
+        <a href="/portfolio.html" class="btn-link">לכל הפרויקטים ←</a>
       </div>
-      <div class="showcase" id="showcase">
-        <div class="sc-window">
-          <div class="sc-bar"><i></i><i></i><i></i><span class="sc-url" id="scUrl" dir="ltr">levmeirisrael.com</span></div>
-          <div class="sc-slides">
-          <a class="sc-slide is-on" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer" data-url="eduardyonim.com" data-name="אדוארד הרחקת יונים"><img src="/assets/portfolio/eduardyonim.jpg" alt="אדוארד הרחקת יונים: eduardyonim.com"></a>
-          <a class="sc-slide" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer" data-url="levmeirisrael.com" data-name="הרב מאיר אליהו שליט״א"><img src="/assets/portfolio/levmeirisrael.jpg" alt="הרב מאיר אליהו שליט״א: levmeirisrael.com"></a>
-          <a class="sc-slide" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer" data-url="keterjudah.com" data-name="תשמישי קדושה"><img src="/assets/portfolio/keterjudah.jpg" alt="תשמישי קדושה: keterjudah.com"></a>
-          <a class="sc-slide" href="https://cyberlabsdpo.com" target="_blank" rel="noopener noreferrer" data-url="cyberlabsdpo.com" data-name="סייברלאבס"><img src="/assets/portfolio/cyberlabsdpo.jpg" alt="סייברלאבס: cyberlabsdpo.com"></a>
-          <a class="sc-slide" href="https://techno-tech.co.il" target="_blank" rel="noopener noreferrer" data-url="techno-tech.co.il" data-name="טכנו תשתיות גז"><img src="/assets/portfolio/techno-tech.jpg" alt="טכנו תשתיות גז: techno-tech.co.il"></a>
-          </div>
+      <div class="cards portfolio-cards">
+      <a class="p-card" href="https://eduardyonim.com" target="_blank" rel="noopener noreferrer">
+        <div class="p-thumb"><img src="/assets/portfolio/eduardyonim.jpg" alt="תצוגה מקדימה של eduardyonim.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-info">
+          <h3>אדוארד הרחקת יונים</h3>
+          <p>אתר שירותים לעסק להרחקת יונים</p>
         </div>
-        <div class="sc-foot">
-          <p class="sc-name" id="scName">הרב מאיר אליהו שליט״א</p>
-          <div class="sc-dots" id="scDots">
-          <button type="button" class="sc-dot is-on" aria-label="אדוארד הרחקת יונים"></button>
-          <button type="button" class="sc-dot" aria-label="הרב מאיר אליהו שליט״א"></button>
-          <button type="button" class="sc-dot" aria-label="תשמישי קדושה"></button>
-          <button type="button" class="sc-dot" aria-label="סייברלאבס"></button>
-          <button type="button" class="sc-dot" aria-label="טכנו תשתיות גז"></button>
-          </div>
+      </a>
+      <a class="p-card" href="https://levmeirisrael.com" target="_blank" rel="noopener noreferrer">
+        <div class="p-thumb"><img src="/assets/portfolio/levmeirisrael.jpg" alt="תצוגה מקדימה של levmeirisrael.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-info">
+          <h3>הרב מאיר אליהו שליט״א</h3>
+          <p>אתר תדמית לדמות ציבורית ותורנית</p>
         </div>
+      </a>
+      <a class="p-card" href="https://keterjudah.com" target="_blank" rel="noopener noreferrer">
+        <div class="p-thumb"><img src="/assets/portfolio/keterjudah.jpg" alt="תצוגה מקדימה של keterjudah.com"><span class="p-overlay"><span>צפייה באתר</span></span></div>
+        <div class="p-info">
+          <h3>תשמישי קדושה</h3>
+          <p>חנות אונליין עם קופה ומשלוחים</p>
+        </div>
+      </a>
       </div>
     </div>
+
+    <figure class="media-slot media-wide media-intro" data-slot="hero-video" data-file="assets/media/hero.mp4">
+      <span class="ms-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10.5" stroke="currentColor" stroke-width="1.4"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor"/></svg></span>
+      <figcaption><b>סרטון היכרות</b><span>כ-60 שניות: מי אנחנו ולמה אנחנו עושים את זה</span></figcaption>
+    </figure>
 
     <div class="voices">
       <h3 class="sub-title">מה הלקוחות שלנו אומרים</h3>

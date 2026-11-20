@@ -73,3 +73,26 @@
   }
   window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(check); }, { passive: true });
 })();
+
+/* rotating word in the headline */
+(function rotator() {
+  const root = document.getElementById('rotator');
+  if (!root) return;
+  const words = Array.from(root.querySelectorAll('.rot-word'));
+  const off = () => matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    document.documentElement.classList.contains('a11y-motion');
+  // size the slot to the widest word so the line never jumps
+  const fit = () => { root.style.width = Math.max(...words.map(w => w.scrollWidth)) + 'px'; };
+  fit(); window.addEventListener('resize', fit);
+  document.fonts && document.fonts.ready.then(fit);
+  let i = 0;
+  setInterval(() => {
+    if (off() || document.hidden) return;
+    const cur = words[i];
+    i = (i + 1) % words.length;
+    const next = words[i];
+    cur.classList.remove('is-on'); cur.classList.add('is-out');
+    next.classList.remove('is-out'); next.classList.add('is-on');
+    setTimeout(() => cur.classList.remove('is-out'), 650);
+  }, 2600);
+})();
