@@ -70,13 +70,17 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 /* ---------- mobile nav ---------- */
 const burger = document.getElementById('burger');
 const navLinks = document.querySelector('.nav-links');
-burger?.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+function setMenu(open) {
+  if (!navLinks || !burger) return;
+  navLinks.classList.toggle('open', open);
   burger.setAttribute('aria-expanded', String(open));
-});
-navLinks?.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+  burger.setAttribute('aria-label', open ? 'סגירת תפריט' : 'פתיחת תפריט');
+  document.documentElement.classList.toggle('menu-open', open);
+}
+burger?.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+window.addEventListener('resize', () => { if (window.innerWidth > 1000) setMenu(false); });
 
 /* ---------- portfolio screens follow the pointer in 3D ---------- */
 (function screenTilt() {

@@ -915,3 +915,109 @@ h1, h2, .statement, .sub-title, .faq-item summary, .o-body h3, .p-info h3, .card
   .a11y-panel{ left:auto; right:14px; bottom:120px; }
   .to-top{ right:14px; bottom:120px; width:40px; height:40px; }
 }
+
+/* =========================================================
+   Hero background: a soft, blurred wall of our own client sites,
+   faded strongly behind the text so it stays easy to read.
+   ========================================================= */
+.hero{
+  background:
+    linear-gradient(to left, rgba(244,248,253,.97) 0%, rgba(244,248,253,.9) 42%, rgba(244,248,253,.6) 100%),
+    url("../assets/visuals/hero-bg.jpg") center / cover no-repeat,
+    #EEF3FA;
+  border-bottom:1px solid var(--line);
+}
+.hero-stage .sc-window{ box-shadow:0 30px 60px -28px rgba(20,33,61,.45); }
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(rgba(244,248,253,.93), rgba(244,248,253,.88)),
+    url("../assets/visuals/hero-bg.jpg") center / cover no-repeat, #EEF3FA; }
+}
+
+/* =========================================================
+   Mobile menu: full-height sheet under the header, large links,
+   animated burger, contact actions at the bottom.
+   ========================================================= */
+.nav-mobile-cta{ display:none; }
+.burger span{ transition:transform .3s cubic-bezier(.2,.7,.2,1), opacity .2s; transform-origin:center; }
+@media (max-width:1000px){
+  .nav{ z-index:700; }
+  .burger{ position:relative; width:44px; height:44px; padding:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; border-radius:10px; }
+  .burger span{ width:20px; height:2px; margin:0; border-radius:2px; }
+  .burger[aria-expanded="true"]{ background:var(--ink); border-color:var(--ink); }
+  .burger[aria-expanded="true"] span{ background:#fff; }
+  .burger[aria-expanded="true"] span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .burger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  .nav-links{
+    display:flex !important; position:fixed; top:72px; left:0; right:0; bottom:0;
+    flex-direction:column; gap:0; margin:0; padding:12px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+    background:#fff; border-top:1px solid var(--line); overflow-y:auto;
+    opacity:0; visibility:hidden; transform:translateY(-12px);
+    transition:opacity .25s ease, transform .3s cubic-bezier(.2,.7,.2,1), visibility .3s;
+  }
+  .nav-links.open{ opacity:1; visibility:visible; transform:none; }
+  .nav-links li{ list-style:none; opacity:0; transform:translateY(8px); transition:opacity .3s, transform .35s cubic-bezier(.2,.7,.2,1); }
+  .nav-links.open li{ opacity:1; transform:none; }
+  .nav-links.open li:nth-child(1){ transition-delay:.04s; } .nav-links.open li:nth-child(2){ transition-delay:.08s; }
+  .nav-links.open li:nth-child(3){ transition-delay:.12s; } .nav-links.open li:nth-child(4){ transition-delay:.16s; }
+  .nav-links.open li:nth-child(5){ transition-delay:.2s; } .nav-links.open li:nth-child(6){ transition-delay:.24s; }
+  .nav-links.open li:nth-child(7){ transition-delay:.28s; } .nav-links.open li:nth-child(8){ transition-delay:.32s; }
+  .nav-links a{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 6px; font-size:20px; font-weight:500; color:var(--ink);
+    border-bottom:1px solid var(--line); border-radius:0; background:none;
+  }
+  .nav-links a::after{ content:'‹'; font-size:22px; color:var(--ink-3); transition:transform .2s; }
+  .nav-links a:hover{ background:none; }
+  .nav-links a:active::after{ transform:translateX(-4px); }
+  .nav-links a.active{ color:var(--clay); box-shadow:none; }
+  .nav-links a.active::after{ color:var(--clay); }
+  .nav-mobile-cta{ display:grid; gap:10px; margin-top:auto; padding-top:24px; }
+  .nav-mobile-cta p{ margin:0 0 4px; text-align:center; color:var(--ink-3); font-size:15px; }
+  .nav-mobile-cta .nm-btn{ display:flex; align-items:center; justify-content:center; gap:10px; padding:15px; border-radius:10px; font-size:17px; font-weight:500; border:none; }
+  .nav-mobile-cta .nm-btn::after{ content:none; }
+  .nm-wa{ background:#25D366; color:#fff !important; }
+  .nm-wa svg{ width:22px; height:22px; }
+  .nm-call{ background:var(--ink); color:#fff !important; }
+  .nm-call span:first-child{ order:2; opacity:.8; }
+  html.menu-open, html.menu-open body{ overflow:hidden; }
+  html.menu-open .pixel, html.menu-open .mobile-cta, html.menu-open .a11y-toggle, html.menu-open .to-top, html.menu-open .whatsapp-float{ opacity:0; pointer-events:none; }
+}
+@media (max-width:700px){ .nav-links{ top:72px; } }
+@media (max-width:1000px){
+  .nav-links{ padding-top:4px; }
+  .nav-links a{ padding:12px 6px; font-size:18px; }
+  .nav-links a::after{ content:'›'; }
+  .nav-mobile-cta{ padding-top:18px; gap:8px; }
+  .nav-mobile-cta .nm-btn{ padding:13px; font-size:16px; }
+  .hero{ background:
+    linear-gradient(rgba(244,248,253,.88), rgba(244,248,253,.82)),
+    url("../assets/visuals/hero-bg.jpg") center / cover no-repeat, #EEF3FA; }
+}
+@media (max-height:620px) and (max-width:1000px){
+  .nav-links a{ padding:9px 6px; font-size:17px; }
+  .nav-mobile-cta p{ display:none; }
+}
+@media (max-width:1000px){
+  .nav-links{ padding-bottom:calc(14px + env(safe-area-inset-bottom, 0px)); }
+  .nav-links a{ padding:10px 6px; font-size:17.5px; }
+  .nav-mobile-cta{ padding-top:14px; }
+  .nav-mobile-cta p{ font-size:14px; margin:0; }
+  .nav-mobile-cta .nm-btn{ padding:12px; }
+}
+@media (max-height:620px) and (max-width:1000px){
+  .nav-links a{ padding:8px 6px; font-size:16.5px; }
+  .nav-mobile-cta{ padding-top:10px; }
+}
+@media (max-height:620px) and (max-width:1000px){
+  .nav-links a{ padding:7px 6px; }
+  .nav-mobile-cta .nm-btn{ padding:11px; }
+}
+@media (max-width:1000px){
+  .nav-links .nav-mobile-cta a.nm-btn{ justify-content:center; border-bottom:none; border-radius:10px; font-size:16px; }
+  .nav-links .nav-mobile-cta a.nm-wa{ background:#25D366; color:#fff; }
+  .nav-links .nav-mobile-cta a.nm-call{ background:var(--ink); color:#fff; }
+  .nav-links .nav-mobile-cta a.nm-btn::after{ content:none; }
+}
