@@ -1211,3 +1211,21 @@ html.menu-open .subnav{ visibility:hidden; }
 @media (min-width:1001px){
   .hero{ background:url("../assets/visuals/hero-studio.jpg") center / cover no-repeat, #F1F4F8; }
 }
+
+/* Hero: the wall of our work again, refined (3D perspective, depth of field, calm tones) */
+.hero{
+  background:
+    linear-gradient(to left, rgba(245,248,252,.97) 0%, rgba(245,248,252,.9) 38%, rgba(245,248,252,.35) 72%, rgba(245,248,252,.15) 100%),
+    url("../assets/visuals/hero-wall.jpg") left center / cover no-repeat, #EEF2F7;
+}
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(rgba(245,248,252,.94) 0%, rgba(245,248,252,.86) 45%, rgba(245,248,252,.3) 80%),
+    url("../assets/visuals/hero-wall-m.jpg") center bottom / cover no-repeat, #EEF2F7; }
+}
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(rgba(245,248,252,.8) 0%, rgba(245,248,252,.62) 45%, rgba(245,248,252,.2) 85%),
+    url("../assets/visuals/hero-wall-m.jpg") center / cover no-repeat, #EEF2F7; }
+  .hero .hero-lead{ color:var(--ink); }
+}
