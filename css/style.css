@@ -1267,3 +1267,57 @@ html.menu-open .subnav{ visibility:hidden; }
   .hero-copy::before{ inset-inline:20px; }
   .hero .hero-lead{ opacity:.85; }
 }
+
+/* =========================================================
+   Hero, editorial night: tonal navy print of our work, white
+   serif statement, one gold action, quiet proof under it.
+   No panels, no glows.
+   ========================================================= */
+.hero{
+  background:
+    linear-gradient(to left, rgba(9,15,29,.94) 0%, rgba(9,15,29,.82) 45%, rgba(9,15,29,.55) 100%),
+    url("../assets/visuals/hero-night.jpg") left center / cover no-repeat, #0B1222;
+  color:#E9EDF4; padding:96px 0 104px; border-bottom:none;
+}
+.hero-copy{ padding:0; background:none; border:none; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.hero-copy::before{ content:none; }
+.hero .kicker{ color:#C9A86A; font-size:13px; letter-spacing:.14em; font-weight:500; margin-bottom:26px; }
+.hero .kicker::before{ background:#C9A86A; width:36px; }
+.hero .hero-title{
+  font-family:var(--serif); font-weight:500; color:#fff;
+  font-size:clamp(38px, 4.6vw, 64px); line-height:1.12; letter-spacing:-.01em; margin-bottom:26px;
+}
+.hero .hero-title em{ font-style:normal; color:#D9B978; }
+.hero .hero-lead{ color:#AEB8C8; opacity:1; font-size:18px; line-height:1.8; max-width:30em; margin-bottom:34px; }
+.btn-gold{ background:#D9B978; color:#0B1222; border-radius:2px; padding:15px 30px; font-weight:700; letter-spacing:.01em; transition:background .25s, transform .25s; }
+.btn-gold:hover{ background:#E8CC90; color:#0B1222; transform:translateY(-1px); }
+.hero .hero-actions{ gap:28px; align-items:center; }
+.hero-link{ color:#E9EDF4; font-weight:500; border-bottom:1px solid rgba(233,237,244,.35); padding-bottom:3px; }
+.hero-link:hover{ color:#fff; border-color:#D9B978; }
+.hero-proof{ display:flex; align-items:center; gap:14px; margin-top:40px; color:#AEB8C8; font-size:15px; }
+.hero-proof b{ color:#fff; font-weight:500; }
+.hp-faces{ display:flex; }
+.hp-faces img{ width:38px; height:38px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid #0B1222; box-shadow:0 0 0 1px rgba(217,185,120,.5); }
+.hp-faces img + img{ margin-inline-start:-12px; }
+.hero-note{ color:#7E8AA0; border-top:1px solid rgba(255,255,255,.08); padding-top:16px; margin-top:20px; font-size:14px; }
+.hero-stage .sc-window{ box-shadow:0 50px 90px -40px rgba(0,0,0,.8); border:none; }
+.hero-stage .sc-name{ color:#AEB8C8; }
+.hero-stage .sc-dot{ background:rgba(255,255,255,.22); }
+.hero-stage .sc-dot.is-on{ background:#D9B978; }
+.mark-line{ display:none; }
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(rgba(9,15,29,.9), rgba(9,15,29,.8) 55%, rgba(9,15,29,.6)),
+    url("../assets/visuals/hero-night-m.jpg") center / cover no-repeat, #0B1222;
+    padding:56px 0 60px; }
+}
+@media (max-width:700px){
+  .hero{ padding:44px 0 48px; }
+  .hero .hero-title{ font-size:clamp(30px, 8.6vw, 38px); }
+  .hero .hero-lead{ font-size:16.5px; margin-inline:auto; }
+  .hero .hero-actions{ flex-direction:column; gap:18px; }
+  .btn-gold{ width:100%; padding:16px; font-size:17px; }
+  .hero-proof{ justify-content:center; flex-direction:column; gap:10px; text-align:center; margin-top:30px; }
+  .hero-note{ text-align:center; }
+  .hero .kicker{ justify-content:center; }
+}
