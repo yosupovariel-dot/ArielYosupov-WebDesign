@@ -1229,3 +1229,41 @@ html.menu-open .subnav{ visibility:hidden; }
     url("../assets/visuals/hero-wall-m.jpg") center / cover no-repeat, #EEF2F7; }
   .hero .hero-lead{ color:var(--ink); }
 }
+
+/* =========================================================
+   Hero text on a frosted panel: the wall stays visible all
+   around, the words sit on calm light. Champagne hairline on top.
+   ========================================================= */
+.hero{
+  background:
+    linear-gradient(to left, rgba(245,248,252,.55) 0%, rgba(245,248,252,.35) 50%, rgba(245,248,252,.15) 100%),
+    url("../assets/visuals/hero-wall.jpg") left center / cover no-repeat, #EEF2F7;
+}
+.hero-copy{
+  position:relative;
+  padding:42px 44px 38px;
+  background:rgba(251,252,254,.78);
+  -webkit-backdrop-filter:blur(18px) saturate(1.15); backdrop-filter:blur(18px) saturate(1.15);
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:4px;
+  box-shadow:0 40px 80px -40px rgba(20,33,61,.45), 0 1px 0 rgba(255,255,255,.9) inset;
+}
+.hero-copy::before{
+  content:''; position:absolute; top:-1px; inset-inline:44px; height:2px;
+  background:linear-gradient(90deg, transparent, #C9A25E 20%, #E6CC92 50%, #C9A25E 80%, transparent);
+}
+.hero .kicker{ color:#8A6D3B; }
+.hero .hero-lead{ color:var(--ink); opacity:.82; }
+.hero-note{ color:var(--ink-2); padding-top:18px; border-top:1px solid rgba(20,33,61,.08); }
+.hero .hero-title, .hero .hero-lead, .hero .kicker, .hero-note{ text-shadow:none; }
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(rgba(245,248,252,.35), rgba(245,248,252,.2)),
+    url("../assets/visuals/hero-wall-m.jpg") center / cover no-repeat, #EEF2F7; }
+}
+@media (max-width:700px){
+  .hero{ padding:28px 0 40px; }
+  .hero-copy{ padding:30px 20px 24px; }
+  .hero-copy::before{ inset-inline:20px; }
+  .hero .hero-lead{ opacity:.85; }
+}
