@@ -1172,3 +1172,16 @@ html.menu-open .subnav{ visibility:hidden; }
 }
 @media (max-width:1000px){ .nav-cta{ display:none !important; } }
 @media (max-width:700px){ .bipi-panel{ z-index:720; } }
+
+/* phones: a dedicated portrait backdrop, lighter overlay so the wall of sites shows */
+@media (max-width:700px){
+  .hero{ background:
+    linear-gradient(rgba(244,248,253,.62), rgba(244,248,253,.5) 40%, rgba(244,248,253,.7)),
+    url("../assets/visuals/hero-bg-m.jpg") center top / cover no-repeat, #EEF3FA; }
+  .hero .hero-lead{ text-shadow:0 0 12px rgba(244,248,253,.9), 0 0 2px rgba(244,248,253,.9); color:var(--ink); }
+  .hero .kicker, .hero .hero-title{ text-shadow:0 0 14px rgba(244,248,253,.95); }
+  .nav + section:not(.hero)::before{ background:
+    linear-gradient(rgba(244,248,253,.7), rgba(244,248,253,.62)),
+    url("../assets/visuals/hero-bg-m.jpg") center top / cover no-repeat; }
+}
+@media (max-width:700px){ .hero-note{ color:var(--ink-2); text-shadow:0 0 10px rgba(244,248,253,.95); } }
