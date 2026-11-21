@@ -1185,3 +1185,29 @@ html.menu-open .subnav{ visibility:hidden; }
     url("../assets/visuals/hero-bg-m.jpg") center top / cover no-repeat; }
 }
 @media (max-width:700px){ .hero-note{ color:var(--ink-2); text-shadow:0 0 10px rgba(244,248,253,.95); } }
+
+/* =========================================================
+   Hero, refined: a quiet studio backdrop (soft light, film grain,
+   real devices out of focus) instead of a busy collage.
+   ========================================================= */
+.hero{
+  background:url("../assets/visuals/hero-lux.jpg") center bottom / cover no-repeat, #F1F4F8;
+  border-bottom:none;
+}
+.hero .kicker{ letter-spacing:.08em; font-size:13px; text-transform:none; color:var(--ink-3); }
+.hero .kicker::before{ content:''; display:inline-block; width:28px; height:1px; background:currentColor; vertical-align:middle; margin-inline-end:10px; }
+.hero .hero-title{ letter-spacing:-.02em; }
+.mark-line{ color:#C9A25E; }
+.hero-stage .sc-window{ box-shadow:0 40px 80px -36px rgba(20,33,61,.5), 0 0 0 1px rgba(20,33,61,.06); border:none; }
+@media (max-width:1000px){
+  .hero{ background:url("../assets/visuals/hero-lux-m.jpg") center bottom / cover no-repeat, #F1F4F8; }
+}
+@media (max-width:700px){
+  .hero{ background:url("../assets/visuals/hero-lux-m.jpg") center bottom / cover no-repeat, #F1F4F8; }
+  .hero .hero-lead, .hero .kicker, .hero .hero-title, .hero-note{ text-shadow:none; }
+  .hero .hero-lead{ color:var(--ink-2); }
+  .hero .kicker::before{ display:none; }
+}
+@media (min-width:1001px){
+  .hero{ background:url("../assets/visuals/hero-studio.jpg") center / cover no-repeat, #F1F4F8; }
+}
