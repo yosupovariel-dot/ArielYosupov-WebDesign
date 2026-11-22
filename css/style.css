@@ -1321,3 +1321,37 @@ html.menu-open .subnav{ visibility:hidden; }
   .hero-note{ text-align:center; }
   .hero .kicker{ justify-content:center; }
 }
+
+/* =========================================================
+   Hero, light: the bright 3D wall of our work, fading to clean
+   light on the text side. Navy text, no panel, one strong button.
+   ========================================================= */
+.hero{
+  background:
+    linear-gradient(to left, #F7F9FC 0%, rgba(247,249,252,.97) 34%, rgba(247,249,252,.72) 58%, rgba(247,249,252,.18) 100%),
+    url("../assets/visuals/hero-wall.jpg") left center / cover no-repeat, #F3F6FA;
+  color:var(--ink); padding:88px 0 96px; border-bottom:1px solid var(--line);
+}
+.hero .kicker{ color:#9A7A3E; }
+.hero .kicker::before{ background:#C9A86A; }
+.hero .hero-title{ color:var(--ink); }
+.hero .hero-title em{ color:#B08A45; }
+.hero .hero-lead{ color:#3C4759; }
+.btn-gold{ background:var(--ink); color:#fff; border-radius:3px; }
+.btn-gold:hover{ background:#22325A; color:#fff; }
+.hero-link{ color:var(--ink); border-bottom-color:rgba(20,33,61,.3); }
+.hero-link:hover{ color:var(--ink); border-color:#B08A45; }
+.hero-proof{ color:#4B5568; }
+.hero-proof b{ color:var(--ink); }
+.hp-faces img{ border-color:#fff; box-shadow:0 0 0 1px rgba(176,138,69,.55), 0 4px 10px -4px rgba(20,33,61,.3); }
+.hero-note{ color:#6B7486; border-top-color:rgba(20,33,61,.1); }
+.hero-stage .sc-window{ box-shadow:0 40px 80px -36px rgba(20,33,61,.45), 0 0 0 1px rgba(20,33,61,.06); }
+.hero-stage .sc-name{ color:#4B5568; }
+.hero-stage .sc-dot{ background:#CBD3DE; }
+.hero-stage .sc-dot.is-on{ background:var(--ink); }
+@media (max-width:1000px){
+  .hero{ background:
+    linear-gradient(#F7F9FC 0%, rgba(247,249,252,.96) 52%, rgba(247,249,252,.55) 78%, rgba(247,249,252,.25) 100%),
+    url("../assets/visuals/hero-wall-m.jpg") center bottom / cover no-repeat, #F3F6FA;
+    padding:52px 0 56px; }
+}
