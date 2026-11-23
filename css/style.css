@@ -1355,3 +1355,45 @@ html.menu-open .subnav{ visibility:hidden; }
     url("../assets/visuals/hero-wall-m.jpg") center bottom / cover no-repeat, #F3F6FA;
     padding:52px 0 56px; }
 }
+
+/* =========================================================
+   Hero background: our client sites, crossfading slowly.
+   Kept soft and light so the text stays the main thing.
+   ========================================================= */
+.hero{ position:relative; overflow:hidden; background:#F5F7FA; }
+.hero > .container{ position:relative; z-index:1; }
+.hero-bg{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+.hero-bg::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to left, rgba(246,248,251,.97) 0%, rgba(246,248,251,.93) 40%, rgba(246,248,251,.72) 70%, rgba(246,248,251,.6) 100%);
+}
+.hb{
+  position:absolute; inset:-3%; opacity:0;
+  background-position:center top; background-size:cover; background-repeat:no-repeat;
+  filter:blur(3px) saturate(.75);
+  transition:opacity 1.6s ease;
+}
+.hb.is-on{ opacity:1; animation:hbZoom 9s ease-out both; }
+@keyframes hbZoom{ from{ transform:scale(1.06); } to{ transform:scale(1); } }
+.hb:nth-child(1){ background-image:url("../assets/portfolio/levmeirisrael.jpg"); }
+.hb:nth-child(2){ background-image:url("../assets/portfolio/keterjudah.jpg"); }
+.hb:nth-child(3){ background-image:url("../assets/portfolio/eduardyonim.jpg"); }
+.hb:nth-child(4){ background-image:url("../assets/portfolio/techno-tech.jpg"); }
+.hb:nth-child(5){ background-image:url("../assets/portfolio/cyberlabsdpo.jpg"); }
+
+/* plain, confident type: no serif, no gold word */
+.hero .kicker{ color:var(--clay); font-size:14px; letter-spacing:.02em; font-weight:600; }
+.hero .kicker::before{ background:var(--clay); width:24px; }
+.hero .hero-title{ font-family:var(--sans); font-weight:800; color:var(--ink); font-size:clamp(34px, 4.4vw, 56px); line-height:1.15; letter-spacing:-.015em; }
+.hero .hero-lead{ color:#3C4759; font-size:18.5px; }
+.btn-gold{ background:var(--clay); }
+.btn-gold:hover{ background:var(--clay-2); }
+@media (max-width:1000px){
+  .hero{ background:#F5F7FA; }
+  .hero-bg::after{ background:linear-gradient(rgba(246,248,251,.95) 0%, rgba(246,248,251,.9) 55%, rgba(246,248,251,.7) 100%); }
+}
+@media (max-width:700px){ .hero .hero-title{ font-size:clamp(30px, 8.4vw, 36px); } }
+@media (prefers-reduced-motion: reduce){ .hb.is-on{ animation:none; } }
+html.a11y-motion .hb.is-on{ animation:none; }
+.hero-bg::after{ background:linear-gradient(to left, rgba(246,248,251,.98) 0%, rgba(246,248,251,.95) 45%, rgba(246,248,251,.74) 72%, rgba(246,248,251,.62) 100%); }
+@media (max-width:1000px){ .hero-bg::after{ background:linear-gradient(rgba(246,248,251,.95) 0%, rgba(246,248,251,.92) 60%, rgba(246,248,251,.74) 100%); } }

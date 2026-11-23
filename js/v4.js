@@ -110,3 +110,18 @@
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(set); }, { passive: true });
   set();
 })();
+
+/* hero background: crossfade between client sites */
+(function heroBg() {
+  const layers = Array.from(document.querySelectorAll('.hero-bg .hb'));
+  if (layers.length < 2) return;
+  const off = () => matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    document.documentElement.classList.contains('a11y-motion');
+  let i = 0;
+  setInterval(() => {
+    if (off() || document.hidden) return;
+    layers[i].classList.remove('is-on');
+    i = (i + 1) % layers.length;
+    layers[i].classList.add('is-on');
+  }, 5500);
+})();
