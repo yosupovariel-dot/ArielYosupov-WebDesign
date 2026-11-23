@@ -1,0 +1,5 @@
+# Static site published from the repository root; the assistant runs as a Netlify Function.
+# Set ANTHROPIC_API_KEY in Site settings > Environment variables before deploying.
+[build]
+  publish = "."
+  functions = "netlify/functions"
