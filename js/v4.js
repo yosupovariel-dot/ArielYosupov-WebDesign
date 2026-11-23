@@ -26,7 +26,8 @@
 (function navBorder() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
-  const set = () => nav.classList.toggle('scrolled', window.scrollY > 10);
+  const sub = document.querySelector('.subnav');
+  const set = () => { const on = window.scrollY > 24; nav.classList.toggle('scrolled', on); sub && sub.classList.toggle('scrolled', on); };
   window.addEventListener('scroll', set, { passive: true });
   set();
 })();

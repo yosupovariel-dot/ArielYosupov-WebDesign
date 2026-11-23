@@ -118,3 +118,17 @@ window.addEventListener('resize', () => { if (window.innerWidth > 1000) setMenu(
   window.addEventListener('scroll', update, { passive: true });
   update();
 })();
+
+/* ---------- header (and the why/how bar) float as rounded pills after scrolling ---------- */
+(function floatingHeader() {
+  const nav = document.querySelector('.nav');
+  const sub = document.querySelector('.subnav');
+  if (!nav) return;
+  const set = () => {
+    const on = window.scrollY > 24;
+    nav.classList.toggle('scrolled', on);
+    if (sub) sub.classList.toggle('scrolled', on);
+  };
+  window.addEventListener('scroll', set, { passive: true });
+  set();
+})();
